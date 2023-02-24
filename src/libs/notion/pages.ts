@@ -1,12 +1,12 @@
-import { isFullPage } from '@notionhq/client';
+import { isFullPage } from "@notionhq/client";
 import type {
   CreatePageParameters,
   GetPageResponse,
   PageObjectResponse,
   UpdatePageParameters,
-} from '@notionhq/client/build/src/api-endpoints';
+} from "@notionhq/client/build/src/api-endpoints";
 
-import { notion } from './client';
+import { notion } from "./client";
 
 /**
  * Pageの取得
@@ -39,16 +39,16 @@ export const updatePage = async (params: UpdatePageParameters) =>
 export const extractCoverFromPage = (page: GetPageResponse) => {
   if (!isFullPage(page)) {
     console.log(`page ${page.id} is Partial.`);
-    return null
+    return null;
   }
   if (page.cover === null) {
-    return null
+    return null;
   }
-  if (page.cover.type === 'external') {
-    return page.cover.external
+  if (page.cover.type === "external") {
+    return page.cover.external;
   }
-  if (page.cover.type === 'file') {
-    return page.cover.file
+  if (page.cover.type === "file") {
+    return page.cover.file;
   }
-  return null
-}
+  return null;
+};

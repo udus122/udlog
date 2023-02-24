@@ -1,9 +1,9 @@
 import type {
   QueryDatabaseParameters,
   QueryDatabaseResponse,
-} from '@notionhq/client/build/src/api-endpoints';
+} from "@notionhq/client/build/src/api-endpoints";
 
-import { notion } from './client';
+import { notion } from "./client";
 
 /**
  * Databaseの情報のみを取得

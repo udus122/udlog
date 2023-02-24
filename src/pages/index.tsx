@@ -23,11 +23,16 @@ const Index: NextPage<Props> = ({ page }) => {
 
   return (
     <>
-      <h1>🌀UDlog</h1>
+      <h1 className="text-9xl font-bold">🌀UDlog</h1>
       {cover !== null ? (
-        <div style={{position: "relative", width:"100vw", height: "30vh"}}>
-
-        <Image alt="Next.js logo" src={cover.url} fill sizes="60vw 30vh" style={{objectFit: "cover"}} />
+        <div style={{ position: "relative", width: "100vw", height: "30vh" }}>
+          <Image
+            alt="Next.js logo"
+            src={cover.url}
+            fill
+            sizes="60vw 30vh"
+            style={{ objectFit: "cover" }}
+          />
         </div>
       ) : null}
     </>

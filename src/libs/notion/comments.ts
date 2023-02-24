@@ -1,6 +1,6 @@
-import type { NotionCreateCommentParameters } from '~/types/notion';
+import type { NotionCreateCommentParameters } from "~/types/notion";
 
-import { notion } from './client';
+import { notion } from "./client";
 
 /**
  * BlockのCommentsを取得

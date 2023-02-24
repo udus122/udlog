@@ -9,7 +9,7 @@ export const getStaticProps = async () => {
     database_id: process.env.NOTION_ARTICLE_DATABASE_ID || "",
     page_size: 5,
   });
-  const blocks = await getChildrenAllInBlock(results[0].id)
+  const blocks = await getChildrenAllInBlock(results[0].id);
 
   return {
     props: {
@@ -22,7 +22,6 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ blocks }) => {
-
   return (
     <>
       <Render blocks={blocks} />

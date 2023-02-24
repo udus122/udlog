@@ -1,11 +1,12 @@
+import { isFullBlock } from "@notionhq/client";
 import type {
   AppendBlockChildrenParameters,
   ListBlockChildrenParameters,
   ListBlockChildrenResponse,
   UpdateBlockParameters,
-} from '@notionhq/client/build/src/api-endpoints';
+} from "@notionhq/client/build/src/api-endpoints";
 
-import { notion } from './client';
+import { notion } from "./client";
 
 /**
  * Blockの取得
