@@ -26,7 +26,7 @@ const Index: NextPage<Props> = ({ page }) => {
     <>
       <NavBar />
       <Header title="UDlog" cover={cover} />
-    </>
+      <Footer /> 
   );
 };
 
