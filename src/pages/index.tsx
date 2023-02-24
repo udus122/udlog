@@ -4,6 +4,8 @@ import Image from "next/image";
 import { extractCoverFromPage, getPage } from "@/libs/notion/pages";
 import { NavBar } from "@/components/NavBar";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Main } from "@/components/Main";
 
 export const getStaticProps = async () => {
   const page = await getPage("4553dcd168664730aa8723e1cace3d7e");
@@ -23,10 +25,12 @@ const Index: NextPage<Props> = ({ page }) => {
   const cover = extractCoverFromPage(page);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen text-white bg-gray-800">
       <NavBar />
       <Header title="UDlog" cover={cover} />
+      <Main />
       <Footer /> 
+    </div>
   );
 };
 
