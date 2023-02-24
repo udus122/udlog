@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import { extractCoverFromPage, getPage } from "@/libs/notion/pages";
 import { NavBar } from "@/components/NavBar";
+import { Header } from "@/components/Header";
+
 export const getStaticProps = async () => {
   const page = await getPage("4553dcd168664730aa8723e1cace3d7e");
 
@@ -23,17 +25,7 @@ const Index: NextPage<Props> = ({ page }) => {
   return (
     <>
       <NavBar />
-      {cover !== null ? (
-        <div style={{ position: "relative", width: "100vw", height: "30vh" }}>
-          <Image
-            alt="Next.js logo"
-            src={cover.url}
-            fill
-            sizes="60vw 30vh"
-            style={{ objectFit: "cover" }}
-          />
-        </div>
-      ) : null}
+      <Header title="UDlog" cover={cover} />
     </>
   );
 };

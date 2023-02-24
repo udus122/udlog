@@ -8,7 +8,7 @@ const inter = Inter({
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <main className="flex min-h-screen flex-col bg-gray-800">
       <Component {...pageProps} />
       <style jsx global>
         {`
@@ -17,6 +17,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-    </>
+    </main>
   );
 }
