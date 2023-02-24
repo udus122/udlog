@@ -2,8 +2,7 @@ import type { InferGetStaticPropsType, NextPage } from "next";
 import Image from "next/image";
 
 import { extractCoverFromPage, getPage } from "@/libs/notion/pages";
-import { isFullPage } from "@notionhq/client";
-
+import { NavBar } from "@/components/NavBar";
 export const getStaticProps = async () => {
   const page = await getPage("4553dcd168664730aa8723e1cace3d7e");
 
@@ -23,7 +22,7 @@ const Index: NextPage<Props> = ({ page }) => {
 
   return (
     <>
-      <h1 className="text-9xl font-bold">🌀UDlog</h1>
+      <NavBar />
       {cover !== null ? (
         <div style={{ position: "relative", width: "100vw", height: "30vh" }}>
           <Image
