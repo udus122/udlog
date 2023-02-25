@@ -1,7 +1,7 @@
 import { Render } from "@9gustin/react-notion-render";
-type Props = React.ComponentProps<'main'>;
+type Props = React.ComponentProps<"main">;
 
-export const Main: React.FC<Props> = ({className}) => {
+export const Main: React.FC<Props> = ({ className = "" }) => {
   return (
     <main className={`px-24 pb-24 ${className}`}>
       <article>

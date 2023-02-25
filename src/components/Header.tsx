@@ -5,7 +5,7 @@ type Props = React.ComponentProps<"header"> & {
   cover: { url: string } | null;
 };
 
-export const Header: React.FC<Props> = ({ title, cover, className }) => {
+export const Header: React.FC<Props> = ({ title, cover, className = "" }) => {
   return (
     <header className={`mb-4 w-full ${className}`}>
       <span className="relative block overflow-hidden opacity-100 h-72">
