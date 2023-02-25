@@ -1,5 +1,4 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
-import Image from "next/image";
 
 import { extractCoverFromPage, getPage } from "@/libs/notion/pages";
 import { NavBar } from "@/components/NavBar";
@@ -28,8 +27,8 @@ const Index: NextPage<Props> = ({ page }) => {
     <div className="flex flex-col min-h-screen text-white bg-gray-800">
       <NavBar />
       <Header title="UDlog" cover={cover} />
-      <Main />
-      <Footer /> 
+      <Main className="flex-grow" />
+      <Footer />
     </div>
   );
 };
