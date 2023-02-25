@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         inter: ["var(--font-inter)"],
       },
+      gridTemplateColumns: {
+        'fluid': 'repeat(auto-fit, minmax(20rem, 1fr))',
+      }
     },
   },
   plugins: [],

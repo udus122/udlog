@@ -1,3 +1,4 @@
+import { collectPaginatedAPI } from "@notionhq/client";
 import type {
   QueryDatabaseParameters,
   QueryDatabaseResponse,
@@ -26,23 +27,7 @@ export const getDatabaseContents = (params: QueryDatabaseParameters) =>
 export const getDatabaseContentsAll = async (
   params: QueryDatabaseParameters
 ) => {
-  const postArray = [];
-  let nextCursor: string | undefined = undefined;
-
-  do {
-    const response: QueryDatabaseResponse = await getDatabaseContents({
-      ...params,
-      start_cursor: nextCursor,
-    });
-    postArray.push(response.results);
-    if (response.has_more && response.next_cursor) {
-      nextCursor = response.next_cursor;
-    } else {
-      nextCursor = undefined;
-    }
-  } while (nextCursor);
-
-  return postArray;
+  return collectPaginatedAPI(getDatabaseContents, params)
 };
 
 /* DBの作成と編集はSDKには存在しない（APIはある） */
