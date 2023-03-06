@@ -1,4 +1,3 @@
-import { Render } from "@9gustin/react-notion-render";
 type Props = React.ComponentProps<"main">;
 
 export const Main: React.FC<Props> = ({ className = "" }) => {

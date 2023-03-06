@@ -1,6 +1,5 @@
-import { notion } from "@/libs/notion/client";
-import { collectPaginatedAPI, isFullPage } from "@notionhq/client";
-import { getPlainTextFromArrayOfRichText } from "@/libs/utils/index";
+import { isFullPage } from "@notionhq/client";
+import { getPlainTextFromArrayOfRichText, retrieveDatabase, collectQueryDatabase } from "@/libs/notion";
 import Head from "next/head";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
@@ -12,10 +11,10 @@ import Image from "next/image";
 
 export const getStaticProps = async () => {
   const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID || "";
-  const database = await notion.databases.retrieve({
+  const database = await retrieveDatabase({
     database_id: ARTICLE_DB_ID,
   });
-  const articles = await collectPaginatedAPI(notion.databases.query, {
+  const articles = await collectQueryDatabase({
     database_id: ARTICLE_DB_ID,
     sorts: [
       {
@@ -39,9 +38,8 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Index: NextPage<Props> = ({ database, articles }) => {
   console.log(articles);
 
-  // @ts-ignore
+
   const title = getPlainTextFromArrayOfRichText(database.title);
-  // @ts-ignore
   const cover = database.cover.external;
 
   return (
@@ -68,7 +66,6 @@ const Index: NextPage<Props> = ({ database, articles }) => {
                       <Image alt="Next.js logo" src={cover.url} fill />
                     </span>
                     <Link href={`/articles/${article.id}`}>{getPlainTextFromArrayOfRichText(
-                        // @ts-ignore
                         article.properties.Name.title
                       )}</Link>
                   </div>
