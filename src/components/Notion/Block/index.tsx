@@ -8,6 +8,7 @@ import { Heading3 } from "./Heading3";
 import { Paragraph } from "./Paragraph";
 import { RichText } from "./RichText";
 import { Table } from "./Table";
+import { Image } from "./Image";
 
 export function Block({
   block,
