@@ -16,8 +16,7 @@ export const Heading3: React.FC<Props> = ({ block, children }) => {
       {block.heading_3.is_toggleable ? (
         <details id={block.id} className={`heading ${blockType} ${blockColor}`}>
           <summary>
-            <h3
-            >
+            <h3 className="inline-block">
               <RichText rich_text={block.heading_3.rich_text} />
             </h3>
           </summary>
