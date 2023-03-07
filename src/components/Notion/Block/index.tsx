@@ -1,6 +1,5 @@
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-import Image from "next/image";
 import { Code } from "./Code";
 import { Heading1 } from "./Heading1";
 import { Heading2 } from "./Heading2";
@@ -9,6 +8,7 @@ import { Paragraph } from "./Paragraph";
 import { RichText } from "./RichText";
 import { Table } from "./Table";
 import { Image } from "./Image";
+import { Video } from "./Video";
 
 export function Block({
   block,
@@ -38,50 +38,12 @@ export function Block({
     case "heading_3":
       return <Heading3 block={block}>{children}</Heading3>;
     case "paragraph":
-      return <Paragraph block={block}>{children}</Paragraph>
+      return <Paragraph block={block}>{children}</Paragraph>;
     case "image":
-      // If Media map does not exist, use the external url or file url from Notion. Be aware that these links expire after 1 hr. https://developers.notion.com/docs/working-with-files-and-media
-      const imageUrl: string =
-        block.image.type == "external"
-          ? block.image.external.url
-          : block.image.file.url;
-      return (
-        <div className="notion_image_container">
-          <Image
-            src={imageUrl || "/fallback.png"}
-            alt={"Notion page image"} //TODO: Update this alt text
-            width={700}
-            height={700}
-            className="notion_image"
-          />
-          <span className="notion_caption">
-            {block.image.caption && (
-              <RichText rich_text={block.image.caption} />
-            )}
-          </span>
-        </div>
-      );
+      // eslint-disable-next-line jsx-a11y/alt-text
+      return <Image block={block} />;
     case "video":
-      // If Media map does not exist, use the external url or file url from Notion. Be aware that these links expire after 1 hr. https://developers.notion.com/docs/working-with-files-and-media
-      const videoUrl: string =
-        block.video.type == "external"
-          ? block.video.external.url
-          : block.video.file.url;
-      if (videoUrl) {
-        return (
-          <div className="notion_video_container">
-            <video controls src={videoUrl} className={`notion_video`} />
-            <span className="notion_caption">
-              {block.video.caption && (
-                <RichText rich_text={block.video.caption} />
-              )}
-            </span>
-          </div>
-        );
-      } else {
-        return <div className="">Video URL not found</div>;
-      }
-
+      return <Video block={block} />;
     case "bulleted_list_item":
       return (
         <ul className="notion_bulleted_list_container">
