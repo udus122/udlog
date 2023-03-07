@@ -11,7 +11,6 @@ import type {
   BlockObjectResponse,
   GetPageResponse,
   GetDatabaseResponse,
-  QueryDatabaseResponse,
   QueryDatabaseParameters,
   PageObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";

@@ -13,7 +13,7 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import sample_design from "@/sample_design.json"
+import { NotionRender } from "@/components/Notion/Render";
 export const getStaticPaths: GetStaticPaths = async () => {
   // const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID || "";
   // const articles = await collectPaginatedAPI(notion.databases.query, {
@@ -59,15 +59,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // const page = await notion.pages.retrieve({
   //   page_id: "0581ec5b0d9d4448bea936fc4eafbd32",
   // });
-  // const blocks = await collectBlockList({
-  //   block_id: page.id,
-  // });
-  // const resolvedBlocks = await resolveAllChildrenBlock(blocks)
+
+  // page_idよりブロックを取得する
+  const blocks = await collectBlockList({
+    block_id: params.id as string,
+  });
+  const resolvedBlocks = await resolveAllChildrenBlock(blocks)
 
   return {
     props: {
       page: null,
-      blocks: sample_design,
+      blocks: resolvedBlocks,
     },
     revalidate: 60 * 60 * 24, // 1日
   };
@@ -78,7 +80,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Index: NextPage<Props> = ({ page, blocks }) => {
   console.log(blocks);
   // TODO: Renderを自前のものに変えていく
-  return <Render blocks={blocks} useStyles classNames />;
+  return <NotionRender blocks={blocks} />;
 };
 
 export default Index;
