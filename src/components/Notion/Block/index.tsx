@@ -5,11 +5,18 @@ import { Heading1 } from "./Heading1";
 import { Heading2 } from "./Heading2";
 import { Heading3 } from "./Heading3";
 import { Paragraph } from "./Paragraph";
-import { RichText } from "./RichText";
 import { Table } from "./Table";
 import { Image } from "./Image";
 import { Video } from "./Video";
 import { BulletedListItem } from "./BulletedListItem";
+import { NumberedListItem } from "./NumberedListItem";
+import { Callout } from "./Callout";
+import { Quote } from "./Quote";
+import { ToDo } from "./ToDo";
+import { Toggle } from "./Toggle";
+import { Divider } from "./Divider";
+import { ColumnList } from "./ColumnList";
+import { Column } from "./Column";
 
 export function Block({
   block,
@@ -48,92 +55,31 @@ export function Block({
     case "bulleted_list_item":
       return <BulletedListItem block={block}>{children}</BulletedListItem>;
     case "numbered_list_item":
-      const itemPosition = blocks?.findIndex(
-        (blocksBlock) => block.id === blocksBlock.id
-      );
-      // Count backwards to find the number of numbered_list_item blocks before hitting a non-numbered_list_item block
-      // Notions API does not give any information about the position of the block in the list so we need to calculate it
-      let listNumber = 0;
-      for (let i = itemPosition; i >= 0; i--) {
-        let blocksBlock = blocks[i] as BlockObjectResponse;
-        if (blocksBlock.type === "numbered_list_item") {
-          listNumber++;
-        } else {
-          break;
-        }
-      }
       return (
-        <ol start={listNumber} className="notion_numbered_list_container">
-          <li className={`notion_${block.type}`}>
-            <RichText rich_text={block.numbered_list_item.rich_text} />
-          </li>
+        <NumberedListItem block={block} blocks={blocks}>
           {children}
-        </ol>
+        </NumberedListItem>
       );
     case "code":
-      return (
-        <div className={`notion_${block.type}`}>
-          <Code
-            text={block.code.rich_text[0].plain_text}
-            language={"javascript"}
-          />
-          {block.code.caption && (
-            <span className="notion_caption">
-              <RichText rich_text={block.code.caption} />
-            </span>
-          )}
-        </div>
-      );
+      return <Code block={block} />;
     case "callout":
-      return (
-        <div className={`notion_${block.type}`}>
-          <div className="notion_callout_emoji">
-            {block.callout.icon?.type === "emoji"
-              ? block.callout.icon.emoji
-              : ""}
-          </div>
-          <div className="notion_callout_text">
-            <RichText rich_text={block.callout.rich_text} />
-          </div>
-        </div>
-      );
-    case "column_list":
-      return <div className={`notion_${block.type}`}>{children}</div>;
-    case "column":
-      return <div className={`notion_${block.type}`}>{children}</div>;
+      return <Callout block={block} />;
     case "quote":
-      return (
-        <blockquote className={`notion_${block.type}`}>
-          <RichText rich_text={block.quote.rich_text} />
-        </blockquote>
-      );
-    case "divider":
-      return <hr className="notion_divider" />;
+      return <Quote block={block} />;
     case "to_do":
-      return (
-        <div className={`notion_${block.type}_container`}>
-          <input
-            type="checkbox"
-            checked={block.to_do.checked}
-            readOnly
-            className={`notion_${block.type}`}
-          />
-          <RichText rich_text={block.to_do.rich_text} />
-        </div>
-      );
+      return <ToDo block={block}>{children}</ToDo>;
     case "toggle":
-      return (
-        <details className={`notion_${block.type}_container`}>
-          <summary>
-            <RichText rich_text={block.toggle.rich_text} />
-          </summary>
-          {children}
-        </details>
-      );
+      return <Toggle block={block}>{children}</Toggle>;
+    case "divider":
+      return <Divider block={block} />;
+    case "column_list":
+      return <ColumnList block={block}>{children}</ColumnList>;
+    case "column":
+      return <Column block={block}>{children}</Column>;
     case "table":
       return <Table block={block} />;
-
     default:
-      return <div>Block {block.type} not supported</div>;
+      console.warn(`Block ${block.type} not supported`);
+      return null;
   }
 }

@@ -2,7 +2,7 @@ import { generateBlockColorClass } from "@/libs/notion/utils";
 import { ParagraphBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 
-type Props = React.ComponentProps<"main"> & {
+type Props = {
   block: ParagraphBlockObjectResponse;
   children?: React.ReactNode;
 };
