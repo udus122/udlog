@@ -9,6 +9,7 @@ import { RichText } from "./RichText";
 import { Table } from "./Table";
 import { Image } from "./Image";
 import { Video } from "./Video";
+import { BulletedListItem } from "./BulletedListItem";
 
 export function Block({
   block,
@@ -45,14 +46,7 @@ export function Block({
     case "video":
       return <Video block={block} />;
     case "bulleted_list_item":
-      return (
-        <ul className="notion_bulleted_list_container">
-          <li className={`notion_${block.type}`}>
-            <RichText rich_text={block.bulleted_list_item.rich_text} />
-          </li>
-          {children}
-        </ul>
-      );
+      return <BulletedListItem block={block}>{children}</BulletedListItem>;
     case "numbered_list_item":
       const itemPosition = blocks?.findIndex(
         (blocksBlock) => block.id === blocksBlock.id
