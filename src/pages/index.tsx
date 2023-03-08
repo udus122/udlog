@@ -29,10 +29,10 @@ const Index: NextPage<Props> = ({ page }) => {
       <Head>
         <title>UDlog</title>
       </Head>
-      <div className="flex flex-col justify-between min-h-screen text-white bg-gray-800">
+      <div>
         <NavBar />
         <Header title="UDlog" cover={cover} />
-        <Main className="flex-grow" />
+        <Main />
         <Footer />
       </div>
     </>

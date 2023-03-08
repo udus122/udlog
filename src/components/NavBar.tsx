@@ -2,9 +2,9 @@ import { Logo } from "./Logo";
 
 type Props = React.ComponentProps<"nav">;
 
-export const NavBar: React.FC<Props> = ({ className = "" }) => {
+export const NavBar: React.FC<Props> = ({}) => {
   return (
-    <nav className={`flex h-14 items-center justify-between p-2 ${className}`}>
+    <nav>
       <Logo />
     </nav>
   );

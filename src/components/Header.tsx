@@ -5,10 +5,10 @@ type Props = React.ComponentProps<"header"> & {
   cover: { url: string } | null;
 };
 
-export const Header: React.FC<Props> = ({ title, cover, className = "" }) => {
+export const Header: React.FC<Props> = ({ title, cover }) => {
   return (
-    <header className={`mb-4 w-full ${className}`}>
-      <span className="relative block overflow-hidden opacity-100 h-72">
+    <header>
+      <span>
         {cover !== null ? (
           <Image
             alt="Next.js logo"
@@ -19,7 +19,7 @@ export const Header: React.FC<Props> = ({ title, cover, className = "" }) => {
           />
         ) : null}
       </span>
-      <h1 className="my-5 min-h-[3rem] p-0.5 px-24 font-inter text-4xl font-bold">
+      <h1>
         {title}
       </h1>
     </header>

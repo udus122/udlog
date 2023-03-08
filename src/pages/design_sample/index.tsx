@@ -1,32 +1,46 @@
-import type {
-  GetStaticProps,
-  InferGetStaticPropsType,
-  NextPage,
-} from "next";
-import design_sample from "./design_sample.json"
-import { NotionRender } from "@/components/Notion/Render";
-import { BlockComponentMapper } from "@/components/Notion/Block/mapper";
-import { OpenedToggle } from "@/components/CustomBlock/OpenedToggle";
+import design_sample from "./design_sample.json";
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { BlockComponentMapper } from "@/types";
+
+import { NotionRender } from "@/components/Notion/Render";
+import { OpenedToggle } from "@/components/CustomBlock/OpenedToggle";
+import { NavBar } from "@/components/NavBar";
+import { Header } from "@/components/Header";
+import { Main } from "@/components/Main";
+import { Footer } from "@/components/Footer";
+import styles from "@/styles/layout/article.module.css"
+
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       page: null,
       blocks: design_sample,
     },
-    revalidate: 60 * 60 * 24, // 1日
   };
 };
 
 const customMapper: BlockComponentMapper = {
-  "toggle": OpenedToggle
-}
-
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
-
-const Index: NextPage<Props> = ({ blocks }) => {
-  console.log(blocks);
-  return <NotionRender blocks={blocks} customMapper={customMapper} />;
+  toggle: OpenedToggle,
 };
 
-export default Index;
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+const DesignSample: NextPage<Props> = ({ blocks }) => {
+  console.log(blocks);
+  return (
+    <div
+      id="page-id-dummy"
+    >
+      <NavBar />
+      <Header title="UDlog" cover={null} />
+      <Main>
+        <article>
+          <NotionRender blocks={blocks} customMapper={customMapper} />
+        </article>
+      </Main>
+      <Footer />
+    </div>
+  );
+};
+
+export default DesignSample;
