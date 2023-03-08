@@ -10,7 +10,6 @@
     "format": "eslint --fix './src/**/*.{js,jsx,ts,tsx}' && prettier --write --ignore-path .gitignore './src/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
-    "@9gustin/react-notion-render": "^3.11.2",
     "@next/font": "13.1.6",
     "@notionhq/client": "^2.2.3",
     "next": "13.1.6",

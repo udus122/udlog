@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@9gustin/react-notion-render': ^3.11.2
   '@next/font': 13.1.6
   '@notionhq/client': ^2.2.3
   '@types/node': 18.14.0
@@ -23,7 +22,6 @@ specifiers:
   typescript: 4.9.5
 
 dependencies:
-  '@9gustin/react-notion-render': 3.11.2_biqbaboplfbrettd7655fr4n2y
   '@next/font': 13.1.6
   '@notionhq/client': 2.2.3
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
@@ -47,17 +45,6 @@ devDependencies:
   typescript: 4.9.5
 
 packages:
-
-  /@9gustin/react-notion-render/3.11.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-IcuYEvCuvaXO7mbNfDw8/o5+ChFHbqmRDg7oDSR1A3EyMB8j7YgM/HwfmpeD9TwG94L7cV/slvUx5Fm/umfOGQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^18.2.0
-      react-dom: ^18.2.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
 
   /@babel/runtime/7.21.0:
     resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
