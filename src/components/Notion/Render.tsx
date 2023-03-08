@@ -1,26 +1,24 @@
 import * as React from "react";
-import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { Block } from "./Block";
+import { defaultMapper } from "./Block/mapper";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { BlockComponentMapper } from "@/types";
 
 type Props = {
   blocks: BlockObjectResponse[];
-  customMapper: object;
+  customMapper: BlockComponentMapper;
 };
 
 export const NotionRender: React.FC<Props> = function ({
   blocks,
   customMapper = {},
 }) {
+  const mapper = { ...defaultMapper, ...customMapper };
   return (
     <div className="notion-render-root">
       {blocks.map((block) => {
         return (
-          <Block
-            key={block.id}
-            block={block}
-            blocks={blocks}
-            customMapper={customMapper}
-          />
+          <Block key={block.id} block={block} blocks={blocks} mapper={mapper} />
         );
       })}
     </div>

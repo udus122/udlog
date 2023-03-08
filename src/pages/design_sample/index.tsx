@@ -5,6 +5,8 @@ import type {
 } from "next";
 import design_sample from "./design_sample.json"
 import { NotionRender } from "@/components/Notion/Render";
+import { BlockComponentMapper } from "@/components/Notion/Block/mapper";
+import { OpenedToggle } from "@/components/CustomBlock/OpenedToggle";
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
@@ -16,12 +18,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
+const customMapper: BlockComponentMapper = {
+  "toggle": OpenedToggle
+}
+
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ blocks }) => {
   console.log(blocks);
-  // TODO: Renderを自前のものに変えていく
-  return <NotionRender blocks={blocks} />;
+  return <NotionRender blocks={blocks} customMapper={customMapper} />;
 };
 
 export default Index;
