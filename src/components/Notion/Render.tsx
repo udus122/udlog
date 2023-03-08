@@ -4,14 +4,23 @@ import { Block } from "./Block";
 
 type Props = {
   blocks: BlockObjectResponse[];
+  customMapper: object;
 };
 
-export const NotionRender: React.FC<Props> = function ({ blocks }) {
+export const NotionRender: React.FC<Props> = function ({
+  blocks,
+  customMapper = {},
+}) {
   return (
     <div className="notion-render-root">
       {blocks.map((block) => {
         return (
-            <Block key={block.id} block={block} blocks={blocks} />
+          <Block
+            key={block.id}
+            block={block}
+            blocks={blocks}
+            customMapper={customMapper}
+          />
         );
       })}
     </div>
