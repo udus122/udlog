@@ -9,7 +9,7 @@ export const Heading1: BlockComponent<Heading1BlockObjectResponse> = ({
   children,
 }) => {
   const richText = block.heading_1.rich_text;
-  const blockType = `notion-${block.type}`;
+  const blockType = `notion_${block.type}`;
   const blockColor = generateBlockColorClass(block.heading_1.color);
   return (
     <>

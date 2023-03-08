@@ -14,7 +14,6 @@ export function Block({
   // @ts-ignore Get the component for the current block type from the mapper.
   const Component = mapper[block.type];
   // NOTE: be aware of the error "Element implicitly has an 'any' type because expression of type ...".
-  // Make sure that the mapper includes all the possible block types and that the keys match the block.type property.
 
   if (!Component) {
     return null;
