@@ -28,9 +28,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const DesignSample: NextPage<Props> = ({ blocks }) => {
   console.log(blocks);
   return (
-    <div
-      id="page-id-dummy"
-    >
+    <div id="page-id-dummy">
       <NavBar />
       <Header title="UDlog" cover={null} />
       <Main>
