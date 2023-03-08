@@ -2,7 +2,7 @@ import { generateBlockColorClass } from "@/libs/notion/utils";
 import { Heading3BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 
-type Props = React.ComponentProps<"main"> & {
+type Props = {
   block: Heading3BlockObjectResponse;
   children?: React.ReactNode;
 };

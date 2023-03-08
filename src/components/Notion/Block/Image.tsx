@@ -3,7 +3,7 @@ import { ImageBlockObjectResponse } from "@notionhq/client/build/src/api-endpoin
 import { RichText } from "./RichText";
 import NextImage from "next/image";
 
-type Props = React.ComponentProps<"main"> & {
+type Props = {
   block: ImageBlockObjectResponse;
 };
 

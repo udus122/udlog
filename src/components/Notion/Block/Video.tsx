@@ -1,7 +1,7 @@
 import { VideoBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 
-type Props = React.ComponentProps<"main"> & {
+type Props = {
   block: VideoBlockObjectResponse;
 };
 
