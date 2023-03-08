@@ -1,14 +1,11 @@
 import { generateBlockColorClass } from "@/libs/notion/utils";
-import { BlockObjectResponse, NumberedListItemBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { BlockComponent } from "@/types";
+import { NumberedListItemBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 
-type Props = {
-  block: NumberedListItemBlockObjectResponse;
-  blocks: BlockObjectResponse[]
-  children?: React.ReactNode;
-};
-
-export const NumberedListItem: React.FC<Props> = ({ block, blocks, children }) => {
+export const NumberedListItem: BlockComponent<
+  NumberedListItemBlockObjectResponse
+> = ({ block, blocks, children }) => {
   const blockType = `notion-${block.type}`;
   const blockColor = generateBlockColorClass(block.numbered_list_item.color);
   const itemPosition = blocks?.findIndex(

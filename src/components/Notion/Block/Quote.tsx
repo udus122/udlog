@@ -1,12 +1,9 @@
 import { generateBlockColorClass } from "@/libs/notion/utils";
+import type { BlockComponent } from "@/types";
 import { QuoteBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 
-type Props = {
-  block: QuoteBlockObjectResponse;
-};
-
-export const Quote: React.FC<Props> = ({ block }) => {
+export const Quote: BlockComponent<QuoteBlockObjectResponse> = ({ block }) => {
   const blockType = `notion-${block.type}`;
   const blockColor = generateBlockColorClass(block.quote.color);
   return (

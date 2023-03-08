@@ -1,11 +1,8 @@
+import type { BlockComponent } from "@/types";
 import { VideoBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 
-type Props = {
-  block: VideoBlockObjectResponse;
-};
-
-export const Video: React.FC<Props> = ({ block }) => {
+export const Video: BlockComponent<VideoBlockObjectResponse> = ({ block }) => {
   const blockType = `notion-${block.type}`;
   const videoUrl: string =
     block.video.type == "external"

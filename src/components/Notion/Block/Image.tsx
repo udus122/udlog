@@ -1,13 +1,9 @@
-import { generateBlockColorClass } from "@/libs/notion/utils";
 import { ImageBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 import NextImage from "next/image";
+import type { BlockComponent } from "@/types";
 
-type Props = {
-  block: ImageBlockObjectResponse;
-};
-
-export const Image: React.FC<Props> = ({ block }) => {
+export const Image: BlockComponent<ImageBlockObjectResponse> = ({ block }) => {
   const blockType = `notion-${block.type}`;
   const imageUrl: string =
     block.image.type == "external"

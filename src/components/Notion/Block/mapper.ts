@@ -15,51 +15,9 @@ import { Toggle } from "./Toggle";
 import { Divider } from "./Divider";
 import { ColumnList } from "./ColumnList";
 import { Column } from "./Column";
-import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { BlockComponentMapper } from "@/types";
 
-type BlockComponentProps = {
-  block: BlockObjectResponse;
-  blocks?: BlockObjectResponse[]
-  children?: React.ReactNode;
-};
-
-type BlockComponent = React.FC<BlockComponentProps>
-
-export type BlockComponentMapper = {
-  "bookmark"?: BlockComponent;
-  "breadcrumb"?: BlockComponent;
-  "bulleted_list_item"?: BlockComponent;
-  "callout"?: BlockComponent;
-  "child_database"?: BlockComponent;
-  "child_page"?: BlockComponent;
-  "column"?: BlockComponent;
-  "column_list"?: BlockComponent;
-  "divider"?: BlockComponent;
-  "embed"?: BlockComponent;
-  "equation"?: BlockComponent;
-  "file"?: BlockComponent;
-  "heading_1"?: BlockComponent;
-  "heading_2"?: BlockComponent;
-  "heading_3"?: BlockComponent;
-  "image"?: BlockComponent;
-  "link_preview"?: BlockComponent;
-  "link_to_page"?: BlockComponent;
-  "numbered_list_item"?: BlockComponent;
-  "paragraph"?: BlockComponent;
-  "pdf"?: BlockComponent;
-  "quote"?: BlockComponent;
-  "synced_block"?: BlockComponent;
-  "table"?: BlockComponent;
-  "table_of_contents"?: BlockComponent;
-  "table_row"?: BlockComponent;
-  "template"?: BlockComponent;
-  "to_do"?: BlockComponent;
-  "toggle"?: BlockComponent;
-  "unsupported"?: BlockComponent;
-  "video"?: BlockComponent;
-};
-
-export const defaultMapper = {
+export const defaultMapper: BlockComponentMapper = {
   heading_1: Heading1,
   heading_2: Heading2,
   heading_3: Heading3,

@@ -1,13 +1,12 @@
 import { generateBlockColorClass } from "@/libs/notion/utils";
+import type { BlockComponent } from "@/types";
 import { ToDoBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 
-type Props = {
-  block: ToDoBlockObjectResponse;
-  children?: React.ReactNode;
-};
-
-export const ToDo: React.FC<Props> = ({ block, children }) => {
+export const ToDo: BlockComponent<ToDoBlockObjectResponse> = ({
+  block,
+  children,
+}) => {
   const blockType = `notion-${block.type}`;
   const blockColor = generateBlockColorClass(block.to_do.color);
   return (

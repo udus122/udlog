@@ -1,31 +1,49 @@
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-import { BlockComponentMapper, defaultMapper } from "./mapper";
+import { BlockComponentMapper } from "@/types";
 
 export function Block({
   block,
   blocks,
-  customMapper = {},
+  mapper,
 }: {
   block: BlockObjectResponse;
   blocks: BlockObjectResponse[];
-  customMapper?: BlockComponentMapper;
+  mapper: BlockComponentMapper;
 }) {
-  const mapper = { ...defaultMapper, ...customMapper };
+  // @ts-ignore Get the component for the current block type from the mapper.
   const Component = mapper[block.type];
+  // NOTE: be aware of the error "Element implicitly has an 'any' type because expression of type ...".
+  // Make sure that the mapper includes all the possible block types and that the keys match the block.type property.
 
-  let children: React.ReactNode[] | undefined;
-  // Table blocks are handled a bit differently. See Table.tsx
-  if (block.has_children && block.type !== "table") {
-    // @ts-ignore Notion types are incorrect
-    children = block[block.type].children?.map((child: BlockObjectResponse) => {
-      return child && <Block block={child} key={child.id} blocks={blocks} />;
-    });
+  if (!Component) {
+    return null;
   }
-
-  return Component ? (
-    <Component block={block} blocks={blocks}>
-      {children}
-    </Component>
-  ) : null;
+  // If the block does not have children, do not process recursively.
+  if (!block.has_children) {
+    return <Component block={block} blocks={blocks} />;
+  }
+  // Table blocks processes its child elements internally in Table.tsx.
+  if (block.has_children && block.type === "table") {
+    return <Component block={block} blocks={blocks} />;
+    // For all other block types with children, process them recursively
+  } else {
+    return (
+      <Component block={block} blocks={blocks}>
+        {/* @ts-ignore Notion types are incorrect */}
+        {block[block.type].children?.map((child: BlockObjectResponse) => {
+          return (
+            child && (
+              <Block
+                block={child}
+                key={child.id}
+                blocks={blocks}
+                mapper={mapper}
+              />
+            )
+          );
+        })}
+      </Component>
+    );
+  }
 }

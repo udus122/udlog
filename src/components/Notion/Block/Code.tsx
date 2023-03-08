@@ -1,11 +1,10 @@
 import React from "react";
-import {
-  BlockObjectResponse,
-  CodeBlockObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { monokai } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
+import type { CodeBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { BlockComponent } from "@/types";
 
 const SyntaxHighlight = ({
   text,
@@ -21,11 +20,7 @@ const SyntaxHighlight = ({
   );
 };
 
-type Props = {
-  block: CodeBlockObjectResponse;
-};
-
-export const Code: React.FC<Props> = ({ block }) => {
+export const Code: BlockComponent<CodeBlockObjectResponse> = ({ block }) => {
   const blockType = `notion-${block.type}`;
   return (
     <div className={`${blockType}`}>
