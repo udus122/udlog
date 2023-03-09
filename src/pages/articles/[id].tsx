@@ -1,7 +1,7 @@
 import { collectBlockList, resolveAllChildrenBlock } from "@/libs/notion/block";
-import { retrievePage } from "@/libs/notion/page";
+import { retrieveFullPage } from "@/libs/notion/page";
 import { collectQueryDatabase } from "@/libs/notion/database";
-import { NotionRenderer } from "@/components/Notion/Renderer";
+import { NotionBlockRenderer } from "@/components/Notion/Renderer";
 
 import type {
   GetStaticPaths,
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (typeof params.id !== "string") {
     throw new TypeError("parms.id must be String.");
   }
-  const page = await retrievePage({ page_id: params.id });
+  const page = await retrieveFullPage({ page_id: params.id });
   // page_idよりブロックを取得する
   const blocks = await collectBlockList({
     block_id: params.id as string,
@@ -61,7 +61,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Index: NextPage<Props> = ({ page, blocks }) => {
   console.log(page)
 
-  return <NotionRenderer blocks={blocks} />;
+  return <NotionBlockRenderer blocks={blocks} />;
 };
 
 export default Index;

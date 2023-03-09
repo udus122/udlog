@@ -33,6 +33,7 @@ import type {
   AudioBlockObjectResponse,
   LinkPreviewBlockObjectResponse,
   UnsupportedBlockObjectResponse,
+  RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 export type BlockComponentProps<T extends BlockObjectResponse> = {
@@ -80,3 +81,10 @@ export type BlockComponentMapper = {
   unsupported?: BlockComponent<UnsupportedBlockObjectResponse>;
   video?: BlockComponent<VideoBlockObjectResponse>;
 };
+
+// @notionhq/client/build/src/api-endpoints.d.ts L235~L239
+export type TitleProperty = {
+  type: "title";
+  title: Array<RichTextItemResponse>;
+  id: string;
+}

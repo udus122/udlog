@@ -1,10 +1,21 @@
+import { isFullPage } from "@notionhq/client";
 import { notion } from "./notion";
 
-import type { GetPageParameters } from "@notionhq/client/build/src/api-endpoints";
+import {
+  GetPageParameters,
+  PageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 
 /**
  * Page関連
  */
 
-export const retrievePage = async (args: GetPageParameters) =>
-  await notion.pages.retrieve(args);
+export const retrieveFullPage = async (
+  args: GetPageParameters
+): Promise<PageObjectResponse> => {
+  const pageObject = await notion.pages.retrieve(args);
+  if (!isFullPage(pageObject)) {
+    throw new Error("PartialPageObjectResponse was retrieved.");
+  }
+  return pageObject;
+};

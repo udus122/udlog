@@ -9,7 +9,7 @@ type Props = {
   customMapper?: BlockComponentMapper;
 };
 
-export const NotionRenderer: React.FC<Props> = function ({
+export const NotionBlockRenderer: React.FC<Props> = function ({
   blocks,
   customMapper = {},
 }) {
