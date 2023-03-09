@@ -2,6 +2,7 @@ import { ImageBlockObjectResponse } from "@notionhq/client/build/src/api-endpoin
 import { RichText } from "./RichText";
 import NextImage from "next/image";
 import type { BlockComponent } from "@/types";
+import { noImageUrl } from "@/constants";
 
 export const Image: BlockComponent<ImageBlockObjectResponse> = ({ block }) => {
   const blockType = `notion-${block.type}`;
@@ -9,16 +10,22 @@ export const Image: BlockComponent<ImageBlockObjectResponse> = ({ block }) => {
     block.image.type == "external"
       ? block.image.external.url
       : block.image.file.url;
+  const caption = block.image.caption.reduce((prev, curr) => {
+    prev += curr.plain_text;
+    return prev;
+  }, "");
   return (
-    <div className="${blockType}-container">
-      <NextImage
-        src={imageUrl || "/fallback.png"}
-        alt={"Notion page image"} //TODO: Update this alt text
-        width={700}
-        height={700}
-        className={`${blockType}`}
-      />
-      <span className="notion-caption">
+    <div className={`${blockType}_container`} style={{ position: "relative" }}>
+      <picture className="frame">
+        <NextImage
+          src={imageUrl ?? noImageUrl}
+          alt={caption}
+          fill
+          className={`${blockType}`}
+          style={{ objectFit: "cover" }}
+        />
+      </picture>
+      <span className="notion_caption">
         {block.image.caption && <RichText rich_text={block.image.caption} />}
       </span>
     </div>

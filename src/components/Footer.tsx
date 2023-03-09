@@ -1,14 +1,12 @@
 import { Logo } from "./Logo";
 
-type Props = React.ComponentProps<"footer">;
-
-export const Footer: React.FC<Props> = ({}) => {
+export const Footer = () => {
   return (
-    <footer>
-      <div>
+    <div>
+      <p>
         <Logo />
-      </div>
+      </p>
       <p>© 2023 UD</p>
-    </footer>
+    </div>
   );
 };

@@ -9,10 +9,11 @@ type Props = {
 
 export const NotionPageHeader: React.FC<Props> = function ({ page }) {
   return (
-    <header className="notion_page_header">
-      <NotionPageCover page={page} />
+    <div className="notion_page_header">
+      {/* <NotionPageCover page={page} /> */}
       <NotionPageTitle page={page} />
       {/* <NotionPageProperties page={page} /> */}
-    </header>
+      <hr />
+    </div>
   );
 };

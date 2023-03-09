@@ -1,11 +1,9 @@
 import { Logo } from "./Logo";
 
-type Props = React.ComponentProps<"nav">;
-
-export const NavBar: React.FC<Props> = ({}) => {
+export const NotionNavBar = () => {
   return (
-    <nav>
+    <div className="notion_navbar">
       <Logo />
-    </nav>
+    </div>
   );
 };

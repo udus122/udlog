@@ -19,6 +19,9 @@ type Props = {
 export const NotionPageTitle: React.FC<Props> = function ({ page }) {
   const title = extractTitleFromPage(page)
   return (
-      <h1 className="notion_page_title">{title}</h1>
+    <div className="notion_page_title">
+      <h1>{title}</h1>
+      {/* <hr className="notion_divider"/> */}
+    </div>
   );
 };

@@ -5,11 +5,10 @@ import type { BlockComponentMapper } from "@/types";
 
 import { NotionBlockRenderer } from "@/components/Notion/Renderer";
 import { OpenedToggle } from "@/components/CustomBlock/OpenedToggle";
-import { NavBar } from "@/components/NavBar";
-import { Header } from "@/components/Header";
-import { Main } from "@/components/Main";
+import { NotionNavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { NotionPageHeader } from "@/components/Notion/PageHeader";
+import { NotionPageCover } from "@/components/Notion/Page/Cover";
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -27,15 +26,22 @@ const customMapper: BlockComponentMapper = {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const DesignSample: NextPage<Props> = ({ page, blocks }) => {
   return (
-    <div id={page.id}>
-      <NavBar />
-      <NotionPageHeader page={page} />
-      <Main>
+    <div id={page.id} className="notion_page">
+      <nav>
+        <NotionNavBar />
+      </nav>
+      <header style={{display: "contents"}}>
+        <NotionPageCover page={page} />
+        <NotionPageHeader page={page} />
+      </header>
+      <main>
         <article>
           <NotionBlockRenderer blocks={blocks} customMapper={customMapper} />
         </article>
-      </Main>
-      <Footer />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
