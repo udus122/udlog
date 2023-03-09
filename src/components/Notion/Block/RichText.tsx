@@ -56,8 +56,7 @@ function annotatioRichText(rich_text_item: RichTextItemResponse, customAnnotatio
     ...customAnnotationMapper
   }
 
-  // FIXME: classType spanを一番外側に持っていきたい。今は一番内側
-  let text = <span className={`notion_rich_text_${rich_text_item.type}`}>{rich_text_item.plain_text}</span>;
+  let text = <span className="notion_plain_text">{rich_text_item.plain_text}</span>;
   Object.entries(annotationFlags).forEach(([AnnotationType, isAnnotate]) => {
     if (isAnnotate) {
       // @ts-ignore Get the component for the current annotation type from the mapper.
@@ -81,9 +80,9 @@ export const RichText = ({
         
         const annotatedText = annotatioRichText(rich_text_item)
         return (
-          <React.Fragment key={index + rich_text_item.plain_text}>
+            <span className={`notion_rich_text_type_${rich_text_item.type}`} key={index + rich_text_item.plain_text}>
             {annotatedText}
-          </React.Fragment>
+            </span>
         );
       })}
     </>
