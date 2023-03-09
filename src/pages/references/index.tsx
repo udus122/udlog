@@ -4,7 +4,7 @@ import Head from "next/head";
 import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
-  const REFERENCE_DB_ID = process.env.NOTION_REFERENCE_DATABASE_ID || "";
+  const REFERENCE_DB_ID = process.env.NOTION_REFERENCE_DATABASE_ID ?? "";
   const { properties } = await getDatabase(REFERENCE_DB_ID);
   const articles = await getDatabaseContentsAll({
     database_id: REFERENCE_DB_ID,

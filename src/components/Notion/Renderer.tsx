@@ -6,10 +6,10 @@ import type { BlockComponentMapper } from "@/types";
 
 type Props = {
   blocks: BlockObjectResponse[];
-  customMapper: BlockComponentMapper;
+  customMapper?: BlockComponentMapper;
 };
 
-export const NotionRender: React.FC<Props> = function ({
+export const NotionRenderer: React.FC<Props> = function ({
   blocks,
   customMapper = {},
 }) {

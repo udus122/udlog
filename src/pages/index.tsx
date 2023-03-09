@@ -1,6 +1,6 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
 
-import { extractCoverFromPage, getPage } from "@/libs/notion";
+import { extractCoverFromPage, getPage } from "@/libs/notion/notion";
 import { NavBar } from "@/components/NavBar";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";

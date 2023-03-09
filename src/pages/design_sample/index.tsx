@@ -1,9 +1,9 @@
-import design_sample from "./design_sample.json";
+import sample_block_list from "./sample_block_list.json";
 
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import type { BlockComponentMapper } from "@/types";
 
-import { NotionRender } from "@/components/Notion/Render";
+import { NotionRenderer } from "@/components/Notion/Renderer";
 import { OpenedToggle } from "@/components/CustomBlock/OpenedToggle";
 import { NavBar } from "@/components/NavBar";
 import { Header } from "@/components/Header";
@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       page: null,
-      blocks: design_sample,
+      blocks: sample_block_list,
     },
   };
 };
@@ -33,7 +33,7 @@ const DesignSample: NextPage<Props> = ({ blocks }) => {
       <Header title="UDlog" cover={null} />
       <Main>
         <article>
-          <NotionRender blocks={blocks} customMapper={customMapper} />
+          <NotionRenderer blocks={blocks} customMapper={customMapper} />
         </article>
       </Main>
       <Footer />

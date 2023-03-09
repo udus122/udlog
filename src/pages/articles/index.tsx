@@ -1,5 +1,10 @@
 import { isFullPage } from "@notionhq/client";
-import { getPlainTextFromArrayOfRichText, retrieveDatabase, collectQueryDatabase } from "@/libs/notion";
+import {
+  getPlainTextFromArrayOfRichText,
+  retrieveDatabase,
+  collectQueryDatabase,
+} from "@/libs/notion/notion";
+
 import Head from "next/head";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
@@ -10,7 +15,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const getStaticProps = async () => {
-  const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID || "";
+  const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
   const database = await retrieveDatabase({
     database_id: ARTICLE_DB_ID,
   });
@@ -38,7 +43,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Index: NextPage<Props> = ({ database, articles }) => {
   console.log(articles);
 
-
   const title = getPlainTextFromArrayOfRichText(database.title);
   const cover = database.cover.external;
 
@@ -47,27 +51,26 @@ const Index: NextPage<Props> = ({ database, articles }) => {
       <Head>
         <title>{title} | UDlog</title>
       </Head>
-      <div className="flex flex-col justify-between min-h-screen text-white bg-gray-800">
+      <div>
         <NavBar />
-        <Header title={title} cover={cover} />
-        <main className="flex-grow px-24 pb-24">
+        {/* <Header title={title} cover={cover} /> */}
+        <main>
           <article>
-            <div className="grid gap-4 auto-rows-fr grid-cols-fluid">
+            <div>
               {articles.map((article) => {
                 if (!isFullPage(article)) {
                   return null;
                 }
                 return (
-                  <div
-                    key={article.id}
-                    className="h-48 min-h-[12rem] text-blue-600 underline visited:text-purple-600 hover:text-blue-800"
-                  >
-                    <span className="relative block h-32">
-                      <Image alt="Next.js logo" src={cover.url} fill />
+                  <div key={article.id}>
+                    <span>
+                      {/* <Image alt="Next.js logo" src={cover.url} fill /> */}
                     </span>
-                    <Link href={`/articles/${article.id}`}>{getPlainTextFromArrayOfRichText(
+                    <Link href={`/articles/${article.id}`}>
+                      {getPlainTextFromArrayOfRichText(
                         article.properties.Name.title
-                      )}</Link>
+                      )}
+                    </Link>
                   </div>
                 );
               })}
