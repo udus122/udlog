@@ -2,7 +2,7 @@
   "object": "page",
   "id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32",
   "created_time": "2023-02-19T05:01:00.000Z",
-  "last_edited_time": "2023-03-07T08:39:00.000Z",
+  "last_edited_time": "2023-03-09T05:20:00.000Z",
   "created_by": {
     "object": "user",
     "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -24,11 +24,23 @@
   },
   "archived": false,
   "properties": {
-    "カテゴリ": { "id": "%40gEw", "type": "select", "select": null },
+    "カテゴリ": {
+      "id": "%40gEw",
+      "type": "select",
+      "select": {
+        "id": "8f0aaaf7-dde5-44d4-8bb5-17d2150f9fa4",
+        "name": "メモ",
+        "color": "green"
+      }
+    },
     "🏷️ タグ": {
       "id": "OzR%3B",
       "type": "relation",
-      "relation": [],
+      "relation": [
+        { "id": "29caefe7-62a4-4aee-b24b-77287b04da49" },
+        { "id": "0f02a8b3-8170-428c-9d44-978fbd2ae2a4" },
+        { "id": "0f38208e-f8ca-45dc-ab32-c747a7eea97c" }
+      ],
       "has_more": false
     },
     "Created": {
@@ -41,14 +53,22 @@
       "type": "status",
       "status": { "id": "SZ\\\\_", "name": "公開停止", "color": "red" }
     },
-    "Published": { "id": "%5EgG%3E", "type": "date", "date": null },
+    "Published": {
+      "id": "%5EgG%3E",
+      "type": "date",
+      "date": { "start": "2023-03-09", "end": null, "time_zone": null }
+    },
     "Updated": {
       "id": "c%7B%5D%5E",
       "type": "last_edited_time",
-      "last_edited_time": "2023-03-07T08:39:00.000Z"
+      "last_edited_time": "2023-03-09T05:20:00.000Z"
     },
-    "super:Link": { "id": "ef%7Be", "type": "url", "url": null },
-    "Featured": { "id": "zbg%3C", "type": "checkbox", "checkbox": false },
+    "super:Link": {
+      "id": "ef%7Be",
+      "type": "url",
+      "url": "https://example.com"
+    },
+    "Featured": { "id": "zbg%3C", "type": "checkbox", "checkbox": true },
     "Name": {
       "id": "title",
       "type": "title",
