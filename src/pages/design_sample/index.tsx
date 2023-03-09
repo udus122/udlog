@@ -27,7 +27,7 @@ const customMapper: BlockComponentMapper = {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const DesignSample: NextPage<Props> = ({ page, blocks }) => {
   return (
-    <div id="page-id-dummy">
+    <div id={page.id}>
       <NavBar />
       <NotionPageHeader page={page} />
       <Main>
