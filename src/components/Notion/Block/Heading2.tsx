@@ -7,7 +7,7 @@ import type { BlockComponent } from "@/types";
 export const Heading2: BlockComponent<Heading2BlockObjectResponse> = ({ block, children }) => {
   const richText = block.heading_2.rich_text
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.heading_2.color);
+  const blockColor = generateBlockColorClass(block.heading_2.color) ?? "";
   return (
     <>
       {/* @ts-ignore Notion SDK types are incorrect */}

@@ -7,7 +7,7 @@ export const NumberedListItem: BlockComponent<
   NumberedListItemBlockObjectResponse
 > = ({ block, blocks, children }) => {
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.numbered_list_item.color);
+  const blockColor = generateBlockColorClass(block.numbered_list_item.color) ?? "";
   const itemPosition = blocks?.findIndex(
     (blocksBlock) => block.id === blocksBlock.id
   );

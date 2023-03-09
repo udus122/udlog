@@ -7,7 +7,7 @@ export const BulletedListItem: BlockComponent<
   BulletedListItemBlockObjectResponse
 > = ({ block, children }) => {
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.bulleted_list_item.color);
+  const blockColor = generateBlockColorClass(block.bulleted_list_item.color) ?? "";
   return (
     <ul className="notion_bulleted_list_container">
       <li className={`${blockType} ${blockColor}`}>

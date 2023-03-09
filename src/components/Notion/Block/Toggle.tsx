@@ -9,7 +9,7 @@ export const Toggle: BlockComponent<ToggleBlockObjectResponse> = ({
   children,
 }) => {
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.toggle.color);
+  const blockColor = generateBlockColorClass(block.toggle.color) ?? "";
   return (
     <Togglable
       className={`${blockType}-container ${blockColor}`}

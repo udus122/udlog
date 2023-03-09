@@ -8,7 +8,7 @@ export const Paragraph: BlockComponent<ParagraphBlockObjectResponse> = ({
   children,
 }) => {
   const blockType = `notion_${block.type}`;
-  const blockColor = generateBlockColorClass(block.paragraph.color);
+  const blockColor = generateBlockColorClass(block.paragraph.color) ?? "";
   return (
     <div id={block.id}>
       <p className={`${blockType} ${blockColor}`}>

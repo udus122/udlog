@@ -7,7 +7,7 @@ export const Callout: BlockComponent<CalloutBlockObjectResponse> = ({
   block,
 }) => {
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.callout.color);
+  const blockColor = generateBlockColorClass(block.callout.color) ?? "";
   return (
     <div className={`${blockType} ${blockColor}`}>
       <span className={`${blockType}-emoji`}>

@@ -5,7 +5,7 @@ import { RichText } from "./RichText";
 
 export const Quote: BlockComponent<QuoteBlockObjectResponse> = ({ block }) => {
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.quote.color);
+  const blockColor = generateBlockColorClass(block.quote.color) ?? "";
   return (
     <blockquote className={`${blockType} ${blockColor}`}>
       <RichText rich_text={block.quote.rich_text} />

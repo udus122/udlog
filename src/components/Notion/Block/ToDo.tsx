@@ -8,7 +8,7 @@ export const ToDo: BlockComponent<ToDoBlockObjectResponse> = ({
   children,
 }) => {
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.to_do.color);
+  const blockColor = generateBlockColorClass(block.to_do.color) ?? '';
   return (
     // TODO: BulletedListやNumberedListのようにネストさせる
     <div className={`${blockType}_container ${blockColor}`}>

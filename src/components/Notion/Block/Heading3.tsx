@@ -10,7 +10,7 @@ export const Heading3: BlockComponent<Heading3BlockObjectResponse> = ({
 }) => {
   const richText = block.heading_3.rich_text;
   const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.heading_3.color);
+  const blockColor = generateBlockColorClass(block.heading_3.color) ?? "";
   return (
     <>
       {/* @ts-ignore Notion SDK types are incorrect */}
