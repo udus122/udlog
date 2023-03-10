@@ -11,11 +11,12 @@
   body {
     color: var(--color_default);
     background-color: var(--color_default_background);
-    line-height: 1.75;
+    line-height: 2;
   }
 
   p {
     margin: 0;
+    padding: 1px;
   }
 
   summary > h1,

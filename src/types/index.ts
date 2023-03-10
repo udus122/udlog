@@ -37,14 +37,17 @@ import type {
 } from "@notionhq/client/build/src/api-endpoints";
 
 export type BlockComponentProps<T extends BlockObjectResponse> = {
-  block?: T;
+  block: T;
   blocks?: BlockObjectResponse[];
   children?: React.ReactNode;
+  mapper?: BlockComponentMapper;
 };
 
 export type BlockComponent<T extends BlockObjectResponse> = React.FC<
   BlockComponentProps<T>
 >;
+
+import type { TogglableProps } from "@/components/Notion/Block/Togglable";
 
 export type BlockComponentMapper = {
   audio?: BlockComponent<AudioBlockObjectResponse>;
@@ -80,6 +83,7 @@ export type BlockComponentMapper = {
   toggle?: BlockComponent<ToggleBlockObjectResponse>;
   unsupported?: BlockComponent<UnsupportedBlockObjectResponse>;
   video?: BlockComponent<VideoBlockObjectResponse>;
+  togglable?: React.FC<TogglableProps>;
 };
 
 // @notionhq/client/build/src/api-endpoints.d.ts L235~L239
@@ -87,4 +91,4 @@ export type TitleProperty = {
   type: "title";
   title: Array<RichTextItemResponse>;
   id: string;
-}
+};

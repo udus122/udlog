@@ -1,7 +1,7 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import type { BlockComponentMapper } from "@/types";
 
-import { OpenedToggle } from "@/components/CustomBlock/OpenedToggle";
+import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
 import { ArticleLayout } from "@/layouts/article";
 
 import sample_block_list from "./sample_block_list.json";
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<{
 };
 
 const customMapper: BlockComponentMapper = {
-  toggle: OpenedToggle,
+  togglable: OpenedTogglable,
 };
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;

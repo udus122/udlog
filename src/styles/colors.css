@@ -19,6 +19,8 @@
   --color_purple_background: #443f57;
   --color_pink_background: #533b4c;
   --color_red_background: #594141;
+
+  --color_inline_code: #EB5757;
   --color-border-default: var(--color-gray, rgb(69, 75, 78));
 }
 

@@ -1,25 +1,26 @@
-import { generateBlockColorClass } from "@/libs/notion/utils";
 import { Heading1BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { BlockComponent } from "@/types";
 import { RichText } from "./RichText";
-import { Togglable } from "./Togglable";
+import { Togglable as DefaultTogglable } from "./Togglable";
+import clsx from "clsx";
 
 export const Heading1: BlockComponent<Heading1BlockObjectResponse> = ({
   block,
   children,
+  mapper,
 }) => {
+  const Togglable = mapper?.togglable ?? DefaultTogglable;
+
   const richText = block.heading_1.rich_text;
-  const blockType = `notion_${block.type}`;
-  const blockColor = generateBlockColorClass(block.heading_1.color) ?? "";
+  const className = clsx("notion_heading", `notion_${block.type}`);
   return (
     <>
       {/* @ts-ignore Notion SDK types are incorrect */}
       {block.heading_1.is_toggleable ? (
         <Togglable
-          id={block.id}
-          className={`heading ${blockType} ${blockColor}`}
+          block={block}
           summary={
-            <h1 className="inline-block">
+            <h1 className={className}>
               <RichText rich_text={richText} />
             </h1>
           }
@@ -27,7 +28,7 @@ export const Heading1: BlockComponent<Heading1BlockObjectResponse> = ({
           {children}
         </Togglable>
       ) : (
-        <h1 id={block.id} className={`heading ${blockType} ${blockColor}`}>
+        <h1 id={block.id} className={className}>
           <RichText rich_text={richText} />
         </h1>
       )}

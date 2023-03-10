@@ -1,19 +1,24 @@
-import { generateBlockColorClass } from "@/libs/notion/utils";
 import { ToggleBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import type { BlockComponent } from "@/types";
+import type { BlockComponentProps } from "@/types";
 import { RichText } from "./RichText";
-import { Togglable } from "./Togglable";
+import { Togglable as DefaultTogglable } from "./Togglable";
 
-export const Toggle: BlockComponent<ToggleBlockObjectResponse> = ({
+type Props = React.ComponentProps<"details"> &
+  BlockComponentProps<ToggleBlockObjectResponse>;
+
+export const Toggle: React.FC<Props> = ({
   block,
+  blocks,
   children,
+  mapper,
+  ...props
 }) => {
-  const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.toggle.color) ?? "";
+  const Togglable = mapper?.togglable ?? DefaultTogglable
   return (
     <Togglable
-      className={`${blockType}-container ${blockColor}`}
+      block={block}
       summary={<RichText rich_text={block.toggle.rich_text} />}
+      {...props}
     >
       {children}
     </Togglable>
