@@ -12,6 +12,7 @@
     color: var(--color_default);
     background-color: var(--color_default_background);
     line-height: 2;
+    fill: currentColor;
   }
 
   p {
