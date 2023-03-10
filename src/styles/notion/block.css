@@ -1,5 +1,8 @@
 :root {
   --indent-size: 1.5em;
+
+  --border-thickness-layout: 1px;
+  --quote-border: calc(var(--border-thickness-layout) + 2px) solid currentcolor;
 }
 
 .notion_body_root {
@@ -33,9 +36,14 @@
 .notion_paragraph {
   padding: var(--s-5) var(--s-6);
 }
-
 .notion_paragraph__children {
   padding-inline-start: var(--indent-size);
+}
+
+.notion_quote {
+  font-size: 1.25em;
+  border-inline-start: var(--quote-border);
+  padding: var(--s-6) var(--s0)
 }
 
 .notion_inline_code {
