@@ -1,9 +1,10 @@
-import type { BlockComponent } from "@/types";
+import type { BlockComponentProps } from "@/types";
 import { DividerBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { clsx } from 'clsx';
 
-export const Divider: BlockComponent<DividerBlockObjectResponse> = ({
-  block,
-}) => {
-  const blockType = `notion-${block.type}`;
-  return <hr className={`${blockType}`} />;
+type Props = React.ComponentProps<"hr"> &
+  BlockComponentProps<DividerBlockObjectResponse>;
+
+export const Divider: React.FC<Props> = ({ className, ...props }) => {
+  return <hr className={clsx("notion_divider", className)} {...props} />;
 };

@@ -1,0 +1,14 @@
+.notion_page_cover {
+  position: relative;
+  display: flex;
+  block-size: var(--page_cover_height);
+  inline-size: 100%;
+}
+
+.notion_page_cover_image {
+  object-fit: var(--page_cover_image_object-fit, cover);
+}
+
+.notion_page_title {
+  font-size: var(--page-title-size);
+}

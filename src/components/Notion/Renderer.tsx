@@ -15,7 +15,7 @@ export const NotionBlockRenderer: React.FC<Props> = function ({
 }) {
   const mapper = { ...defaultMapper, ...customMapper };
   return (
-    <div className="notion_page_body">
+    <div className="notion_body_root">
       {blocks.map((block) => {
         return (
           <Block key={block.id} block={block} blocks={blocks} mapper={mapper} />

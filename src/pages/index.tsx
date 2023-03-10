@@ -1,7 +1,7 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
 
 import { extractCoverFromPage, getPage } from "@/libs/notion/notion";
-import { NotionNavBar } from "@/components/NavBar";
+import { NavBar } from "@/components/NavBar";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Main } from "@/components/Main";
@@ -30,7 +30,7 @@ const Index: NextPage<Props> = ({ page }) => {
         <title>UDlog</title>
       </Head>
       <div>
-        <NotionNavBar />
+        <NavBar />
         <Header title="UDlog" cover={cover} />
         <Main />
         <Footer />

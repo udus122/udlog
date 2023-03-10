@@ -1,0 +1,5 @@
+:root {
+  --page_cover_height: 30vh;
+  --page_cover_image_object-fit: cover;
+  --page-title-size: 2.5rem;
+}

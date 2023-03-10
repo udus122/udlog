@@ -37,8 +37,8 @@ import type {
 } from "@notionhq/client/build/src/api-endpoints";
 
 export type BlockComponentProps<T extends BlockObjectResponse> = {
-  block: T;
-  blocks: BlockObjectResponse[];
+  block?: T;
+  blocks?: BlockObjectResponse[];
   children?: React.ReactNode;
 };
 

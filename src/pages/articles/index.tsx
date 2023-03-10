@@ -10,7 +10,7 @@ import Head from "next/head";
 import type { InferGetStaticPropsType, NextPage } from "next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { NotionNavBar } from "@/components/NavBar";
+import { NavBar } from "@/components/NavBar";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -52,7 +52,7 @@ const Index: NextPage<Props> = ({ database, articles }) => {
         <title>{title} | UDlog</title>
       </Head>
       <div>
-        <NotionNavBar />
+        <NavBar />
         {/* <Header title={title} cover={cover} /> */}
         <main>
           <article>
