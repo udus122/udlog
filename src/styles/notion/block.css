@@ -40,6 +40,19 @@
   padding-inline-start: var(--indent-size);
 }
 
+.notion_bulleted_list {
+  padding-inline-start: var(--indent-size);
+}
+.notion_bulleted_list_item {
+  /* margin: 2px 0; */
+}
+.notion_numbered_list {
+  padding-inline-start: var(--indent-size);
+}
+.notion_numbered_list_item {
+  /* margin: 2px 0; */
+}
+
 .notion_to_do {
 }
 .notion_to_do__content {
@@ -77,6 +90,10 @@
   width: 0.75em;
   height: 0.75em;
   fill: #fff;
+}
+.notion_to_do__title.checked {
+  opacity: 0.375;
+  text-decoration: line-through;
 }
 .notion_to_do__children {
   margin-inline-start: var(--indent-size);

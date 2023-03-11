@@ -92,3 +92,5 @@ export type TitleProperty = {
   title: Array<RichTextItemResponse>;
   id: string;
 };
+
+type ValueOf<T> = T[keyof T];

@@ -16,7 +16,12 @@ export function Block({
   // NOTE: be aware of the error "Element implicitly has an 'any' type because expression of type ...".
 
   if (!Component) {
-    return null;
+    console.warn(`${block.type} is not supported`);
+    return (
+      <div style={{ color: "red", fontWeight: "bold" }}>
+        {block.type} is not supported block
+      </div>
+    );
   }
   // If the block does not have children, do not process recursively.
   if (!block.has_children) {

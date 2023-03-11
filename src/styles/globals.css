@@ -25,6 +25,13 @@
   summary > h3 {
     display: inline-block;
   }
+  ol,
+  ul,
+  menu {
+    list-style: revert;
+    /* margin: revert; */
+    /* padding: revert; */
+  }
 }
 
 @layer components {
