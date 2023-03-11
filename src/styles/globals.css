@@ -13,6 +13,7 @@
     background-color: var(--color_default_background);
     line-height: 2;
     fill: currentColor;
+    font-family: var(--font-sans);
   }
 
   p {
@@ -20,11 +21,12 @@
     padding: 1px;
   }
 
-  summary > h1,
-  summary > h2,
-  summary > h3 {
+  summary>h1,
+  summary>h2,
+  summary>h3 {
     display: inline-block;
   }
+
   ol,
   ul,
   menu {
@@ -39,13 +41,13 @@
     display: grid;
     grid-template-columns: 1fr minmax(auto, 70ch) 1fr;
     column-gap: 1.5rem;
+  }
 
-    & > * {
-      grid-column: 2;
-    }
+  .layout-article>* {
+    grid-column: 2;
+  }
 
-    & .full-bleed {
-      grid-column: 1/4;
-    }
+  .layout-article .full-bleed {
+    grid-column: 1/4;
   }
 }
