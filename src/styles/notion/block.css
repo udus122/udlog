@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   overflow-wrap: break-word;
+  word-break: break-all;
   white-space: pre-wrap;
 }
 
@@ -118,6 +119,18 @@
 .notion_toggle__content {
   padding-inline-start: var(--indent-size);
 }
+
+.notion_column_list {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--s0);
+}
+.notion_column_list > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--article-max-width) - 100%) * 999);
+}
+.notion_column {}
 
 .notion_divider {
   border: 1px solid var(--color-border-default);

@@ -24,4 +24,6 @@
   --heading4-size: calc(var(--heading-size) * 1);
   --heading5-size: calc(var(--heading-size) * 0.8125);
   --heading-weight: 600;
+
+  --article-max-width: 70ch;
 }

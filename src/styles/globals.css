@@ -39,7 +39,7 @@
 @layer components {
   .layout-article {
     display: grid;
-    grid-template-columns: 1fr minmax(auto, 70ch) 1fr;
+    grid-template-columns: 1fr minmax(auto, var(--article-max-width)) 1fr;
     column-gap: 1.5rem;
   }
 

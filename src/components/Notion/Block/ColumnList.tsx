@@ -5,6 +5,5 @@ export const ColumnList: BlockComponent<ColumnListBlockObjectResponse> = ({
   block,
   children,
 }) => {
-  const blockType = `notion-${block.type}`;
-  return <div className={`${blockType} `}>{children}</div>;
+  return <div className="notion_column_list">{children}</div>;
 };
