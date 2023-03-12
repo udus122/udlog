@@ -23,14 +23,14 @@ const SyntaxHighlight = ({
 export const Code: BlockComponent<CodeBlockObjectResponse> = ({ block }) => {
   const blockType = `notion-${block.type}`;
   return (
-    <div className={`${blockType}`}>
+    <div id={block.id} className={`${blockType}`}>
       <SyntaxHighlight
         text={block.code.rich_text[0].plain_text}
         language={block.code.language}
       />
       {block.code.caption && (
         <span className="notion-caption">
-          <RichText rich_text={block.code.caption} />
+          <RichText richText={block.code.caption} />
         </span>
       )}
     </div>

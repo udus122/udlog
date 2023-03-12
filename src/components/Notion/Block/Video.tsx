@@ -10,11 +10,11 @@ export const Video: BlockComponent<VideoBlockObjectResponse> = ({ block }) => {
       : block.video.file.url;
   if (videoUrl) {
     return (
-      <div className={`${blockType}_container`}>
+      <div id={block.id} className={`${blockType}_container`}>
         <div className="frame">
         <video controls src={videoUrl} className={`${blockType}`} />
         <span className="notion-caption">
-          {block.video.caption && <RichText rich_text={block.video.caption} />}
+          {block.video.caption && <RichText richText={block.video.caption} />}
         </span>
         </div>
       </div>

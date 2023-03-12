@@ -8,7 +8,7 @@ export const Table = ({ block }: { block: TableBlockObjectResponse }) => {
   const has_column_header = block.table.has_column_header;
   const has_row_header = block.table.has_row_header;
   return (
-    <table className="notion_table">
+    <table id={block.id} className="notion_table">
       <tbody>
         {/* @ts-ignore Notion types are incorrect */}
         {children?.map((row, i) => {
@@ -30,7 +30,7 @@ export const Table = ({ block }: { block: TableBlockObjectResponse }) => {
                           has_row_header && i === 0 ? "notion_table_header" : ""
                         }`}
                       >
-                        <RichText rich_text={cell} />
+                        <RichText richText={cell} />
                       </td>
                     );
                   } else {

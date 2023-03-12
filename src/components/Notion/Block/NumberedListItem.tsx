@@ -1,13 +1,14 @@
 import { generateBlockColorClass } from "@/libs/notion/utils";
 import type { BlockComponent } from "@/types";
 import { NumberedListItemBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import clsx from "clsx";
 import { RichText } from "./RichText";
 
 export const NumberedListItem: BlockComponent<
   NumberedListItemBlockObjectResponse
 > = ({ block, blocks, children }) => {
-  const blockType = `notion-${block.type}`;
-  const blockColor = generateBlockColorClass(block.numbered_list_item.color) ?? "";
+  const blockColor = generateBlockColorClass(block.numbered_list_item.color);
+  
   const itemPosition = blocks?.findIndex(
     (blocksBlock) => block.id === blocksBlock.id
   );
@@ -22,10 +23,12 @@ export const NumberedListItem: BlockComponent<
       break;
     }
   }
+  console.log(JSON.stringify(block.numbered_list_item.rich_text.map((el) => el.plain_text)))
+  console.log(listNumber);
   return (
-    <ol start={listNumber} className={`${blockType}_container ${blockColor}`}>
-      <li className={`${blockType}`}>
-        <RichText rich_text={block.numbered_list_item.rich_text} />
+    <ol id={block.id} start={listNumber} className={clsx("notion_block", "notion_numbered_list",blockColor)}>
+      <li className="notion_numbered_list_item">
+        <RichText richText={block.numbered_list_item.rich_text} />
       </li>
       {children}
     </ol>

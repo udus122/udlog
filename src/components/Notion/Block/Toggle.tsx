@@ -17,7 +17,7 @@ export const Toggle: React.FC<Props> = ({
   return (
     <Togglable
       block={block}
-      summary={<RichText rich_text={block.toggle.rich_text} />}
+      summary={<RichText richText={block.toggle.rich_text} />}
       {...props}
     >
       {children}

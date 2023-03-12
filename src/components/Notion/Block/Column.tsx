@@ -5,5 +5,5 @@ export const Column: BlockComponent<ColumnBlockObjectResponse> = ({
   block,
   children,
 }) => {
-  return <div className="notion_column">{children}</div>;
+  return <div id={block.id} className="notion_column">{children}</div>;
 };

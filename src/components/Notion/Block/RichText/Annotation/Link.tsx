@@ -2,12 +2,12 @@ import * as React from "react";
 
 import type { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
 
-export const Href: React.FC<
-  React.ComponentProps<"a"> & { rich_text_item: RichTextItemResponse }
-> = ({ rich_text_item, children }) => {
+export const Link: React.FC<
+  React.ComponentProps<"a"> & { richTextItem: RichTextItemResponse }
+> = ({ richTextItem, children }) => {
   return (
     <a
-      href={rich_text_item.href ?? ""}
+      href={richTextItem.href ?? ""}
       target="_blank"
       rel="noreferrer"
       className="notion_link"

@@ -9,9 +9,9 @@ export const BulletedListItem: BlockComponent<
 > = ({ block, children }) => {
   const blockColor = generateBlockColorClass(block.bulleted_list_item.color);
   return (
-    <ul className={clsx("notion_bulleted_list", blockColor)}>
+    <ul id={block.id} className={clsx("notion_block", "notion_bulleted_list", blockColor)}>
       <li className="notion_bulleted_list_item">
-        <RichText rich_text={block.bulleted_list_item.rich_text} />
+        <RichText richText={block.bulleted_list_item.rich_text} />
       </li>
       {children}
     </ul>

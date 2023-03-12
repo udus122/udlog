@@ -12,8 +12,8 @@ export const Paragraph: BlockComponent<ParagraphBlockObjectResponse> = ({
   const blockColor = generateBlockColorClass(block.paragraph.color);
   return (
     <div id={block.id}>
-      <p className={clsx(blockType, blockColor)}>
-        <RichText rich_text={block.paragraph.rich_text} />
+      <p className={clsx("notion_block", blockType, blockColor)}>
+        <RichText richText={block.paragraph.rich_text} />
       </p>
       <div className={`${blockType}__children`}>{children}</div>
     </div>

@@ -16,6 +16,7 @@ import { Divider } from "./Divider";
 import { ColumnList } from "./ColumnList";
 import { Column } from "./Column";
 import { BlockComponentMapper } from "@/types";
+import { BlockEquation } from "./Equation";
 
 export const defaultMapper: BlockComponentMapper = {
   heading_1: Heading1,
@@ -34,5 +35,6 @@ export const defaultMapper: BlockComponentMapper = {
   divider: Divider,
   column: Column,
   column_list: ColumnList,
+  equation: BlockEquation,
   table: Table,
 };

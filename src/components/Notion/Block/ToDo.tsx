@@ -11,13 +11,13 @@ export const ToDo: BlockComponent<ToDoBlockObjectResponse> = ({
   const isChecked = block.to_do.checked;
   const blockColor = generateBlockColorClass(block.to_do.color);
   return (
-    <div className={clsx("notion_to_do", blockColor)}>
+    <div id={block.id} className={clsx("notion_block", "notion_to_do", blockColor)}>
       <div className="notion_to_do__content">
         <div className="notion_to_do__icon">
           {isChecked ? <CheckedBox /> : <CheckBox />}
         </div>
         <div className={clsx("notion_to_do__title", isChecked && "checked")}>
-          <RichText rich_text={block.to_do.rich_text} />
+          <RichText richText={block.to_do.rich_text} />
         </div>
       </div>
       <div className="notion_to_do__children">{children}</div>

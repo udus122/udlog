@@ -4,6 +4,8 @@ import { RichText } from "./RichText";
 import { Togglable as DefaultTogglable } from "./Togglable";
 import clsx from "clsx";
 
+// TODO: h2タグの部分を共通化する
+// TODO: mapperで差し替えることができるようにする。
 export const Heading2: BlockComponent<Heading2BlockObjectResponse> = ({
   block,
   children,
@@ -12,7 +14,11 @@ export const Heading2: BlockComponent<Heading2BlockObjectResponse> = ({
   const Togglable = mapper?.togglable ?? DefaultTogglable;
 
   const richText = block.heading_2.rich_text;
-  const className = clsx("notion_heading", `notion_${block.type}`);
+  const className = clsx(
+    "notion_block",
+    "notion_heading",
+    `notion_${block.type}`
+  );
   return (
     <>
       {/* @ts-ignore Notion SDK types are incorrect */}
@@ -20,8 +26,10 @@ export const Heading2: BlockComponent<Heading2BlockObjectResponse> = ({
         <Togglable
           block={block}
           summary={
-            <h2 className={className}>
-              <RichText rich_text={richText} />
+            <h2 id={block.id} className={className}>
+              <a href={`#${block.id}`}>
+                <RichText richText={richText} />
+              </a>
             </h2>
           }
         >
@@ -29,7 +37,9 @@ export const Heading2: BlockComponent<Heading2BlockObjectResponse> = ({
         </Togglable>
       ) : (
         <h2 id={block.id} className={className}>
-          <RichText rich_text={richText} />
+          <a href={`#${block.id}`}>
+            <RichText richText={richText} />
+          </a>
         </h2>
       )}
     </>

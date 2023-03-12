@@ -11,7 +11,7 @@
   body {
     color: var(--color_default);
     background-color: var(--color_default_background);
-    line-height: 2;
+    line-height: 1.5;
     fill: currentColor;
     font-family: var(--font-sans);
   }

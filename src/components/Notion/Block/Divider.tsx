@@ -12,5 +12,5 @@ export const Divider: React.FC<Props> = ({
   mapper,
   ...props
 }) => {
-  return <hr className={clsx("notion_divider", className)} {...props} />;
+  return <hr id={block?.id ?? ""} className={clsx("notion_divider", className)} {...props} />;
 };

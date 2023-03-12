@@ -15,7 +15,7 @@ export const Image: BlockComponent<ImageBlockObjectResponse> = ({ block }) => {
     return prev;
   }, "");
   return (
-    <div className={`${blockType}_container`} style={{ position: "relative" }}>
+    <div id={block.id} className={`${blockType}_container`} style={{ position: "relative" }}>
       <picture className="frame">
         <NextImage
           src={imageUrl ?? noImageUrl}
@@ -26,7 +26,7 @@ export const Image: BlockComponent<ImageBlockObjectResponse> = ({ block }) => {
         />
       </picture>
       <span className="notion_caption">
-        {block.image.caption && <RichText rich_text={block.image.caption} />}
+        {block.image.caption && <RichText richText={block.image.caption} />}
       </span>
     </div>
   );
