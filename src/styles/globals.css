@@ -9,7 +9,7 @@
 
 @layer base {
   html {
-    @apply scroll-pt-16;
+    scroll-padding-top: var(--navbar-height);
   }
   body {
     color: var(--color_default);

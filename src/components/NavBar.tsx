@@ -7,7 +7,7 @@ export const NavBar: React.FC<Props> = ({ className, ...props }) => {
   return (
     <nav
       className={clsx(
-        "flex h-16 items-center bg-default p-6",
+        "flex h-[var(--navbar-height)] items-center bg-default p-6",
         "notion_navbar",
         className
       )}
