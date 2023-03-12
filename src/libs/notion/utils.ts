@@ -34,10 +34,6 @@ export const extractCoverFromPage = (page: GetPageResponse) => {
   return null;
 };
 
-
-export function generateBlockColorClass(notionColor: string): string | undefined {
-  if (notionColor.includes("default")) {
-    return
-  }
+export function generateBlockColorClass(notionColor: string): string {
   return `color_${notionColor}`;
 }

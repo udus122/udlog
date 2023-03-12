@@ -1,6 +1,6 @@
 :root {
-  --color_default: rgba(255, 255, 255, 0.9);
-  --color_gray: rgba(151, 154, 155, 0.95);
+  --color_default: #ffffffe6;
+  --color_gray: #979a9bf2;
   --color_brown: #937264;
   --color_orange: #ffa344;
   --color_yellow: #ffdc49;
@@ -9,6 +9,7 @@
   --color_purple: #9a6dd7;
   --color_pink: #e255a1;
   --color_red: #ff7369;
+
   --color_default_background: #2f3437;
   --color_gray_background: #454b4e;
   --color_brown_background: #434040;
@@ -21,11 +22,11 @@
   --color_red_background: #594141;
 
   --color_inline_code: #EB5757;
-  --color-border-default: var(--color-gray, rgb(69, 75, 78));
+  --color-border-default: var(--color-gray, #454b4e);
 }
 
 .color_default {
-  color: var(--color_default);
+  color: unset;
 }
 
 .color_gray {
@@ -65,7 +66,7 @@
 }
 
 .color_default_background {
-  background-color: var(--color_default_background);
+  background-color: unset;
 }
 
 .color_gray_background {
