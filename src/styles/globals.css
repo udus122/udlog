@@ -8,6 +8,9 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply scroll-pt-16;
+  }
   body {
     color: var(--color_default);
     background-color: var(--color_default_background);
