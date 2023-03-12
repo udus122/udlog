@@ -7,7 +7,7 @@
       "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
     },
     "created_time": "2023-02-19T05:02:00.000Z",
-    "last_edited_time": "2023-02-19T05:02:00.000Z",
+    "last_edited_time": "2023-03-10T02:57:00.000Z",
     "created_by": {
       "object": "user",
       "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -807,7 +807,7 @@
       "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
     },
     "created_time": "2023-02-19T05:05:00.000Z",
-    "last_edited_time": "2023-02-19T05:53:00.000Z",
+    "last_edited_time": "2023-03-12T03:13:00.000Z",
     "created_by": {
       "object": "user",
       "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -932,6 +932,51 @@
           },
           "plain_text": "inline equation",
           "href": null
+        },
+        {
+          "type": "text",
+          "text": { "content": " Inline Mention: ", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Inline Mention: ",
+          "href": null
+        },
+        {
+          "type": "mention",
+          "mention": {
+            "type": "page",
+            "page": { "id": "84c7dcd9-18d9-4162-8de0-d94432893f8b" }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "子ページ",
+          "href": "https://www.notion.so/84c7dcd918d941628de0d94432893f8b"
+        },
+        {
+          "type": "text",
+          "text": { "content": " ", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " ",
+          "href": null
         }
       ],
       "color": "default"
@@ -945,7 +990,7 @@
       "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
     },
     "created_time": "2023-03-07T06:29:00.000Z",
-    "last_edited_time": "2023-03-07T06:32:00.000Z",
+    "last_edited_time": "2023-03-12T02:47:00.000Z",
     "created_by": {
       "object": "user",
       "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -1686,6 +1731,49 @@
   },
   {
     "object": "block",
+    "id": "a208e0bd-3131-4928-8bfc-9b5a3bc69235",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:47:00.000Z",
+    "last_edited_time": "2023-03-12T02:48:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "日本語とEnglish phraseの混在だとどう表示されるかな?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "日本語とEnglish phraseの混在だとどう表示されるかな?",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
     "id": "2f2af220-9512-4ef0-8369-86cc629da2fd",
     "parent": {
       "type": "page_id",
@@ -2378,13 +2466,78 @@
   },
   {
     "object": "block",
+    "id": "b9581832-eebe-4c0a-9d88-9d92efda62f7",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T03:20:00.000Z",
+    "last_edited_time": "2023-03-12T03:20:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "equation",
+    "equation": { "expression": "Block Equation" }
+  },
+  {
+    "object": "block",
+    "id": "888a1944-2890-41e3-ac6f-1ddbf3c718d0",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:48:00.000Z",
+    "last_edited_time": "2023-03-12T02:48:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "テキストの中で\\n改行してみました",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "テキストの中で\\n改行してみました",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
     "id": "cd69cca7-30cd-42ae-86b7-a5849f0ce797",
     "parent": {
       "type": "page_id",
       "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
     },
     "created_time": "2023-02-19T05:08:00.000Z",
-    "last_edited_time": "2023-03-05T09:42:00.000Z",
+    "last_edited_time": "2023-03-12T02:49:00.000Z",
     "created_by": {
       "object": "user",
       "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -2400,7 +2553,10 @@
       "rich_text": [
         {
           "type": "text",
-          "text": { "content": "toggle gray_background summery", "link": null },
+          "text": {
+            "content": "toggle gray_background summery\\nここにも改行をはさんでいます",
+            "link": null
+          },
           "annotations": {
             "bold": false,
             "italic": false,
@@ -2409,7 +2565,7 @@
             "code": false,
             "color": "default"
           },
-          "plain_text": "toggle gray_background summery",
+          "plain_text": "toggle gray_background summery\\nここにも改行をはさんでいます",
           "href": null
         }
       ],
@@ -2605,6 +2761,56 @@
   },
   {
     "object": "block",
+    "id": "e80afd47-8426-4603-b0f3-b9feae4eacde",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-10T22:26:00.000Z",
+    "last_edited_time": "2023-03-10T22:26:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "bookmark",
+    "bookmark": {
+      "caption": [],
+      "url": "https://developers.notion.com/reference/block#block-type-objects"
+    }
+  },
+  {
+    "object": "block",
+    "id": "bb6490f4-3c76-4103-ae7f-f73c6582615d",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-10T22:27:00.000Z",
+    "last_edited_time": "2023-03-10T22:27:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "bookmark",
+    "bookmark": {
+      "caption": [],
+      "url": "https://zenn.dev/shelfy/articles/3bec0f3f4711e9"
+    }
+  },
+  {
+    "object": "block",
     "id": "4fd9a907-a496-4318-8527-ccde2772d651",
     "parent": {
       "type": "page_id",
@@ -2695,7 +2901,7 @@
       "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
     },
     "created_time": "2023-02-19T05:02:00.000Z",
-    "last_edited_time": "2023-03-07T02:05:00.000Z",
+    "last_edited_time": "2023-03-09T13:20:00.000Z",
     "created_by": {
       "object": "user",
       "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -3839,7 +4045,7 @@
                         "rich_text": [
                           {
                             "type": "text",
-                            "text": { "content": "tg1-1-2", "link": null },
+                            "text": { "content": "tg1-1-1", "link": null },
                             "annotations": {
                               "bold": false,
                               "italic": false,
@@ -3848,7 +4054,7 @@
                               "code": false,
                               "color": "default"
                             },
-                            "plain_text": "tg1-1-2",
+                            "plain_text": "tg1-1-1",
                             "href": null
                           }
                         ],
@@ -3879,7 +4085,7 @@
                                 {
                                   "type": "text",
                                   "text": {
-                                    "content": "tg1-1-2 inner",
+                                    "content": "tg1-1-1 inner",
                                     "link": null
                                   },
                                   "annotations": {
@@ -3890,7 +4096,7 @@
                                     "code": false,
                                     "color": "default"
                                   },
-                                  "plain_text": "tg1-1-2 inner",
+                                  "plain_text": "tg1-1-1 inner",
                                   "href": null
                                 }
                               ],
@@ -4279,7 +4485,7 @@
                   "block_id": "7d0f592c-c72c-4900-aedd-d3b0d46444b6"
                 },
                 "created_time": "2023-03-06T12:57:00.000Z",
-                "last_edited_time": "2023-03-06T12:57:00.000Z",
+                "last_edited_time": "2023-03-09T13:13:00.000Z",
                 "created_by": {
                   "object": "user",
                   "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -5060,6 +5266,220 @@
   },
   {
     "object": "block",
+    "id": "f334d892-43dc-4bb4-bc50-3eb8c640ec81",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:50:00.000Z",
+    "last_edited_time": "2023-03-12T02:50:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Below is Synced Block example", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Below is Synced Block example",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24fd57be-5b14-4dbc-8c96-5b12531e6900",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:50:00.000Z",
+    "last_edited_time": "2023-03-12T02:50:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "From", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "From",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "5e7558c8-32b5-4a7f-a26d-49af9b08d4f3",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:49:00.000Z",
+    "last_edited_time": "2023-03-12T02:49:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": true,
+    "archived": false,
+    "type": "synced_block",
+    "synced_block": {
+      "synced_from": null,
+      "children": [
+        {
+          "object": "block",
+          "id": "9208b15f-e26a-48ea-b2c2-f507d9b63f75",
+          "parent": {
+            "type": "block_id",
+            "block_id": "5e7558c8-32b5-4a7f-a26d-49af9b08d4f3"
+          },
+          "created_time": "2023-03-12T02:49:00.000Z",
+          "last_edited_time": "2023-03-12T02:50:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+          },
+          "has_children": false,
+          "archived": false,
+          "type": "paragraph",
+          "paragraph": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": { "content": "Synced Block", "link": null },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Synced Block",
+                "href": null
+              }
+            ],
+            "color": "default"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "603f0a0e-0725-44cd-bc19-90013e0ee09c",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:50:00.000Z",
+    "last_edited_time": "2023-03-12T02:50:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "To", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "To",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "f099f88b-80fb-4e5d-a74c-656aac965d4d",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:49:00.000Z",
+    "last_edited_time": "2023-03-12T02:49:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": true,
+    "archived": false,
+    "type": "synced_block",
+    "synced_block": {
+      "synced_from": {
+        "type": "block_id",
+        "block_id": "5e7558c8-32b5-4a7f-a26d-49af9b08d4f3"
+      },
+      "children": []
+    }
+  },
+  {
+    "object": "block",
     "id": "16804882-5555-42c5-ad3e-64500a746d87",
     "parent": {
       "type": "page_id",
@@ -5243,13 +5663,13 @@
   },
   {
     "object": "block",
-    "id": "20d9aaf3-013c-44a6-a2a8-c7790260200d",
+    "id": "94318500-8ccd-407a-a45f-7d0c6f332512",
     "parent": {
       "type": "page_id",
       "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
     },
-    "created_time": "2023-03-05T23:00:00.000Z",
-    "last_edited_time": "2023-03-07T07:21:00.000Z",
+    "created_time": "2023-03-12T02:52:00.000Z",
+    "last_edited_time": "2023-03-12T02:53:00.000Z",
     "created_by": {
       "object": "user",
       "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
@@ -5265,7 +5685,7 @@
       "rich_text": [
         {
           "type": "text",
-          "text": { "content": "block below is toc", "link": null },
+          "text": { "content": "Twitter Embed", "link": null },
           "annotations": {
             "bold": false,
             "italic": false,
@@ -5274,7 +5694,72 @@
             "code": false,
             "color": "default"
           },
-          "plain_text": "block below is toc",
+          "plain_text": "Twitter Embed",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "8ee4d2f3-e004-4028-b4af-65d2d94a3cfc",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-12T02:52:00.000Z",
+    "last_edited_time": "2023-03-12T02:52:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "embed",
+    "embed": {
+      "caption": [],
+      "url": "https://twitter.com/ydnjp/status/1604310734930071554"
+    }
+  },
+  {
+    "object": "block",
+    "id": "16367222-589e-4db3-b480-3cfbb8bfe2f2",
+    "parent": {
+      "type": "page_id",
+      "page_id": "0581ec5b-0d9d-4448-bea9-36fc4eafbd32"
+    },
+    "created_time": "2023-03-05T23:00:00.000Z",
+    "last_edited_time": "2023-03-12T02:53:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "e0446ede-dde6-457c-b535-d2b19f40b45a"
+    },
+    "has_children": false,
+    "archived": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "block below is ToC", "link": null },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "block below is ToC",
           "href": null
         }
       ],

@@ -59,8 +59,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ page, blocks }) => {
-  console.log(page)
-
+  console.log(blocks)
   return <NotionBlockRenderer blocks={blocks} />;
 };
 
