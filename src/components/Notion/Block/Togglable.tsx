@@ -19,7 +19,6 @@ export const Togglable: React.FC<TogglableProps> = ({
   summary,
   ...props
 }) => {
-  console.log(block);
   // @ts-ignore
   const blockColor = generateBlockColorClass(block[block.type].color);
   return (

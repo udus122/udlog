@@ -16,7 +16,7 @@ export function Block({
   // NOTE: be aware of the error "Element implicitly has an 'any' type because expression of type ...".
 
   if (!Component) {
-    console.warn(`${block.type} is not supported`);
+    // console.warn(`${block.type} is not supported`);
     return (
       <div style={{ color: "red", fontWeight: "bold" }}>
         {block.type} is not supported block
