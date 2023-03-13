@@ -184,3 +184,14 @@
   overflow: hidden;
   width: 100%;
 }
+
+.notion_image {
+  width: 100%;
+  max-width: 100%;
+}
+.notion_image img {
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: var(--s-6, 1px);
+}
