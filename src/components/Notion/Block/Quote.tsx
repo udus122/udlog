@@ -4,11 +4,18 @@ import { QuoteBlockObjectResponse } from "@notionhq/client/build/src/api-endpoin
 import clsx from "clsx";
 import { RichText } from "./RichText";
 
-export const Quote: BlockComponent<QuoteBlockObjectResponse> = ({ block }) => {
+export const Quote: BlockComponent<QuoteBlockObjectResponse> = ({
+  block,
+  children,
+}) => {
   const blockColor = generateBlockColorClass(block.quote.color);
   return (
-    <blockquote id={block.id} className={clsx("notion_block", "notion_quote", blockColor)}>
+    <blockquote
+      id={block.id}
+      className={clsx("notion_block", "notion_quote", blockColor)}
+    >
       <RichText richText={block.quote.rich_text} />
+      {children}
     </blockquote>
   );
 };

@@ -124,7 +124,7 @@
 }
 
 .notion_quote {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   border-inline-start: var(--quote-border);
   padding: var(--s-6) var(--s0);
 }
