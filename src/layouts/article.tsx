@@ -21,7 +21,7 @@ export const ArticleLayout = ({
 }) => {
   return (
     <div id={page.id} className="layout-article">
-      <NavBar className="sticky top-0 z-30 full-bleed" />
+      <NavBar className="sticky top-0 z-30 shadow-xl full-bleed shadow-gray-900" />
       <NotionPageCover page={page} className="full-bleed" />
       <header>
         <NotionPageTitle page={page} className="mt-8" />

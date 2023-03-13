@@ -1,3 +1,4 @@
+/* @import 'https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css'; */
 @import "./variables.css";
 @import "./colors.css";
 @import "./notion/page.css";
@@ -23,19 +24,31 @@
     margin: 0;
     padding: 1px;
   }
-
-  summary>h1,
-  summary>h2,
-  summary>h3 {
-    display: inline-block;
-  }
-
   ol,
   ul,
   menu {
     list-style: revert;
-    /* margin: revert; */
-    /* padding: revert; */
+  }
+  /* img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: unset;
+    vertical-align: unset;
+  } */
+  /* a {
+    color: inherit;
+    text-decoration-line: none;
+  } */
+
+  summary > h1,
+  summary > h2,
+  summary > h3 {
+    display: inline-block;
   }
 }
 
@@ -46,7 +59,7 @@
     column-gap: 1.5rem;
   }
 
-  .layout-article>* {
+  .layout-article > * {
     grid-column: 2;
   }
 
