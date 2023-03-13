@@ -166,3 +166,21 @@
 .notin_equation {
   text-align: center;
 }
+
+.notion_callout {
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  border: 1px solid var(--color_border_default);
+  overflow: hidden;
+  padding: var(--callout-padding, var(--s0));
+  border-radius: var(--callout-border-radii, 3px);
+  box-shadow: var(--callout-shadow, none);
+}
+.notion_callout__content {
+  display: flex;
+  flex-direction: column;
+  margin-inline-start: 8px;
+  overflow: hidden;
+  width: 100%;
+}
