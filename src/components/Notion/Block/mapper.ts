@@ -18,6 +18,7 @@ import { Column } from "./Column";
 import { BlockComponentMapper } from "@/types";
 import { BlockEquation } from "./Equation";
 import { Bookmark } from "./Bookmark";
+import { Embed } from "./Embed";
 
 export const defaultMapper: BlockComponentMapper = {
   heading_1: Heading1,
@@ -38,5 +39,6 @@ export const defaultMapper: BlockComponentMapper = {
   column_list: ColumnList,
   equation: BlockEquation,
   bookmark: Bookmark,
+  embed: Embed,
   table: Table,
 };

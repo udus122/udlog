@@ -1,6 +1,6 @@
 import { generateBlockColorClass } from "@/libs/notion/utils";
 import type { BlockComponent } from "@/types";
-import { ParagraphBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { ParagraphBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { RichText } from "./RichText";
 import { clsx } from "clsx";
 
