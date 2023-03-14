@@ -36,6 +36,11 @@ import type {
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
+export type HeadingBlockObjectResponse =
+  | Heading1BlockObjectResponse
+  | Heading2BlockObjectResponse
+  | Heading3BlockObjectResponse;
+
 export type BlockComponentProps<T extends BlockObjectResponse> = {
   block: T;
   blocks?: BlockObjectResponse[];

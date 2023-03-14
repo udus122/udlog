@@ -257,3 +257,24 @@
   font-size: 0.8rem;
   opacity: 0.7;
 }
+.notion_table_of_contents {
+  border-radius: var(--s-3);
+  padding: var(--s-3);
+  /* white-space: normal; */
+}
+.notion_table_of_contents_item {
+  padding: var(--s-2) var(--s-5);
+  transition: background-color 0.12s ease-in 0s;
+}
+.notion_table_of_contents_item:hover {
+  background-color: var(--color-ui-hover-bg, rgb(71, 76, 80));
+}
+.notion_table_of_contents_item.notion_table_of_contents_item__heading_1 {
+  padding-inline-start: calc(var(--s1) * 0);
+}
+.notion_table_of_contents_item.notion_table_of_contents_item__heading_2 {
+  padding-inline-start: calc(var(--s1) * 1);
+}
+.notion_table_of_contents_item.notion_table_of_contents_item__heading_3 {
+  padding-inline-start: calc(var(--s1) * 2);
+}

@@ -20,6 +20,7 @@ import { BlockEquation } from "./Equation";
 import { Bookmark } from "./Bookmark";
 import { Embed } from "./Embed";
 import { SyncedBlock } from "./SyncedBlock";
+import { TableOfContents } from "./TableOfContents";
 
 export const defaultMapper: BlockComponentMapper = {
   heading_1: Heading1,
@@ -42,5 +43,6 @@ export const defaultMapper: BlockComponentMapper = {
   bookmark: Bookmark,
   embed: Embed,
   synced_block: SyncedBlock,
+  table_of_contents: TableOfContents,
   table: Table,
 };
