@@ -214,15 +214,15 @@
 .notion_bookmark__title {
   margin: 0 0 2px;
   line-height: 1.25rem;
-  font-size: .875rem;
+  font-size: 0.875rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .notion_bookmark__description {
-  font-size: .75rem;
+  font-size: 0.75rem;
   line-height: 1rem;
-  opacity: .7;
+  opacity: 0.7;
   height: 2rem;
   overflow: hidden;
 }
@@ -233,7 +233,7 @@
 }
 .notion_bookmark__link p {
   margin: 0;
-  font-size: .75rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   white-space: nowrap;
   overflow: hidden;
@@ -250,6 +250,4 @@
   height: 100%;
 }
 .notion_embed {
-  display: flex;
-  justify-content: center;
 }

@@ -10,6 +10,7 @@ export const SyncedBlock: BlockComponent<SyncedBlockBlockObjectResponse> = ({
   const isOriginal = block.synced_block.synced_from === null;
   return (
     <div
+      id={block.id}
       className={clsx(
         "notion_synced_block",
         isOriginal ? "original" : "duplicate"

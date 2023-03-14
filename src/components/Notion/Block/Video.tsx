@@ -1,4 +1,3 @@
-import ReactEmbed from "react-embed";
 import { RichText } from "./RichText";
 
 import type { BlockComponent } from "@/types";
@@ -14,7 +13,7 @@ export const Video: BlockComponent<VideoBlockObjectResponse> = ({ block }) => {
   if (videoUrl) {
     return (
       <div id={block.id} className={clsx(blockType)}>
-        <ReactEmbed isDark url={videoUrl} />
+        <iframe src={videoUrl} />
         <span className="notion_caption">
           {block.video.caption && <RichText richText={block.video.caption} />}
         </span>
