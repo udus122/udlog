@@ -17,7 +17,7 @@ export const ArticleLayout = ({
 }: {
   page: PageObjectResponse;
   blocks: BlockObjectResponse[];
-  customMapper: BlockComponentMapper;
+  customMapper?: BlockComponentMapper;
 }) => {
   return (
     <div id={page.id} className="layout-article">

@@ -9,6 +9,9 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
+import { ArticleLayout } from "@/layouts/article";
+import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
+import { BlockComponentMapper } from "@/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
@@ -56,11 +59,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
+const customMapper: BlockComponentMapper = {
+  togglable: OpenedTogglable,
+};
+
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ page, blocks }) => {
-  console.log(blocks)
-  return <NotionBlockRenderer blocks={blocks} />;
+  console.log(blocks);
+  return <ArticleLayout page={page} blocks={blocks} customMapper={customMapper} />;
 };
 
 export default Index;
