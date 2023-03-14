@@ -35,14 +35,20 @@
 
 .notion_heading_1 {
   font-size: var(--heading1-size);
+  font-weight: 600;
+  margin-block-start: var(--s2);
 }
 
 .notion_heading_2 {
   font-size: var(--heading2-size);
+  font-weight: 600;
+  margin-block-start: var(--s1);
 }
 
 .notion_heading_3 {
   font-size: var(--heading3-size);
+  font-weight: 600;
+  margin-block-start: var(--s0);
 }
 
 .notion_paragraph {
@@ -259,11 +265,9 @@
 }
 .notion_table_of_contents {
   border-radius: var(--s-3);
-  padding: var(--s-3);
-  /* white-space: normal; */
 }
 .notion_table_of_contents_item {
-  padding: var(--s-2) var(--s-5);
+  padding: var(--s-4) var(--s-5);
   transition: background-color 0.12s ease-in 0s;
 }
 .notion_table_of_contents_item:hover {
