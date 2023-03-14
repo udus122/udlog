@@ -12,6 +12,7 @@ export const SyncedBlock: BlockComponent<SyncedBlockBlockObjectResponse> = ({
     <div
       id={block.id}
       className={clsx(
+        "notion_block",
         "notion_synced_block",
         isOriginal ? "original" : "duplicate"
       )}

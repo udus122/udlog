@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import type { BookmarkBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { BlockComponent } from "@/types";
+import clsx from "clsx";
 
 interface Metadata {
   title: string | null;
@@ -23,7 +24,7 @@ export const Bookmark: BlockComponent<BookmarkBlockObjectResponse> = ({
         .then((res) => res.json())
         .then((data) => setMetadata(data as Metadata));
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }, [url]);
   // TODO: レイアウトシフトが発生するのでスケルトンを導入する
@@ -32,7 +33,7 @@ export const Bookmark: BlockComponent<BookmarkBlockObjectResponse> = ({
   const { title, description, image } = metadata;
 
   return (
-    <div className="notion_bookmark">
+    <div className={clsx("notion_block", "notion_bookmark")}>
       <a href={url.toString()} target="_blank" rel="noopener noreferrer">
         <div className="notion_bookmark__content">
           <div className="notion_bookmark__title">{title ? title : ""}</div>

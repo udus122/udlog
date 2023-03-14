@@ -5,6 +5,7 @@ import { monokai } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 import type { CodeBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { BlockComponent } from "@/types";
+import clsx from "clsx";
 
 const SyntaxHighlight = ({
   text,
@@ -21,15 +22,17 @@ const SyntaxHighlight = ({
 };
 
 export const Code: BlockComponent<CodeBlockObjectResponse> = ({ block }) => {
-  const blockType = `notion-${block.type}`;
+  const blockType = "notion_code";
+  const text = block.code.rich_text.map((txt) => txt.plain_text).join('')
+  const language = block.code.language
   return (
-    <div id={block.id} className={`${blockType}`}>
+    <div id={block.id} className={clsx("notion_block", blockType)}>
       <SyntaxHighlight
-        text={block.code.rich_text[0].plain_text}
-        language={block.code.language}
+        text={text}
+        language={language}
       />
       {block.code.caption && (
-        <span className="notion-caption">
+        <span className="notion_caption">
           <RichText richText={block.code.caption} />
         </span>
       )}

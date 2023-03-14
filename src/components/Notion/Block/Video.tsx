@@ -12,7 +12,7 @@ export const Video: BlockComponent<VideoBlockObjectResponse> = ({ block }) => {
       : block.video.file.url;
   if (videoUrl) {
     return (
-      <div id={block.id} className={clsx(blockType)}>
+      <div id={block.id} className={clsx("notion_block", blockType)}>
         <iframe src={videoUrl} />
         <span className="notion_caption">
           {block.video.caption && <RichText richText={block.video.caption} />}
