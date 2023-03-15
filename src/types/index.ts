@@ -109,7 +109,8 @@ export type BlockComponentMapper = {
   unsupported?: BlockComponent<UnsupportedBlockObjectResponse>;
   video?: BlockComponent<VideoBlockObjectResponse>;
   togglable?: React.FC<TogglableProps>;
-  list_wrapper?: BlockComponent<ListWrapperObject>;
+  bulleted_list?: BlockComponent<BulletedListType>;
+  numbered_list?: BlockComponent<NumberedListType>;
 };
 
 // @notionhq/client/build/src/api-endpoints.d.ts L235~L239
