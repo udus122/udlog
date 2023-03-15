@@ -36,23 +36,43 @@ import type {
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
+export type BulletedListType = {
+  type: "bulleted_list";
+  items: Array<BulletedListItemBlockObjectResponse>;
+};
+
+export type NumberedListType = {
+  type: "numbered_list";
+  items: Array<NumberedListItemBlockObjectResponse>;
+};
+
+export type ListWrapperObject = BulletedListType | NumberedListType;
+
+export type BlockObject = BlockObjectResponse | ListWrapperObject;
+
 export type HeadingBlockObjectResponse =
   | Heading1BlockObjectResponse
   | Heading2BlockObjectResponse
   | Heading3BlockObjectResponse;
 
-export type BlockComponentProps<T extends BlockObjectResponse> = {
+export type BlockComponentProps<T extends BlockObject> = {
   block: T;
   blocks?: BlockObjectResponse[];
   children?: React.ReactNode;
   mapper?: BlockComponentMapper;
 };
 
-export type BlockComponent<T extends BlockObjectResponse> = React.FC<
+export type BlockComponent<T extends BlockObject> = React.FC<
   BlockComponentProps<T>
 >;
-
-import type { TogglableProps } from "@/components/Notion/Block/Togglable";
+export type TogglableProps = React.ComponentProps<"details"> & {
+  summary: React.ReactNode;
+} & BlockComponentProps<
+    | ToggleBlockObjectResponse
+    | Heading1BlockObjectResponse
+    | Heading2BlockObjectResponse
+    | Heading3BlockObjectResponse
+  >;
 
 export type BlockComponentMapper = {
   audio?: BlockComponent<AudioBlockObjectResponse>;
@@ -89,6 +109,7 @@ export type BlockComponentMapper = {
   unsupported?: BlockComponent<UnsupportedBlockObjectResponse>;
   video?: BlockComponent<VideoBlockObjectResponse>;
   togglable?: React.FC<TogglableProps>;
+  list_wrapper?: BlockComponent<ListWrapperObject>;
 };
 
 // @notionhq/client/build/src/api-endpoints.d.ts L235~L239

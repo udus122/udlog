@@ -21,6 +21,8 @@ import { Bookmark } from "./Bookmark";
 import { Embed } from "./Embed";
 import { SyncedBlock } from "./SyncedBlock";
 import { TableOfContents } from "./TableOfContents";
+import { BulletedList } from "./BulletedList";
+import { NumberedList } from "./NumberedList";
 
 export const defaultMapper: BlockComponentMapper = {
   heading_1: Heading1,
@@ -45,4 +47,6 @@ export const defaultMapper: BlockComponentMapper = {
   synced_block: SyncedBlock,
   table_of_contents: TableOfContents,
   table: Table,
+  bulleted_list: BulletedList,
+  numbered_list: NumberedList,
 };

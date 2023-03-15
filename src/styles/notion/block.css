@@ -64,7 +64,6 @@
 }
 
 .notion_bulleted_list_item {
-  /* margin: 2px 0; */
 }
 
 .notion_numbered_list {
@@ -80,9 +79,6 @@
 
 .notion_to_do__content {
   display: flex;
-  padding: 0.25em 0;
-  margin: 0.25em 0;
-  line-height: 1.5;
 }
 
 .notion_to_do__icon {
@@ -93,18 +89,15 @@
   justify-content: center;
   flex-shrink: 0;
 }
-
 .notion_checkbox {
   display: flex;
   align-items: center;
 }
-
 .notion_checkbox > svg {
   width: 1rem;
   height: 1rem;
   fill: inherit;
 }
-
 .notion_checkbox.checked {
   display: flex;
   align-items: center;
@@ -113,18 +106,15 @@
   height: 1rem;
   background: var(--color-checkbox-bg);
 }
-
 .notion_checkbox.checked > svg {
   width: 0.75em;
   height: 0.75em;
   fill: #fff;
 }
-
 .notion_to_do__title.checked {
   opacity: 0.375;
   text-decoration: line-through;
 }
-
 .notion_to_do__children {
   margin-inline-start: var(--indent-size);
 }
