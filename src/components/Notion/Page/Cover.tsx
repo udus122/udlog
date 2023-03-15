@@ -1,10 +1,10 @@
 import { noImageUrl } from "@/constants";
-import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { DatabaseObjectResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import Image from "next/image";
 import { clsx } from "clsx";
 
 type Props = React.ComponentProps<"div"> & {
-  page: PageObjectResponse;
+  page: PageObjectResponse | DatabaseObjectResponse;
 };
 
 export const NotionPageCover: React.FC<Props> = function ({
