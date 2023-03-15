@@ -1,3 +1,4 @@
+import { getPlainTextFromRichText } from "@/libs/notion/utils";
 import { TitleProperty } from "@/types";
 import type {
   DatabaseObjectResponse,
@@ -5,22 +6,21 @@ import type {
 } from "@notionhq/client/build/src/api-endpoints";
 import { clsx } from "clsx";
 
-function extractTitleFromPage(
+function extractTitle(
   page: PageObjectResponse | DatabaseObjectResponse
 ): string {
+  // DatabaseObject
   if ("title" in page) {
-    return page.title.reduce((prev, curr) => {
-      prev += curr.plain_text;
-      return prev;
-    }, "")
+    return getPlainTextFromRichText(page.title);
   }
+  // PageObject
   const titleProperty = Object.values(page.properties).find(
-    (property) => property.type === "title"
-  ) as TitleProperty;
-  return titleProperty["title"].reduce((prev, curr) => {
-    prev += curr.plain_text;
-    return prev;
-  }, "");
+    (property): property is TitleProperty => property.type === "title"
+  );
+  if (titleProperty?.title) {
+    return getPlainTextFromRichText(titleProperty?.title);
+  }
+  throw new Error("Title is not found.");
 }
 
 type Props = React.ComponentProps<"h1"> & {
@@ -32,7 +32,7 @@ export const NotionPageTitle: React.FC<Props> = function ({
   className,
   ...props
 }) {
-  const title = extractTitleFromPage(page);
+  const title = extractTitle(page);
   return (
     <h1 className={clsx("notion_page_title", className)} {...props}>
       {title}

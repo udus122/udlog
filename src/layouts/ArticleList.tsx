@@ -9,7 +9,7 @@ import {
 
 import { Divider as NotionDivider } from "@/components/Notion/Block/Divider";
 import Link from "next/link";
-import { getPlainTextFromArrayOfRichText } from "@/libs/notion/utils";
+import { getPlainTextFromRichText } from "@/libs/notion/utils";
 import { noImageUrl } from "@/constants";
 
 export const ArticleListLayout = ({
@@ -37,7 +37,7 @@ export const ArticleListLayout = ({
             return (
               <div key={article.id}>
                 <Link href={`/articles/${article.id}`}>
-                  {getPlainTextFromArrayOfRichText(
+                  {getPlainTextFromRichText(
                     article.properties.Name.title
                   )}
                   <span>

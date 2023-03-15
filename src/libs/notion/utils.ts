@@ -8,7 +8,7 @@ import type {
  * その他
  */
 
-export function getPlainTextFromArrayOfRichText(
+export function getPlainTextFromRichText(
   RichTextItemResponseArray: Array<RichTextItemResponse>
 ): string {
   return RichTextItemResponseArray.reduce((prev, curr) => {

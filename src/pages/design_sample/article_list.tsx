@@ -6,7 +6,7 @@ import type { InferGetStaticPropsType, NextPage } from "next";
 import { Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
 import Link from "next/link";
-import { getPlainTextFromArrayOfRichText } from "@/libs/notion/utils";
+import { getPlainTextFromRichText } from "@/libs/notion/utils";
 import { NotionPageCover } from "@/components/Notion/Page/Cover";
 
 import sample_page_list from "./sample_page_list.json";
@@ -29,7 +29,7 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ database, articles }) => {
-  const title = getPlainTextFromArrayOfRichText(database.title);
+  const title = getPlainTextFromRichText(database.title);
 
   return (
     <>

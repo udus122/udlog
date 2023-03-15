@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
 import Link from "next/link";
 import { collectQueryDatabase, retrieveDatabase } from "@/libs/notion/database";
-import { getPlainTextFromArrayOfRichText } from "@/libs/notion/utils";
+import { getPlainTextFromRichText } from "@/libs/notion/utils";
 import { NotionPageCover } from "@/components/Notion/Page/Cover";
 
 export const getStaticProps = async () => {
@@ -39,7 +39,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 const Index: NextPage<Props> = ({ database, articles }) => {
   console.log(database);
   console.log(articles);
-  const title = getPlainTextFromArrayOfRichText(database.title);
+  const title = getPlainTextFromRichText(database.title);
 
   return (
     <>
@@ -71,7 +71,7 @@ const Index: NextPage<Props> = ({ database, articles }) => {
                       />
                     </span>
                     <Link href={`/articles/${article.id}`}>
-                      {getPlainTextFromArrayOfRichText(
+                      {getPlainTextFromRichText(
                         article.properties.Name.title
                       )}
                     </Link>
