@@ -6,39 +6,25 @@ import type { InferGetStaticPropsType, NextPage } from "next";
 import { Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
 import Link from "next/link";
-import { collectQueryDatabase, retrieveDatabase } from "@/libs/notion/database";
 import { getPlainTextFromArrayOfRichText } from "@/libs/notion/utils";
 import { NotionPageCover } from "@/components/Notion/Page/Cover";
 
-export const getStaticProps = async () => {
-  const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
-  const database = await retrieveDatabase({
-    database_id: ARTICLE_DB_ID,
-  });
-  const articles = await collectQueryDatabase({
-    database_id: ARTICLE_DB_ID,
-    sorts: [
-      {
-        property: "Published",
-        direction: "descending",
-      },
-    ],
-  });
+import sample_page_list from './sample_page_list.json'
+import sample_database from "./sample_database.json";
+import { DatabaseObjectResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
+export const getStaticProps = async () => {
   return {
     props: {
-      database,
-      articles,
+      database: sample_database as DatabaseObjectResponse,
+      articles: sample_page_list as PageObjectResponse[],
     },
-    revalidate: 60 * 60 * 24, // 1日
   };
 };
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ database, articles }) => {
-  console.log(database);
-  console.log(articles);
   const title = getPlainTextFromArrayOfRichText(database.title);
 
   return (
