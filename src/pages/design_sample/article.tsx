@@ -2,7 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import type { BlockComponentMapper } from "@/types";
 
 import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
-import { ArticleLayout } from "@/layouts/article";
+import { ArticleLayout } from "@/layouts/Article";
 
 import sample_block_list from "./sample_block_list.json";
 import sample_page_info from "./sample_page_info.json";

@@ -1,8 +1,19 @@
 import { TitleProperty } from "@/types";
-import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type {
+  DatabaseObjectResponse,
+  PageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 import { clsx } from "clsx";
 
-function extractTitleFromPage(page: PageObjectResponse): string {
+function extractTitleFromPage(
+  page: PageObjectResponse | DatabaseObjectResponse
+): string {
+  if ("title" in page) {
+    return page.title.reduce((prev, curr) => {
+      prev += curr.plain_text;
+      return prev;
+    }, "")
+  }
   const titleProperty = Object.values(page.properties).find(
     (property) => property.type === "title"
   ) as TitleProperty;
@@ -13,7 +24,7 @@ function extractTitleFromPage(page: PageObjectResponse): string {
 }
 
 type Props = React.ComponentProps<"h1"> & {
-  page: PageObjectResponse;
+  page: PageObjectResponse | DatabaseObjectResponse;
 };
 
 export const NotionPageTitle: React.FC<Props> = function ({

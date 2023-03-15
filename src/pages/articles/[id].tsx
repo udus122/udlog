@@ -8,7 +8,7 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import { ArticleLayout } from "@/layouts/article";
+import { ArticleLayout } from "@/layouts/Article";
 import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
 import { BlockComponentMapper } from "@/types";
 
