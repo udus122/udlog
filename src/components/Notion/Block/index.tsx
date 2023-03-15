@@ -1,13 +1,14 @@
 import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-import { BlockComponentMapper } from "@/types";
+import type { BlockComponentMapper, ListWrapperObject } from "@/types";
+import { BlockList } from "../BlockList";
 
 export function Block({
   block,
   blocks,
   mapper,
 }: {
-  block: BlockObjectResponse;
+  block: BlockObjectResponse | ListWrapperObject;
   blocks: BlockObjectResponse[];
   mapper: BlockComponentMapper;
 }) {
@@ -15,38 +16,20 @@ export function Block({
   const Component = mapper[block.type];
   // NOTE: be aware of the error "Element implicitly has an 'any' type because expression of type ...".
 
+  // If the block is not supported, nothing is rendered.
   if (!Component) {
-    // console.warn(`${block.type} is not supported`);
-    return (
-      <div style={{ color: "red", fontWeight: "bold" }}>
-        {block.type} is not supported block
-      </div>
-    );
+    console.warn(`${block.type} is not supported`);
+    return null;
   }
-  // If the block does not have children, do not process recursively.
-  if (!block.has_children) {
+  if (!block?.has_children) {
+    // If the block does not have children, do not process recursively.
     return <Component block={block} blocks={blocks} mapper={mapper} />;
-  }
-  // Table blocks processes its child elements internally in Table.tsx.
-  if (block.has_children && block.type === "table") {
-    return <Component block={block} blocks={blocks} mapper={mapper} />;
-    // For all other block types with children, process them recursively
   } else {
+    // For all other block types with children, process them recursively
     return (
       <Component block={block} blocks={blocks} mapper={mapper}>
         {/* @ts-ignore Notion types are incorrect */}
-        {block[block.type].children?.map((child: BlockObjectResponse) => {
-          return (
-            child && (
-              <Block
-                key={child.id}
-                block={child}
-                blocks={blocks}
-                mapper={mapper}
-              />
-            )
-          );
-        })}
+        <BlockList blocks={block[block.type].children} mapper={mapper} />
       </Component>
     );
   }
