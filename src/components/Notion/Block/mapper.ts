@@ -23,6 +23,7 @@ import { SyncedBlock } from "./SyncedBlock";
 import { TableOfContents } from "./TableOfContents";
 import { BulletedList } from "./BulletedList";
 import { NumberedList } from "./NumberedList";
+import { ListWrapper } from "../ListWrapper";
 
 export const defaultMapper: BlockComponentMapper = {
   heading_1: Heading1,
@@ -49,4 +50,5 @@ export const defaultMapper: BlockComponentMapper = {
   table: Table,
   bulleted_list: BulletedList,
   numbered_list: NumberedList,
+  list_wrapper: ListWrapper,
 };

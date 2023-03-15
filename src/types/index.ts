@@ -1,3 +1,4 @@
+import { ListWrapper } from "@/components/Notion/ListWrapper";
 import type {
   BlockObjectResponse,
   ParagraphBlockObjectResponse,
@@ -35,6 +36,11 @@ import type {
   UnsupportedBlockObjectResponse,
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
+
+export type BlockListComponentProps = {
+  blocks: BlockObjectResponse[] | undefined;
+  mapper: BlockComponentMapper;
+}
 
 export type BulletedListType = {
   type: "bulleted_list";
@@ -111,6 +117,7 @@ export type BlockComponentMapper = {
   togglable?: React.FC<TogglableProps>;
   bulleted_list?: BlockComponent<BulletedListType>;
   numbered_list?: BlockComponent<NumberedListType>;
+  list_wrapper?: React.FC<BlockListComponentProps>;
 };
 
 // @notionhq/client/build/src/api-endpoints.d.ts L235~L239
