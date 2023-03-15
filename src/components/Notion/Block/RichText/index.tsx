@@ -12,16 +12,19 @@ import { InlineEquation } from "./InlineEquation";
 import { Mention } from "./Mention";
 
 export const RichText = ({
-  richText: richText,
+  richText,
 }: {
-  richText: RichTextItemResponse[];
+  richText: RichTextItemResponse[] | undefined;
 }) => {
+  if (!richText) return null;
   const richTextComponentMapper = {
     text: ({ richTextItem }: { richTextItem: RichTextItemResponse }) => (
       <Text richTextItem={richTextItem as TextRichTextItemResponse} />
     ),
     equation: ({ richTextItem }: { richTextItem: RichTextItemResponse }) => (
-      <InlineEquation richTextItem={richTextItem as EquationRichTextItemResponse} />
+      <InlineEquation
+        richTextItem={richTextItem as EquationRichTextItemResponse}
+      />
     ),
     mention: ({ richTextItem }: { richTextItem: RichTextItemResponse }) => (
       <Mention richTextItem={richTextItem as MentionRichTextItemResponse} />
