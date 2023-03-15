@@ -1,11 +1,15 @@
-import { collectPaginatedAPI, isFullPage } from "@notionhq/client";
+import {
+  collectPaginatedAPI,
+  isFullDatabase,
+  isFullPage,
+} from "@notionhq/client";
 import { notion } from "./notion";
 
 import type {
   GetDatabaseParameters,
-  GetDatabaseResponse,
   QueryDatabaseParameters,
   PageObjectResponse,
+  DatabaseObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 /**
@@ -14,8 +18,12 @@ import type {
 
 export async function retrieveDatabase(
   args: GetDatabaseParameters
-): Promise<GetDatabaseResponse> {
-  return await notion.databases.retrieve(args);
+): Promise<DatabaseObjectResponse> {
+  const response = await notion.databases.retrieve(args);
+  if (!isFullDatabase(response)) {
+    throw new Error("Retrieved database is partial.");
+  }
+  return response;
 }
 
 export async function collectQueryDatabase(

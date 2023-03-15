@@ -10,6 +10,7 @@ specifiers:
   '@types/react-syntax-highlighter': ^15.5.6
   autoprefixer: ^10.4.14
   clsx: ^1.2.1
+  date-fns: ^2.29.3
   eslint: 8.34.0
   eslint-config-next: 13.1.6
   metascraper: ^5.34.0
@@ -35,6 +36,7 @@ dependencies:
   '@next/font': 13.1.6
   '@notionhq/client': 2.2.3
   clsx: 1.2.1
+  date-fns: 2.29.3
   metascraper: 5.34.0
   metascraper-description: 5.33.7
   metascraper-image: 5.33.7
@@ -1111,6 +1113,11 @@ packages:
       abab: 2.0.6
       whatwg-mimetype: 3.0.0
       whatwg-url: 12.0.1
+    dev: false
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
     dev: false
 
   /dayjs/1.11.7:

@@ -13,6 +13,7 @@
     "@next/font": "13.1.6",
     "@notionhq/client": "^2.2.3",
     "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
     "metascraper": "^5.34.0",
     "metascraper-description": "^5.33.7",
     "metascraper-image": "^5.33.7",

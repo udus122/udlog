@@ -34,13 +34,12 @@ import type {
   AudioBlockObjectResponse,
   LinkPreviewBlockObjectResponse,
   UnsupportedBlockObjectResponse,
-  RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 export type BlockListComponentProps = {
   blocks: BlockObjectResponse[] | undefined;
   mapper: BlockComponentMapper;
-}
+};
 
 export type BulletedListType = {
   type: "bulleted_list";
@@ -119,12 +118,3 @@ export type BlockComponentMapper = {
   numbered_list?: BlockComponent<NumberedListType>;
   list_wrapper?: React.FC<BlockListComponentProps>;
 };
-
-// @notionhq/client/build/src/api-endpoints.d.ts L235~L239
-export type TitleProperty = {
-  type: "title";
-  title: Array<RichTextItemResponse>;
-  id: string;
-};
-
-type ValueOf<T> = T[keyof T];

@@ -8,10 +8,7 @@ import {
 } from "@notionhq/client/build/src/api-endpoints";
 
 import { Divider as NotionDivider } from "@/components/Notion/Block/Divider";
-import Link from "next/link";
-import { getPlainTextFromRichText } from "@/libs/notion/utils";
-import { noImageUrl } from "@/constants";
-
+import { Gallery } from "@/components/Notion/Collection/Gallery";
 export const ArticleListLayout = ({
   database,
   articles,
@@ -23,35 +20,13 @@ export const ArticleListLayout = ({
     <div id={database.id} className="layout-article">
       <NavBar className="sticky top-0 z-30 shadow-xl full-bleed shadow-gray-900" />
       <NotionPageCover page={database} className="full-bleed" />
-      <header>
+      <header >
         <NotionPageTitle page={database} className="mt-8" />
         <NotionDivider className="mt-4 mb-8" />
       </header>
-      <main>
+      <main >
         <article>
-          {articles.map((article) => {
-            const coverImageUrl =
-              article.cover?.type === "file"
-                ? article.cover.file.url
-                : article.cover?.external?.url;
-            return (
-              <div key={article.id}>
-                <Link href={`/articles/${article.id}`}>
-                  {getPlainTextFromRichText(
-                    article.properties.Name.title
-                  )}
-                  <span>
-                    <img
-                      width={150}
-                      height={150}
-                      src={coverImageUrl ? coverImageUrl : noImageUrl}
-                      style={{ objectFit: "cover", aspectRatio: "16/9" }}
-                    />
-                  </span>
-                </Link>
-              </div>
-            );
-          })}
+          <Gallery articles={articles} />
         </article>
       </main>
       <Footer className="full-bleed" />

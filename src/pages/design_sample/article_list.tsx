@@ -1,27 +1,19 @@
-import { isFullPage } from "@notionhq/client";
-
 import Head from "next/head";
-import { noImageUrl } from "@/constants";
-import type { InferGetStaticPropsType, NextPage } from "next";
-import { Footer } from "@/components/Footer";
-import { NavBar } from "@/components/NavBar";
-import Link from "next/link";
 import { getPlainTextFromRichText } from "@/libs/notion/utils";
-import { NotionPageCover } from "@/components/Notion/Page/Cover";
+import { ArticleListLayout } from "@/layouts/ArticleList";
+
+import type { InferGetStaticPropsType, NextPage } from "next";
+import type { DatabaseObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { ArticlePageObjectResponse } from "@/types/udlog";
 
 import sample_page_list from "./sample_page_list.json";
 import sample_database from "./sample_database.json";
-import {
-  DatabaseObjectResponse,
-  PageObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
-import { ArticleListLayout } from "@/layouts/ArticleList";
 
 export const getStaticProps = async () => {
   return {
     props: {
       database: sample_database as DatabaseObjectResponse,
-      articles: sample_page_list as PageObjectResponse[],
+      articles: sample_page_list as ArticlePageObjectResponse[],
     },
   };
 };

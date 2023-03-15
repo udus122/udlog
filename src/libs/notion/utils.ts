@@ -2,6 +2,8 @@ import { isFullPage } from "@notionhq/client";
 import type {
   RichTextItemResponse,
   GetPageResponse,
+  PageObjectResponse,
+  DatabaseObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 /**
@@ -15,6 +17,45 @@ export function getPlainTextFromRichText(
     prev += curr.plain_text;
     return prev;
   }, "");
+}
+
+export function extractTitleFromPageOrDatabase(
+  page: PageObjectResponse | DatabaseObjectResponse
+): string {
+  // DatabaseObject
+  if ("title" in page) {
+    return getPlainTextFromRichText(page.title);
+  }
+  // PageObject
+  const titleProperty = Object.values(page.properties).find(
+    (
+      property
+    ): property is Extract<
+      PageObjectResponse["properties"][string],
+      { type: "title" }
+    > => property.type === "title"
+  );
+  if (titleProperty?.title) {
+    return getPlainTextFromRichText(titleProperty?.title);
+  }
+  throw new Error("title is not found.");
+}
+
+export function extractlastEditedTimeFromPage(
+  page: PageObjectResponse
+): Date {
+  const lastEditedTimeProperty = Object.values(page.properties).find(
+    (
+      property
+    ): property is Extract<
+      PageObjectResponse["properties"][string],
+      { type: "last_edited_time" }
+    > => property.type === "last_edited_time"
+  );
+  if (lastEditedTimeProperty?.last_edited_time) {
+    return new Date(lastEditedTimeProperty?.last_edited_time)
+  }
+  throw new Error("last_edited_time is not found.");
 }
 
 export const extractCoverFromPage = (page: GetPageResponse) => {

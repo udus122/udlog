@@ -17,7 +17,7 @@ export async function retrieveBlock(
 ): Promise<BlockObjectResponse> {
   const res = await notion.blocks.retrieve(args);
   if (!isFullBlock(res)) {
-    throw new Error("Retrieved block is p artial.");
+    throw new Error("Retrieved block is partial.");
   }
   return res;
 }

@@ -3,6 +3,7 @@
 @import "./colors.css";
 @import "./notion/page.css";
 @import "./notion/block.css";
+@import "./notion/collection.css";
 
 @tailwind base;
 @tailwind components;
