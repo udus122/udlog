@@ -1,21 +1,19 @@
-import { extractlastEditedTimeFromPage, extractTitleFromPageOrDatabase } from "@/libs/notion/utils";
+import { extractTitleFromPageOrDatabase } from "@/libs/notion/utils";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { noImageUrl } from "@/constants";
+import { format, parseISO } from "date-fns";
 import { Icon } from "@/components/Notion/Block/Icon";
 
-export const Card = ({ article }: { article: PageObjectResponse }) => {
-
+export const Card = ({ page }: { page: PageObjectResponse }) => {
   const coverImageUrl =
-    article.cover?.type === "file"
-      ? article.cover.file.url
-      : article.cover?.external?.url;
-
-  const lastEditedTime = extractlastEditedTimeFromPage(article)
+    page.cover?.type === "file"
+      ? page.cover.file.url
+      : page.cover?.external?.url;
 
   return (
-    <div id={article.id} className="notion_collection_card">
+    <div id={page.id} className="notion_collection_card">
       <a
-        href={`/articles/${article.id}`}
+        href={`/articles/${page.id}`}
         className="notion_collection_card__anchor"
       >
         <div className="notion_collection_card__cover">
@@ -25,11 +23,14 @@ export const Card = ({ article }: { article: PageObjectResponse }) => {
         <div className="notion_collection_card__content">
           <div className="notion_property notion_property__title">
             <Icon icon={page.icon} />
+            <span>{extractTitleFromPageOrDatabase(page)}</span>
           </div>
           <div className="notion_property notion_property_list">
             {/* NOTE: 最終的にはすべてのプロパティを走査して、propsでフィルターを掛けられるようにしたい。ひとまず、最終更新日を表示する */}
             <div>最終更新日</div>
-            <div className="notion_property notion_property__date">{format(lastEditedTime, 'yyyy-MM-dd')}</div>
+            <div className="notion_property notion_property__date">
+              {format(parseISO(page.last_edited_time), "yyyy-MM-dd")}
+            </div>
           </div>
         </div>
       </a>

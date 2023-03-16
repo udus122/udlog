@@ -17,7 +17,7 @@ export const ArticleListLayout = ({
   articles: PageObjectResponse[];
 }) => {
   return (
-    <div id={database.id} className="layout-article">
+    <div id={database.id} className="layout-article-list">
       <NavBar className="sticky top-0 z-30 shadow-xl full-bleed shadow-gray-900" />
       <NotionPageCover page={database} className="full-bleed" />
       <header >
@@ -26,7 +26,7 @@ export const ArticleListLayout = ({
       </header>
       <main >
         <article>
-          <Gallery articles={articles} />
+          <Gallery pages={articles} />
         </article>
       </main>
       <Footer className="full-bleed" />

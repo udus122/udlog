@@ -63,8 +63,17 @@
   .layout-article > * {
     grid-column: 2;
   }
+  .layout-article-list {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 80vw) 1fr;
+    column-gap: 1.5rem;
+  }
 
-  .layout-article .full-bleed {
+  .layout-article-list > * {
+    grid-column: 2;
+  }
+
+  .full-bleed {
     grid-column: 1/4;
   }
 }
