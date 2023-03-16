@@ -34,6 +34,8 @@ import type {
   AudioBlockObjectResponse,
   LinkPreviewBlockObjectResponse,
   UnsupportedBlockObjectResponse,
+  PageObjectResponse,
+  DatabaseObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 export type BlockListComponentProps = {
@@ -118,3 +120,8 @@ export type BlockComponentMapper = {
   numbered_list?: BlockComponent<NumberedListType>;
   list_wrapper?: React.FC<BlockListComponentProps>;
 };
+
+export type NotionIcon =
+  | PageObjectResponse["icon"]
+  | CalloutBlockObjectResponse["callout"]["icon"]
+  | DatabaseObjectResponse["icon"];

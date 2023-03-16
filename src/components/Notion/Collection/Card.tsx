@@ -1,7 +1,7 @@
 import { extractlastEditedTimeFromPage, extractTitleFromPageOrDatabase } from "@/libs/notion/utils";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { noImageUrl } from "@/constants";
-import { format } from 'date-fns'
+import { Icon } from "@/components/Notion/Block/Icon";
 
 export const Card = ({ article }: { article: PageObjectResponse }) => {
 
@@ -24,7 +24,7 @@ export const Card = ({ article }: { article: PageObjectResponse }) => {
         </div>
         <div className="notion_collection_card__content">
           <div className="notion_property notion_property__title">
-            {extractTitleFromPageOrDatabase(article)}
+            <Icon icon={page.icon} />
           </div>
           <div className="notion_property notion_property_list">
             {/* NOTE: 最終的にはすべてのプロパティを走査して、propsでフィルターを掛けられるようにしたい。ひとまず、最終更新日を表示する */}
