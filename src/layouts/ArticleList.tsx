@@ -1,6 +1,6 @@
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
-import { NotionPageCover } from "@/components/Notion/Page/Cover";
+import { PageCover as NotionPageCover } from "@/components/Cover";
 import { NotionPageTitle } from "@/components/Notion/Page/Title";
 import {
   DatabaseObjectResponse,

@@ -1,29 +1,26 @@
-import { noImageUrl } from "@/constants";
-import type { DatabaseObjectResponse, PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import Image from "next/image";
-import { clsx } from "clsx";
+import type {
+  DatabaseObjectResponse,
+  PageObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 
-type Props = React.ComponentProps<"div"> & {
-  page: PageObjectResponse | DatabaseObjectResponse;
+type Props = {
+  cover: PageObjectResponse["cover"] | DatabaseObjectResponse["cover"];
 };
 
-export const NotionPageCover: React.FC<Props> = function ({
-  page,
-  className,
-  ...props
-}) {
-  const coverImageUrl =
-    page.cover?.type === "file"
-      ? page.cover.file.url
-      : page.cover?.external?.url;
-  return (
-    <div className={clsx("notion_page_cover", className)} {...props}>
-      <Image
-        className={"notion_page_cover_image"}
-        src={coverImageUrl ?? noImageUrl}
-        alt="page cover image"
-        fill
+export const Cover: React.FC<Props> = function ({ cover }) {
+  if (cover?.type === "external") {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        className={"notion_cover"}
+        src={cover?.external.url}
+        alt="notion cover"
       />
-    </div>
-  );
+    );
+  } else if (cover?.type === "file") {
+    console.warn("icon type 'file' is not yet supported.");
+    return null;
+  } else {
+    return null;
+  }
 };

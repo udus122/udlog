@@ -8,7 +8,7 @@ import { NavBar } from "@/components/NavBar";
 import Link from "next/link";
 import { collectQueryDatabase, retrieveDatabase } from "@/libs/notion/database";
 import { getPlainTextFromRichText } from "@/libs/notion/utils";
-import { NotionPageCover } from "@/components/Notion/Page/Cover";
+import { PageCover as NotionPageCover } from "@/components/Cover";
 
 export const getStaticProps = async () => {
   const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
