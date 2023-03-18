@@ -22,6 +22,7 @@ export const BulletedList = ({
       {block.items.map((item) => {
         return (
           <BulletedListItem key={item.id} block={item}>
+            {/* @ts-ignore */}
             <BlockList blocks={item[item.type].children} mapper={mapper} />
           </BulletedListItem>
         );

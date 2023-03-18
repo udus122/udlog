@@ -22,6 +22,7 @@ export const NumberedList = ({
       {block.items.map((item) => {
         return (
           <NumberedListItem key={item.id} block={item}>
+            {/* @ts-ignore */}
             <BlockList blocks={item[item.type].children} mapper={mapper} />
           </NumberedListItem>
         );
