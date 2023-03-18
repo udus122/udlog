@@ -13,7 +13,7 @@ export const Toggle: React.FC<Props> = ({
   mapper,
   ...props
 }) => {
-  const Togglable = mapper?.togglable ?? DefaultTogglable
+  const Togglable = mapper?.togglable ?? DefaultTogglable;
   return (
     <Togglable
       block={block}

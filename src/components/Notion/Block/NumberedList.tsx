@@ -2,12 +2,16 @@ import clsx from "clsx";
 import { BlockList } from "../BlockList";
 import { NumberedListItem } from "./NumberedListItem";
 
-import type { BlockComponentMapper, BlockObject, NumberedListType } from "@/types";
+import type {
+  BlockComponentMapper,
+  BlockObject,
+  NumberedListType,
+} from "@/types";
 
 export const NumberedList = ({
   block,
   blocks,
-  mapper
+  mapper,
 }: {
   block: NumberedListType;
   blocks: BlockObject;

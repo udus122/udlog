@@ -41,9 +41,7 @@ export function extractTitleFromPageOrDatabase(
   throw new Error("title is not found.");
 }
 
-export function extractlastEditedTimeFromPage(
-  page: PageObjectResponse
-): Date {
+export function extractlastEditedTimeFromPage(page: PageObjectResponse): Date {
   const lastEditedTimeProperty = Object.values(page.properties).find(
     (
       property
@@ -53,7 +51,7 @@ export function extractlastEditedTimeFromPage(
     > => property.type === "last_edited_time"
   );
   if (lastEditedTimeProperty?.last_edited_time) {
-    return new Date(lastEditedTimeProperty?.last_edited_time)
+    return new Date(lastEditedTimeProperty?.last_edited_time);
   }
   throw new Error("last_edited_time is not found.");
 }

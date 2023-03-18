@@ -18,13 +18,13 @@ export const ArticleListLayout = ({
 }) => {
   return (
     <div id={database.id} className="layout-article-list">
-      <NavBar className="sticky top-0 z-30 shadow-xl full-bleed shadow-gray-900" />
+      <NavBar className="full-bleed shadow-gray-900 sticky top-0 z-30 shadow-xl" />
       <NotionPageCover page={database} className="full-bleed" />
-      <header >
+      <header>
         <NotionPageTitle page={database} className="mt-8" />
         <NotionDivider className="mt-4 mb-8" />
       </header>
-      <main >
+      <main>
         <article>
           <Gallery pages={articles} />
         </article>

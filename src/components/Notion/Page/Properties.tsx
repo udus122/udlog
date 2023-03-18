@@ -5,6 +5,5 @@ type Props = {
 };
 
 export const NotionPageProperties: React.FC<Props> = function ({ page }) {
-  return <div className="notion_page_properties"></div>
+  return <div className="notion_page_properties"></div>;
 };
-

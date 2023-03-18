@@ -25,7 +25,5 @@ type Props = React.ComponentProps<"span"> & {
 };
 export const Text: React.FC<Props> = ({ richTextItem }) => {
   const text = breakTextRichTextItem(richTextItem);
-  return (
-    <span className="notion_rich_text_type_text">{text}</span>
-  );
+  return <span className="notion_rich_text_type_text">{text}</span>;
 };

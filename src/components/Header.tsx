@@ -19,9 +19,7 @@ export const Header: React.FC<Props> = ({ title, cover }) => {
           />
         ) : null}
       </span>
-      <h1>
-        {title}
-      </h1>
+      <h1>{title}</h1>
     </header>
   );
 };

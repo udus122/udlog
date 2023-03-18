@@ -2,12 +2,16 @@ import clsx from "clsx";
 import { BlockList } from "../BlockList";
 import { BulletedListItem } from "./BulletedListItem";
 
-import type { BlockComponentMapper, BlockObject, BulletedListType } from "@/types";
+import type {
+  BlockComponentMapper,
+  BlockObject,
+  BulletedListType,
+} from "@/types";
 
 export const BulletedList = ({
   block,
   blocks,
-  mapper
+  mapper,
 }: {
   block: BulletedListType;
   blocks: BlockObject;

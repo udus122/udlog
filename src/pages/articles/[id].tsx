@@ -65,7 +65,9 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ page, blocks }) => {
   console.log(blocks);
-  return <ArticleLayout page={page} blocks={blocks} customMapper={customMapper} />;
+  return (
+    <ArticleLayout page={page} blocks={blocks} customMapper={customMapper} />
+  );
 };
 
 export default Index;
