@@ -18,7 +18,7 @@ export const ArticleListLayout = ({
 }) => {
   return (
     <div id={database.id} className="layout-article-list">
-      <NavBar className="full-bleed shadow-gray-900 sticky top-0 z-30 shadow-xl" />
+      <NavBar className="sticky top-0 z-30 shadow-xl full-bleed shadow-gray-900" />
       <NotionPageCover page={database} className="full-bleed" />
       <header>
         <NotionPageTitle page={database} className="mt-8" />
@@ -29,7 +29,7 @@ export const ArticleListLayout = ({
           <Gallery pages={articles} />
         </article>
       </main>
-      <Footer className="full-bleed" />
+      <Footer />
     </div>
   );
 };

@@ -17,6 +17,7 @@ export const TableOfContentsItem = ({
       )}
     >
       <a href={`#${heading.id}`}>
+        {/* @ts-ignore */}
         <RichText richText={heading[heading.type].rich_text} />
       </a>
     </div>

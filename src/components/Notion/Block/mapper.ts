@@ -39,6 +39,7 @@ export const defaultMapper: BlockComponentMapper = {
   quote: Quote,
   to_do: ToDo,
   toggle: Toggle,
+  // @ts-ignore
   divider: Divider,
   column: Column,
   column_list: ColumnList,
@@ -48,7 +49,9 @@ export const defaultMapper: BlockComponentMapper = {
   synced_block: SyncedBlock,
   table_of_contents: TableOfContents,
   table: Table,
+  // @ts-ignore
   bulleted_list: BulletedList,
+  // @ts-ignore
   numbered_list: NumberedList,
   list_wrapper: ListWrapper,
 };

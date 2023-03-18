@@ -21,12 +21,15 @@ export function Block({
     console.warn(`${block.type} is not supported`);
     return null;
   }
+  // @ts-ignore
   if (!block?.has_children) {
     // If the block does not have children, do not process recursively.
+    // @ts-ignore
     return <Component block={block} blocks={blocks} mapper={mapper} />;
   } else {
     // For all other block types with children, process them recursively
     return (
+      // @ts-ignore
       <Component block={block} blocks={blocks} mapper={mapper}>
         {/* @ts-ignore Notion types are incorrect */}
         <BlockList blocks={block[block.type].children} mapper={mapper} />

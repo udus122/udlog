@@ -21,7 +21,7 @@ export const ArticleLayout = ({
 }) => {
   return (
     <div id={page.id} className="layout-article">
-      <NavBar className="full-bleed shadow-gray-900 sticky top-0 z-30 shadow-xl" />
+      <NavBar className="sticky top-0 z-30 shadow-xl full-bleed shadow-gray-900" />
       <NotionPageCover page={page} className="full-bleed" />
       <header>
         <NotionPageTitle page={page} className="mt-8" />
@@ -32,7 +32,7 @@ export const ArticleLayout = ({
           <NotionBlockRenderer blocks={blocks} customMapper={customMapper} />
         </article>
       </main>
-      <Footer className="full-bleed" />
+      <Footer />
     </div>
   );
 };

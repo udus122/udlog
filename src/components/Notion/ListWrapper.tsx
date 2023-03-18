@@ -68,6 +68,7 @@ const wrapitems = (blocks: Array<BlockObjectResponse> | undefined) => {
       // 2番目以降のリストアイテムの処理
 
       // 今のblockがリストアイテム かつ 前のブロックもリストアイテムの場合は、前のリストラッパーのitemsにアイテムを追加する
+      // @ts-ignore
       prevItem.items.push(block);
       // 今回のアイテムは連結せずに返す(=スキップする)
       return arr;
@@ -85,6 +86,7 @@ export const ListWrapper: React.FC<BlockListComponentProps> = function ({
       {blockList &&
         blockList.map((block, i) => {
           return (
+            // @ts-ignore
             <Block key={i} block={block} blocks={blockList} mapper={mapper} />
           );
         })}

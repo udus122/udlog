@@ -5,5 +5,6 @@ export const BlockList: React.FC<BlockListComponentProps> = function ({
   mapper,
 }) {
   const Component = mapper.list_wrapper;
+  // @ts-ignore
   return <Component blocks={blocks} mapper={mapper} />;
 };
