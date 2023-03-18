@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Bold } from "./Bold";
 import { Italic } from "./Italic";
 import { Strikethrough } from "./Strikethrough";
@@ -76,5 +74,5 @@ export const RichTextAnnotation: React.FC<{
       <LinkAnnotation richTextItem={richTextItem}>{element}</LinkAnnotation>
     );
   }
-  return <React.Fragment>{element}</React.Fragment>;
+  return <>{element}</>;
 };
