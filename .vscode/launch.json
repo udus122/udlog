@@ -6,21 +6,38 @@
       "request": "launch",
       "name": "next dev",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/next",
-      "runtimeArgs": ["dev"],
+      "runtimeArgs": [
+        "dev"
+      ],
       "cwd": "${workspaceFolder}",
       "smartStep": true,
       "console": "integratedTerminal",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "env": {
         "NODE_OPTIONS": "--inspect"
       }
     },
     {
       "type": "node",
-      "request": "attach",
-      "name": "Next.js App",
-      "skipFiles": ["<node_internals>/**"],
-      "port": 9229
+      "name": "vscode-jest-tests.v2",
+      "request": "launch",
+      "args": [
+        "test",
+        "--",
+        "--runInBand",
+        "--watchAll=false",
+        "--testNamePattern",
+        "${jest.testNamePattern}",
+        "--runTestsByPath",
+        "${jest.testFile}"
+      ],
+      "cwd": "/Users/yusuda/ghq/github.com/udus122/udlog",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "runtimeExecutable": "pnpm"
     }
   ]
 }
