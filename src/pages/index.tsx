@@ -1,12 +1,10 @@
-import type { InferGetStaticPropsType, NextPage } from "next";
-
-import { NavBar } from "@/components/NavBar";
-import { Footer } from "@/components/Footer";
 
 import Head from "next/head";
 import { retrieveFullPage } from "@/libs/notion/page";
 import { Top } from "@/layouts/Top";
 import { collectBlockList, resolveAllChildrenBlock } from "@/libs/notion/block";
+
+import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
   const page_id = "4553dcd168664730aa8723e1cace3d7e";
