@@ -17,11 +17,7 @@ export const PageCover: React.FC<Props> = function ({
 }) {
   return (
     <div className={clsx("notion_page_cover", className)} {...props}>
-      {page.cover ? (
-        <Cover cover={page.cover} />
-      ) : (
-        <img src={noImageUrl} alt="alternative image" />
-      )}
+      <Cover cover={page.cover} alternativeImageUrl={noImageUrl} />
     </div>
   );
 };
