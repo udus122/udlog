@@ -4,11 +4,9 @@ import { Card } from "./Card";
 export const Gallery = ({ pages }: { pages: PageObjectResponse[] }) => {
   return (
     <div className="notion_collection notion_collection_gallery">
-      {pages
-        .filter((page) => !page.archived)
-        .map((page) => (
-          <Card key={page.id} page={page} />
-        ))}
+      {pages.map((page) => (
+        <Card key={page.id} page={page} />
+      ))}
     </div>
   );
 };

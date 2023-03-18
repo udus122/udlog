@@ -22,7 +22,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       database,
-      articles,
+      articles: articles.filter((page) => !page.archived),
     },
     revalidate: 60 * 60 * 24, // 1日
   };
