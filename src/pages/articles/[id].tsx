@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const page = await retrieveFullPage({ page_id: params.id });
   const blocks = await collectBlockList({
     block_id: params.id as string,
-  });
+  }) ?? [];
   const resolvedBlocks = await resolveAllChildrenBlock(blocks);
 
   return {

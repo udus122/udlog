@@ -14,23 +14,31 @@ import type {
 
 export async function retrieveBlock(
   args: GetBlockParameters
-): Promise<BlockObjectResponse> {
-  const res = await notion.blocks.retrieve(args);
-  if (!isFullBlock(res)) {
-    throw new Error("Retrieved block is partial.");
+): Promise<BlockObjectResponse | void> {
+  try {
+    const res = await notion.blocks.retrieve(args);
+    if (!isFullBlock(res)) {
+      throw new Error("Retrieved block is partial.");
+    }
+    return res;
+  } catch (error) {
+    console.error(error);
   }
-  return res;
 }
 
 export async function collectBlockList(
   args: ListBlockChildrenParameters
-): Promise<BlockObjectResponse[]> {
-  const blockList = await collectPaginatedAPI(
-    notion.blocks.children.list,
-    args
-  );
-  const fullBlockList = blockList.filter(isFullBlock);
-  return fullBlockList;
+): Promise<BlockObjectResponse[] | void> {
+  try {
+    const blockList = await collectPaginatedAPI(
+      notion.blocks.children.list,
+      args
+    );
+    const fullBlockList = blockList.filter(isFullBlock);
+    return fullBlockList;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export async function resolveChildrenBlock<T extends BlockObjectResponse>(
@@ -40,7 +48,7 @@ export async function resolveChildrenBlock<T extends BlockObjectResponse>(
     const originalBlocks = await collectBlockList({
       block_id: block.synced_block.synced_from.block_id,
     });
-    const resolvedBlocks = await resolveAllChildrenBlock(originalBlocks);
+    const resolvedBlocks = await resolveAllChildrenBlock(originalBlocks ?? []);
     // NOTE: 他のBlockの書式に合わせてここにchildrenを追加する
     // @ts-ignore
     block.synced_block.children = resolvedBlocks;
