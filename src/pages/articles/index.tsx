@@ -1,14 +1,8 @@
-import { isFullPage } from "@notionhq/client";
-
 import Head from "next/head";
-import { noImageUrl } from "@/constants";
 import type { InferGetStaticPropsType, NextPage } from "next";
-import { Footer } from "@/components/Footer";
-import { NavBar } from "@/components/NavBar";
-import Link from "next/link";
 import { collectQueryDatabase, retrieveDatabase } from "@/libs/notion/database";
 import { getPlainTextFromRichText } from "@/libs/notion/utils";
-import { PageCover as NotionPageCover } from "@/components/Cover";
+import { ArticleListLayout } from "@/layouts/ArticleList";
 
 export const getStaticProps = async () => {
   const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
@@ -46,43 +40,7 @@ const Index: NextPage<Props> = ({ database, articles }) => {
       <Head>
         <title>{title} | UDlog</title>
       </Head>
-      <div>
-        <NavBar />
-        <NotionPageCover page={database} className="full-bleed" />
-        <main>
-          <article>
-            <div>
-              {articles.map((article) => {
-                if (!isFullPage(article)) {
-                  return null;
-                }
-                const coverImageUrl =
-                  article.cover?.type === "file"
-                    ? article.cover.file.url
-                    : article.cover?.external?.url;
-                return (
-                  <div key={article.id}>
-                    <span>
-                      <img
-                        width={150}
-                        height={150}
-                        src={coverImageUrl ? coverImageUrl : noImageUrl}
-                        style={{ objectFit: "cover", aspectRatio: "16/9" }}
-                      />
-                    </span>
-                    <Link href={`/articles/${article.id}`}>
-                      {getPlainTextFromRichText(
-                        article.properties.Name.title
-                      )}
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
-          </article>
-        </main>
-        <Footer />
-      </div>
+      <ArticleListLayout database={database} articles={articles} />
     </>
   );
 };

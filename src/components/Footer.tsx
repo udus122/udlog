@@ -2,7 +2,7 @@ import { Logo } from "./Logo";
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col px-8 py-16 place-items-center stack">
+    <footer className="flex flex-col px-8 py-16 stack full-bleed place-items-center bg-zinc-900">
       <p className="">
         <Logo />
       </p>
