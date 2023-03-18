@@ -76,4 +76,7 @@
   .full-bleed {
     grid-column: 1/4;
   }
+  .stack > * + * {
+    margin-top: var(--s0);
+  }
 }
