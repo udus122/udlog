@@ -32,7 +32,7 @@ export async function collectBlockList(
   try {
     const blockList = await collectPaginatedAPI(
       notion.blocks.children.list,
-      args
+    args
     );
     const fullBlockList = blockList.filter(isFullBlock);
     return fullBlockList;
