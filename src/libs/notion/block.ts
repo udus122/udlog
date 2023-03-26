@@ -14,16 +14,12 @@ import type {
 
 export async function retrieveBlock(
   args: GetBlockParameters
-): Promise<BlockObjectResponse | void> {
-  try {
-    const res = await notion.blocks.retrieve(args);
-    if (!isFullBlock(res)) {
-      throw new Error("Retrieved block is partial.");
-    }
-    return res;
-  } catch (error) {
-    console.error(error);
+): Promise<BlockObjectResponse> {
+  const res = await notion.blocks.retrieve(args);
+  if (!isFullBlock(res)) {
+    throw new Error("Retrieved block is partial.");
   }
+  return res;
 }
 
 export async function collectBlockList(
@@ -32,7 +28,7 @@ export async function collectBlockList(
   try {
     const blockList = await collectPaginatedAPI(
       notion.blocks.children.list,
-    args
+      args
     );
     const fullBlockList = blockList.filter(isFullBlock);
     return fullBlockList;

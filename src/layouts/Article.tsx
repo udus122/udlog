@@ -32,7 +32,9 @@ export const ArticleLayout = ({
           <NotionBlockRenderer blocks={blocks} customMapper={customMapper} />
         </article>
       </main>
-      <Footer />
+      <footer className="mt-8 full-bleed">
+        <Footer />
+      </footer>
     </div>
   );
 };

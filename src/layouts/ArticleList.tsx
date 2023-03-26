@@ -29,7 +29,9 @@ export const ArticleListLayout = ({
           <Gallery pages={articles} />
         </article>
       </main>
-      <Footer />
+      <footer className="mt-8 full-bleed">
+        <Footer />
+      </footer>
     </div>
   );
 };
