@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import { retrieveFullPage } from "@/libs/notion/page";
 import { Top } from "@/layouts/Top";
