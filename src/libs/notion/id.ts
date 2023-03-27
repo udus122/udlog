@@ -1,12 +1,12 @@
-export const getNotionIdfromUrl = (url: string): string | null => {
+export const extractNotionIdfromUrl = (url: string): string | null => {
   // Notionのページ/データベースURLのパターン
   const regexes = [
     // private link
-    /(?:https?:\/\/)?(?:www\.)?notion\.so\/(?:[a-zA-Z]+)\/.*?([0-9a-f]{32})/,
+    /(?:https?:\/\/)?(?:www\.)?notion\.so\/(?:[a-zA-Z]+\/)?.*?([0-9a-f]{32})\/?/,
     // public link
-    /(?:https?:\/\/)?[a-zA-Z]+\.?notion\.site\/.*?([0-9a-f]{32})/,
+    /(?:https?:\/\/)?[a-zA-Z]+\.?notion\.site\/.*?([0-9a-f]{32})\/?/,
     // internal link or pure id
-    /^\/?([a-f0-9]{32})$/,
+    /^\/?([a-f0-9]{32})\/?$/,
   ];
   for (const regex of regexes) {
     // URLからNotionページのIDを抽出する
