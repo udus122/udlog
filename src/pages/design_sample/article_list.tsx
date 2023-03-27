@@ -6,21 +6,21 @@ import type { InferGetStaticPropsType, NextPage } from "next";
 import type { DatabaseObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { ArticlePageObjectResponse } from "@/types/udlog";
 
-import sample_page_list from "./sample_page_list.json";
-import sample_database from "./sample_database.json";
+import sample_page_list from "@/mocks/sample_page_list.json";
+import sample_database from "@/mocks/sample_database.json";
 
 export const getStaticProps = async () => {
   return {
     props: {
       database: sample_database as DatabaseObjectResponse,
-      articles: sample_page_list as ArticlePageObjectResponse[],
+      pages: sample_page_list as ArticlePageObjectResponse[],
     },
   };
 };
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Index: NextPage<Props> = ({ database, articles }) => {
+const Index: NextPage<Props> = ({ database, pages }) => {
   const title = getPlainTextFromRichText(database.title);
 
   return (
@@ -28,7 +28,7 @@ const Index: NextPage<Props> = ({ database, articles }) => {
       <Head>
         <title>{title} | UDlog</title>
       </Head>
-      <ArticleListLayout database={database} articles={articles} />
+      <ArticleListLayout database={database} pages={pages} />
     </>
   );
 };

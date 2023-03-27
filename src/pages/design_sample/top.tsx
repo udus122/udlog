@@ -4,8 +4,8 @@ import type { BlockComponentMapper } from "@/types";
 import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
 import { ArticleLayout } from "@/layouts/Article";
 
-import sample_block_list from "./sample_top_block.json";
-import sample_page_info from "./sample_top_page.json";
+import sample_block_list from "@/mocks/sample_top_block.json";
+import sample_page_info from "@/mocks/sample_top_page.json";
 import {
   BlockObjectResponse,
   PageObjectResponse,
