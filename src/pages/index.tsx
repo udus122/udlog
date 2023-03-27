@@ -6,12 +6,13 @@ import { collectBlockList, resolveAllChildrenBlock } from "@/libs/notion/block";
 import type { InferGetStaticPropsType, NextPage } from "next";
 import { collectQueryDatabase } from "@/libs/notion/database";
 import { defaultMapper } from "@/components/Notion/Block/mapper";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export const getStaticProps = async () => {
   const page_id = "4553dcd168664730aa8723e1cace3d7e";
   const page = await retrieveFullPage({
     page_id,
-  });
+  }) as PageObjectResponse;
   const blocks =
     (await collectBlockList({
       block_id: page_id,
@@ -34,7 +35,7 @@ export const getStaticProps = async () => {
     props: {
       page,
       blocks: resolvedBlocks,
-      pages
+      pages,
     },
     revalidate: 60 * 60 * 24,
   };

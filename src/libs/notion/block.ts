@@ -7,6 +7,8 @@ import type {
   BlockObjectResponse,
   GetBlockParameters,
 } from "@notionhq/client/build/src/api-endpoints";
+import { retrieveFullPage } from "./page";
+import { retrieveFullDatabase } from "./database";
 
 /**
  * Block関連
@@ -48,6 +50,24 @@ export async function resolveChildrenBlock<T extends BlockObjectResponse>(
     // NOTE: 他のBlockの書式に合わせてここにchildrenを追加する
     // @ts-ignore
     block.synced_block.children = resolvedBlocks;
+  }
+  if (block.type === "child_page") {
+    const childPage = await retrieveFullPage({
+      page_id: block.id,
+    });
+    // TODO: child_page/child_databaseの場合は、page/databaseオブジェクトをchildrenに代入する
+    // @ts-ignore
+    block[block.type].children = childPage
+    return block;
+  }
+  if (block.type === "child_database") {
+    const childDatabase = await retrieveFullDatabase({
+      database_id: block.id,
+    });
+    // TODO: child_page/child_databaseの場合は、page/databaseオブジェクトをchildrenに代入する
+    // @ts-ignore
+    block[block.type].children = childDatabase ?? null
+    return block;
   }
   // FIXME: blockに必ずblock.typeプロパティが存在することを保証する方法が分からない
   // @ts-ignore

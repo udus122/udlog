@@ -12,10 +12,15 @@ import {
 
 export const retrieveFullPage = async (
   args: GetPageParameters
-): Promise<PageObjectResponse> => {
-  const pageObject = await notion.pages.retrieve(args);
-  if (!isFullPage(pageObject)) {
-    throw new Error("PartialPageObjectResponse was retrieved.");
+): Promise<PageObjectResponse | void> => {
+  try {
+    const pageObject = await notion.pages.retrieve(args);
+    if (!isFullPage(pageObject)) {
+      throw new Error("PartialPageObjectResponse was retrieved.");
+    }
+    return pageObject;
+  } catch (error) {
+    console.error(error)
   }
-  return pageObject;
-};
+  };
+  

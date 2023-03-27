@@ -1,14 +1,18 @@
 import Head from "next/head";
 import type { InferGetStaticPropsType, NextPage } from "next";
-import { collectQueryDatabase, retrieveDatabase } from "@/libs/notion/database";
+import {
+  collectQueryDatabase,
+  retrieveFullDatabase,
+} from "@/libs/notion/database";
 import { getPlainTextFromRichText } from "@/libs/notion/utils";
 import { ArticleListLayout } from "@/layouts/ArticleList";
+import { DatabaseObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export const getStaticProps = async () => {
   const REFERENCE_DATABASE_ID = process.env.NOTION_REFERENCE_DATABASE_ID ?? "";
-  const database = await retrieveDatabase({
+  const database = (await retrieveFullDatabase({
     database_id: REFERENCE_DATABASE_ID,
-  });
+  })) as DatabaseObjectResponse;
   const pages = await collectQueryDatabase({
     database_id: REFERENCE_DATABASE_ID,
   });

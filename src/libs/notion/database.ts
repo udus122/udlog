@@ -16,14 +16,19 @@ import type {
  * Database関連
  */
 
-export async function retrieveDatabase(
+export async function retrieveFullDatabase(
   args: GetDatabaseParameters
-): Promise<DatabaseObjectResponse> {
-  const response = await notion.databases.retrieve(args);
-  if (!isFullDatabase(response)) {
-    throw new Error("Retrieved database is partial.");
+): Promise<DatabaseObjectResponse|void> {
+  try {
+    
+    const response = await notion.databases.retrieve(args);
+    if (!isFullDatabase(response)) {
+      throw new Error("Retrieved database is partial.");
+    }
+    return response;
+  } catch (error) {
+    console.error(error)
   }
-  return response;
 }
 
 export async function collectQueryDatabase(
