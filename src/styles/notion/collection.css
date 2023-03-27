@@ -34,7 +34,7 @@
 .notion_collection_card__cover img {
   inline-size: 100%;
   block-size: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .notion_collection_card__content {
   padding: var(--s-1);
