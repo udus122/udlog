@@ -10,7 +10,7 @@ export function pageIdToBlogUrl(
   return `/${prefix}/${id}`;
 }
 
-export function parselinkUrl(url: string) {
+export function parseLinkUrl(url: string) {
   const notionId = extractNotionIdfromUrl(url);
   if (notionId) {
     const pageId = addDashesToUUID(notionId);
