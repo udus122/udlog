@@ -4,12 +4,13 @@ import { noImageUrl } from "@/constants";
 import { format, parseISO } from "date-fns";
 import { Icon } from "@/components/Notion/Block/Icon";
 import { Cover } from "@/components/Notion/Page/Cover";
+import { pageIdToBlogUrl } from "@/libs/blog";
 
 export const Card = ({ page }: { page: PageObjectResponse }) => {
   return (
     <div id={page.id} className="notion_collection_card">
       <a
-        href={`/articles/${page.id}`}
+        href={pageIdToBlogUrl(page.id)}
         className="notion_collection_card__anchor"
       />
       <div className="notion_collection_card__cover">
