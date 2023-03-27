@@ -57,7 +57,9 @@
   .layout-article {
     display: grid;
     grid-template-columns: 1fr minmax(auto, var(--article-max-width)) 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
     column-gap: 1.5rem;
+    min-height: 100vh;
   }
 
   .layout-article > * {
