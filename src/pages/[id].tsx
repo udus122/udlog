@@ -1,5 +1,5 @@
 import { collectBlockList, resolveAllChildrenBlock } from "@/libs/notion/block";
-import { retrieveFullPage } from "@/libs/notion/page";
+import { retrieveFullPage, traverseChildPages } from "@/libs/notion/page";
 import { collectQueryDatabase } from "@/libs/notion/database";
 
 import type {
@@ -22,8 +22,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     database_id: REFERENCE_DATABASE_ID,
   });
   const pages = [...articles, ...references]
+  const childPages = await Promise.all(pages.map(async(page) => {
+    const childPage = await traverseChildPages(page)
+    return childPage
+  })).then(x => x.flat())
+  const pagesWithChildren = [...pages, ...childPages]
   return {
-    paths: pages.map(({ id }) => ({
+    paths: pagesWithChildren.map(({ id }) => ({
       params: {
         id,
       },
