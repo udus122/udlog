@@ -31,8 +31,8 @@ export const Top = ({
         <NotionDivider className="mt-4 mb-8" />
       </header>
       <main>
-        <article className="lg:gap-x-8 lg:grid lg:grid-cols-3">
-          <div className="lg:col-span-2">
+        <article className="lg:gap-x-8 lg:grid lg:grid-cols-4">
+          <div className="lg:col-span-3">
             <h2 className="notion_heading_2">記事一覧</h2>
             <Gallery pages={pages} />
           </div>
