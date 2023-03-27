@@ -5,18 +5,12 @@ import { getPlainTextFromRichText } from "@/libs/notion/utils";
 import { ArticleListLayout } from "@/layouts/ArticleList";
 
 export const getStaticProps = async () => {
-  const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
+  const REFERENCE_DATABASE_ID = process.env.NOTION_REFERENCE_DATABASE_ID ?? "";
   const database = await retrieveDatabase({
-    database_id: ARTICLE_DB_ID,
+    database_id: REFERENCE_DATABASE_ID,
   });
   const pages = await collectQueryDatabase({
-    database_id: ARTICLE_DB_ID,
-    sorts: [
-      {
-        property: "Published",
-        direction: "descending",
-      },
-    ],
+    database_id: REFERENCE_DATABASE_ID,
   });
 
   return {

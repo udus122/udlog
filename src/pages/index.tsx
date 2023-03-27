@@ -19,7 +19,7 @@ export const getStaticProps = async () => {
   const resolvedBlocks = await resolveAllChildrenBlock(blocks);
   const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
 
-  const articles = await collectQueryDatabase({
+  const pages = await collectQueryDatabase({
     database_id: ARTICLE_DB_ID,
     sorts: [
       {
@@ -34,7 +34,7 @@ export const getStaticProps = async () => {
     props: {
       page,
       blocks: resolvedBlocks,
-      articles
+      pages
     },
     revalidate: 60 * 60 * 24,
   };
@@ -42,7 +42,7 @@ export const getStaticProps = async () => {
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Index: NextPage<Props> = ({ page, blocks, articles }) => {
+const Index: NextPage<Props> = ({ page, blocks, pages }) => {
   return (
     <>
       <Head>
@@ -51,7 +51,7 @@ const Index: NextPage<Props> = ({ page, blocks, articles }) => {
       <Top
         page={page}
         blocks={blocks}
-        articles={articles}
+        pages={pages}
         customMapper={defaultMapper}
       />
     </>

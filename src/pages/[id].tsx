@@ -13,20 +13,19 @@ import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
 import { BlockComponentMapper } from "@/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
+  const ARTICLE_DATABASE_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
+  const REFERENCE_DATABASE_ID = process.env.NOTION_REFERENCE_DATABASE_ID ?? "";
   const articles = await collectQueryDatabase({
-    database_id: ARTICLE_DB_ID,
-    sorts: [
-      {
-        property: "Published",
-        direction: "descending",
-      },
-    ],
+    database_id: ARTICLE_DATABASE_ID,
   });
+  const references = await collectQueryDatabase({
+    database_id: REFERENCE_DATABASE_ID,
+  });
+  const pages = [...articles, ...references]
   return {
-    paths: articles.map((article) => ({
+    paths: pages.map(({ id }) => ({
       params: {
-        id: article.id,
+        id,
       },
     })),
     fallback: false,
@@ -43,9 +42,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     throw new TypeError("parms.id must be String.");
   }
   const page = await retrieveFullPage({ page_id: params.id });
-  const blocks = await collectBlockList({
-    block_id: params.id as string,
-  }) ?? [];
+  const blocks =
+    (await collectBlockList({
+      block_id: params.id as string,
+    })) ?? [];
   const resolvedBlocks = await resolveAllChildrenBlock(blocks);
 
   return {

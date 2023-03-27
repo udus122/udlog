@@ -11,10 +11,10 @@ import { Divider as NotionDivider } from "@/components/Notion/Block/Divider";
 import { Gallery } from "@/components/Notion/Collection/Gallery";
 export const ArticleListLayout = ({
   database,
-  articles,
+  pages,
 }: {
   database: DatabaseObjectResponse;
-  articles: PageObjectResponse[];
+  pages: PageObjectResponse[];
 }) => {
   return (
     <div id={database.id} className="layout-article-list">
@@ -26,7 +26,7 @@ export const ArticleListLayout = ({
       </header>
       <main>
         <article>
-          <Gallery pages={articles} />
+          <Gallery pages={pages} />
         </article>
       </main>
       <footer className="mt-8 full-bleed">
