@@ -63,3 +63,19 @@ describe("urlからnotonのIDを取得する関数のテスト", () => {
     expect(getNotionIdfromUrl("")).toBeNull();
   });
 });
+
+import { addDashesToUUID } from "./id";
+
+describe("addDashesToUUID", () => {
+  test("正しい形式のUUID文字列を受け取った場合、ハイフンが追加された文字列を返す", () => {
+    const uuid = "0123456789abcdef0123456789abcdef";
+    const result = addDashesToUUID(uuid);
+    expect(result).toBe("01234567-89ab-cdef-0123-456789abcdef");
+  });
+
+  test("不正な形式のUUID文字列を受け取った場合、nullを返す", () => {
+    const uuid = "invalid-uuid-string";
+    const result = addDashesToUUID(uuid);
+    expect(result).toBeNull();
+  });
+});

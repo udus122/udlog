@@ -21,3 +21,11 @@ export const getNotionIdfromUrl = (url: string): string | null => {
   }
   return null;
 };
+
+export function addDashesToUUID(uuid: string): string | null {
+  if (!/^[0-9a-f]{32}$/.test(uuid)) {
+    return null;
+  }
+
+  return uuid.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5');
+}
