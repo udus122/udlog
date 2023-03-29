@@ -1,4 +1,4 @@
-import { parseLinkUrl, pageIdToBlogUrl } from "@/libs/blog";
+import { parseLinkUrl, pageIdToBlogUrl } from "@/libs/blog/blog-utils";
 
 describe("pageIdToBlogUrl", () => {
   test("prefixなし", () => {

@@ -4,7 +4,7 @@ import { noImageUrl } from "@/constants";
 import { format, parseISO } from "date-fns";
 import { Icon } from "@/components/Notion/Block/Icon";
 import { Cover } from "@/components/Notion/Page/Cover";
-import { pageIdToBlogUrl } from "@/libs/blog";
+import { pageIdToBlogUrl } from "@/libs/blog/blog-utils";
 
 export const Card = ({ page }: { page: PageObjectResponse }) => {
   return (

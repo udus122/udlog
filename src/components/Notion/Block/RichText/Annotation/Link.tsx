@@ -1,4 +1,4 @@
-import { parseLinkUrl } from "@/libs/blog";
+import { parseLinkUrl } from "@/libs/blog/blog-utils";
 import type { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export const Link: React.FC<
