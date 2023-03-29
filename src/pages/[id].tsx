@@ -12,6 +12,7 @@ import { ArticleLayout } from "@/layouts/Article";
 import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
 import { BlockComponentMapper } from "@/types";
 import { collectArticles, collectReferences } from "@/libs/blog/fetch-pages";
+import { filterGrayBackgroundBlock } from "@/libs/blog/blog-utils";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await collectArticles();
@@ -50,12 +51,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     (await collectBlockList({
       block_id: params.id as string,
     })) ?? [];
+
   const resolvedBlocks = await resolveAllChildrenBlock(blocks);
+  const filteredBlocks = filterGrayBackgroundBlock(resolvedBlocks);
 
   return {
     props: {
       page: page,
-      blocks: resolvedBlocks,
+      blocks: filteredBlocks,
     },
     revalidate: 60 * 60 * 24, // 1日
   };

@@ -1,4 +1,5 @@
 import { addDashesToUUID, extractNotionIdfromUrl } from "@/libs/notion/id";
+import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export function pageIdToBlogUrl(
   id: string,
@@ -20,3 +21,20 @@ export function parseLinkUrl(url: string) {
   return url;
 }
 
+function blockFilterFn(block: BlockObjectResponse) {
+  // @ts-ignore
+  return block[block.type].color !== "gray_background";
+}
+
+export function filterGrayBackgroundBlock(blockList: BlockObjectResponse[]) {
+  return blockList.filter(blockFilterFn).map((block) => {
+    // @ts-ignore
+    if (Array.isArray(block[block.type].children)) {
+      // @ts-ignore
+      block[block.type].children =
+        // @ts-ignore
+        block[block.type].children.filter(blockFilterFn);
+    }
+    return block;
+  });
+}
