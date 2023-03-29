@@ -11,22 +11,21 @@ import type {
 import { ArticleLayout } from "@/layouts/Article";
 import { OpenedTogglable } from "@/components/CustomBlock/OpenedTogglable";
 import { BlockComponentMapper } from "@/types";
+import { collectArticles, collectReferences } from "@/libs/blog/fetch-pages";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ARTICLE_DATABASE_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
-  const REFERENCE_DATABASE_ID = process.env.NOTION_REFERENCE_DATABASE_ID ?? "";
-  const articles = await collectQueryDatabase({
-    database_id: ARTICLE_DATABASE_ID,
-  });
-  const references = await collectQueryDatabase({
-    database_id: REFERENCE_DATABASE_ID,
-  });
-  const pages = [...articles, ...references]
-  const childPages = await Promise.all(pages.map(async(page) => {
-    const childPage = await traverseChildPages(page)
-    return childPage
-  })).then(x => x.flat())
-  const pagesWithChildren = [...pages, ...childPages]
+  const articles = await collectArticles();
+  const references = await collectReferences();
+  const pages = [...articles, ...references];
+
+  const childPages = await Promise.all(
+    pages.map(async (page) => {
+      const childPage = await traverseChildPages(page);
+      return childPage;
+    })
+  ).then((x) => x.flat());
+  const pagesWithChildren = [...pages, ...childPages];
+
   return {
     paths: pagesWithChildren.map(({ id }) => ({
       params: {
@@ -69,7 +68,6 @@ const customMapper: BlockComponentMapper = {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ page, blocks }) => {
-  console.log(blocks);
   return (
     <ArticleLayout page={page} blocks={blocks} customMapper={customMapper} />
   );

@@ -2,34 +2,24 @@ import Head from "next/head";
 import { retrieveFullPage } from "@/libs/notion/page";
 import { Top } from "@/layouts/Top";
 import { collectBlockList, resolveAllChildrenBlock } from "@/libs/notion/block";
-
-import type { InferGetStaticPropsType, NextPage } from "next";
-import { collectQueryDatabase } from "@/libs/notion/database";
 import { defaultMapper } from "@/components/Notion/Block/mapper";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { collectArticles } from "@/libs/blog/fetch-pages";
+
+import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
   const page_id = "4553dcd168664730aa8723e1cace3d7e";
-  const page = await retrieveFullPage({
+  const page = (await retrieveFullPage({
     page_id,
-  }) as PageObjectResponse;
+  })) as PageObjectResponse;
   const blocks =
     (await collectBlockList({
       block_id: page_id,
     })) ?? [];
   const resolvedBlocks = await resolveAllChildrenBlock(blocks);
-  const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
 
-  const pages = await collectQueryDatabase({
-    database_id: ARTICLE_DB_ID,
-    sorts: [
-      {
-        property: "Published",
-        direction: "descending",
-      },
-    ],
-    page_size: 10,
-  });
+  const pages = await collectArticles();
 
   return {
     props: {

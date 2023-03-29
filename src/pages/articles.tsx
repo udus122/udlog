@@ -1,27 +1,13 @@
 import Head from "next/head";
-import type { InferGetStaticPropsType, NextPage } from "next";
-import {
-  collectQueryDatabase,
-  retrieveFullDatabase,
-} from "@/libs/notion/database";
 import { getPlainTextFromRichText } from "@/libs/notion/utils";
 import { ArticleListLayout } from "@/layouts/ArticleList";
-import { DatabaseObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { collectArticles, retrieveArticleDB } from "@/libs/blog/fetch-pages";
+
+import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
-  const ARTICLE_DB_ID = process.env.NOTION_ARTICLE_DATABASE_ID ?? "";
-  const database = (await retrieveFullDatabase({
-    database_id: ARTICLE_DB_ID,
-  })) as DatabaseObjectResponse;
-  const pages = await collectQueryDatabase({
-    database_id: ARTICLE_DB_ID,
-    sorts: [
-      {
-        property: "Published",
-        direction: "descending",
-      },
-    ],
-  });
+  const database = await retrieveArticleDB();
+  const pages = await collectArticles();
 
   return {
     props: {
