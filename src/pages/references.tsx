@@ -17,7 +17,7 @@ export const getStaticProps = async () => {
       database,
       pages: pages.filter((page) => !page.archived),
     },
-    revalidate: 60 * 60 * 24, // 1日
+    revalidate: 60 * 60, // 1時間
   };
 };
 

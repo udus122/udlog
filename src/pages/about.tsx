@@ -7,7 +7,7 @@ import type { InferGetStaticPropsType, NextPage } from "next";
 //     props: {
 //       page,
 //     },
-//     revalidate: 60 * 60 * 24, // 1日
+// revalidate: 60 * 60, // 1時間
 //   };
 // };
 

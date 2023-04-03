@@ -27,7 +27,7 @@ export const getStaticProps = async () => {
       blocks: resolvedBlocks,
       pages,
     },
-    revalidate: 60 * 60 * 24,
+    revalidate: 60 * 60, // 1時間
   };
 };
 

@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       page: page,
       blocks: filteredBlocks,
     },
-    revalidate: 60 * 60 * 24, // 1日
+    revalidate: 60 * 60, // 1時間
   };
 };
 
