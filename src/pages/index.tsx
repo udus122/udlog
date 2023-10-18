@@ -1,31 +1,17 @@
 import Head from "next/head";
-import { retrieveFullPage } from "@/libs/notion/page";
-import { Top } from "@/layouts/Top";
-import { collectBlockList, resolveAllChildrenBlock } from "@/libs/notion/block";
-import { defaultMapper } from "@/components/Notion/Block/mapper";
-import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import { collectArticles } from "@/libs/blog/fetch-pages";
 
+import { Blocks } from "@udus/notion-components/components";
+import { fetchBlockComponents } from "@udus/notion-components/libs";
+import "@udus/notion-components/styles/globals.css";
 import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
   const page_id = "4553dcd168664730aa8723e1cace3d7e";
-  const page = (await retrieveFullPage({
-    page_id,
-  })) as PageObjectResponse;
-  const blocks =
-    (await collectBlockList({
-      block_id: page_id,
-    })) ?? [];
-  const resolvedBlocks = await resolveAllChildrenBlock(blocks);
-
-  const pages = await collectArticles();
+  const blocks = await fetchBlockComponents(page_id);
 
   return {
     props: {
-      page,
-      blocks: resolvedBlocks,
-      pages,
+      blocks,
     },
     revalidate: 60 * 60, // 1時間
   };
@@ -33,18 +19,13 @@ export const getStaticProps = async () => {
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Index: NextPage<Props> = ({ page, blocks, pages }) => {
+const Index: NextPage<Props> = ({ blocks }) => {
   return (
     <>
       <Head>
         <title>UDlog</title>
       </Head>
-      <Top
-        page={page}
-        blocks={blocks}
-        pages={pages}
-        customMapper={defaultMapper}
-      />
+      <Blocks blocks={blocks} />
     </>
   );
 };
