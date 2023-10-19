@@ -13,21 +13,11 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.3",
-    "async-retry": "^1.3.3",
-    "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
-    "metascraper": "^5.34.0",
-    "metascraper-description": "^5.33.7",
-    "metascraper-image": "^5.33.7",
-    "metascraper-logo-favicon": "^5.33.8",
-    "metascraper-title": "^5.33.7",
     "modern-normalize": "^1.1.0",
     "next": "^13.5.5",
-    "prop-types": "^15.8.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-katex": "^3.0.1",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -36,8 +26,6 @@
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
-    "@types/react-katex": "^3.0.0",
-    "@types/react-syntax-highlighter": "^15.5.6",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "autoprefixer": "^10.4.14",
