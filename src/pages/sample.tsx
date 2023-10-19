@@ -1,11 +1,10 @@
 import { Blocks } from "@udus/notion-components/components";
 import { fetchBlockComponents } from "@udus/notion-components/libs";
-import Head from "next/head";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
-  const page_id = "4553dcd168664730aa8723e1cace3d7e";
+  const page_id = "2712e341754a41aea9ce4c0bb4b18c52";
   const blocks = await fetchBlockComponents(page_id);
 
   return {
@@ -19,14 +18,7 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ blocks }) => {
-  return (
-    <>
-      <Head>
-        <title>UDlog</title>
-      </Head>
-      <Blocks blocks={blocks} />
-    </>
-  );
+  return <Blocks blocks={blocks} />;
 };
 
 export default Index;
