@@ -1,7 +1,7 @@
-import Head from "next/head";
-
 import { Blocks } from "@udus/notion-components/components";
 import { fetchBlockComponents } from "@udus/notion-components/libs";
+import Head from "next/head";
+
 import "@udus/notion-components/styles/globals.css";
 import type { InferGetStaticPropsType, NextPage } from "next";
 

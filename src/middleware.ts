@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
+
 import type { NextRequest } from "next/server";
-import { addDashesToUUID } from "./libs/notion/id";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
@@ -15,3 +15,12 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: "/:path*",
 };
+
+// uuidHex type is uuid4 without dashes
+export function addDashesToUUID(uuid: string) {
+  if (!/^[0-9a-f]{32}$/.test(uuid)) {
+    return;
+  }
+
+  return uuid.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, "$1-$2-$3-$4-$5");
+}
