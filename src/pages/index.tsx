@@ -1,12 +1,12 @@
 import { Blocks } from "@udus/notion-components/components";
-import { fetchBlockComponents } from "@udus/notion-components/libs";
+import { fetchBlocks } from "@udus/notion-components/libs";
 import Head from "next/head";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
   const page_id = "4553dcd168664730aa8723e1cace3d7e";
-  const blocks = await fetchBlockComponents(page_id);
+  const blocks = await fetchBlocks(page_id);
 
   return {
     props: {
