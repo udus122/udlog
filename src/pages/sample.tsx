@@ -1,5 +1,5 @@
-import { Blocks } from "@udus/notion-components/components";
-import { fetchBlocks } from "@udus/notion-components/libs";
+import { Blocks } from "@udus/notion-components";
+import { fetchBlocks } from "@udus/notion-libs";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
 
