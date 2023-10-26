@@ -1,5 +1,5 @@
-import { Blocks } from "@udus/notion-components";
-import { fetchBlocks } from "@udus/notion-libs";
+import { BlockList } from "@udus/notion-components/components";
+import { fetchBlocks } from "@udus/notion-components/libs";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
 
@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ blocks }) => {
-  return <Blocks blocks={blocks} />;
+  return <BlockList blocks={blocks} />;
 };
 
 export default Index;

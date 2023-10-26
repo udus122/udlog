@@ -1,57 +1,8 @@
-/* @import 'https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css'; */
-@import "./variables.css";
-@import "./colors.css";
-@import "./notion/page.css";
-@import "./notion/block.css";
-@import "./notion/collection.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    scroll-padding-top: var(--navbar-height);
-  }
-  body {
-    color: var(--color_default);
-    background-color: var(--color_default_background);
-    line-height: 1.5;
-    fill: currentColor;
-    font-family: var(--font-sans);
-  }
-
-  p {
-    margin: 0;
-    padding: 1px;
-  }
-  ol,
-  ul,
-  menu {
-    list-style: revert;
-  }
-  /* img,
-  svg,
-  video,
-  canvas,
-  audio,
-  iframe,
-  embed,
-  object {
-    display: unset;
-    vertical-align: unset;
-  } */
-  /* a {
-    color: inherit;
-    text-decoration-line: none;
-  } */
-
-  summary > h1,
-  summary > h2,
-  summary > h3 {
-    display: inline-block;
-  }
-}
+@layer base {}
 
 @layer components {
   .layout-article {

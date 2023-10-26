@@ -1,5 +1,5 @@
-import { Blocks } from "@udus/notion-components";
-import { fetchBlocks } from "@udus/notion-libs";
+import { BlockList } from "@udus/notion-components/components";
+import { fetchBlocks } from "@udus/notion-components/libs";
 import Head from "next/head";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
@@ -24,7 +24,7 @@ const Index: NextPage<Props> = ({ blocks }) => {
       <Head>
         <title>UDlog</title>
       </Head>
-      <Blocks blocks={blocks} />
+      <BlockList blocks={blocks} />
     </>
   );
 };
