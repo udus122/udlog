@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {}
+@layer base {
+}
 
 @layer components {
   .layout-article {
@@ -36,5 +37,5 @@
 
 /* 画像 */
 #\38 780b290-ad42-418f-a714-3819c10d3007 {
-  max-width: 5rem
+  max-width: 5rem;
 }

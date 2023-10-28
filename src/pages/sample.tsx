@@ -1,11 +1,11 @@
-import { BlockList } from "@udus/notion-components/components";
-import { fetchBlocks } from "@udus/notion-components/libs";
+import { BlockRenderer } from "@udus/notion-components/components";
+import { fetchBlockList } from "@udus/notion-components/libs";
 
 import type { InferGetStaticPropsType, NextPage } from "next";
 
 export const getStaticProps = async () => {
   const page_id = "2712e341754a41aea9ce4c0bb4b18c52";
-  const blocks = await fetchBlocks(page_id);
+  const blocks = await fetchBlockList(page_id);
 
   return {
     props: {
@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index: NextPage<Props> = ({ blocks }) => {
-  return <BlockList blocks={blocks} />;
+  return <BlockRenderer blocks={blocks} theme="dark" />;
 };
 
 export default Index;
