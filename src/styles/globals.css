@@ -2,40 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-}
-
-@layer components {
-  .layout-article {
-    display: grid;
-    grid-template-columns: 1fr minmax(auto, var(--article-max-width)) 1fr;
-    grid-template-rows: auto auto auto 1fr auto;
-    column-gap: 1.5rem;
-    min-height: 100vh;
-  }
-
-  .layout-article > * {
-    grid-column: 2;
-  }
-  .layout-article-list {
-    display: grid;
-    grid-template-columns: 1fr minmax(auto, 80vw) 1fr;
-    column-gap: 1.5rem;
-  }
-
-  .layout-article-list > * {
-    grid-column: 2;
-  }
-
-  .full-bleed {
-    grid-column: 1/4;
-  }
-  .stack > * + * {
-    margin-top: var(--s0);
-  }
-}
-
-/* 画像 */
-#\38 780b290-ad42-418f-a714-3819c10d3007 {
-  max-width: 5rem;
+.notion-gallery-card-cover .notion-cover {
+  object-fit: contain;
 }
