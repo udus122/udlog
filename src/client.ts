@@ -2,20 +2,25 @@ import { Client } from "@notionhq/client";
 
 import { withCache } from "./cache";
 
-export const client = new Client({
-  auth: process.env.NOTION_TOKEN,
-});
+const memoizeClient = (client: Client, ttl: number, cacheDir: string) => {
+  const handler: ProxyHandler<Client> = {
+    get(target: Client, propertyKey: PropertyKey) {
+      const property = Reflect.get(target, propertyKey);
 
-const handler: ProxyHandler<Client> = {
-  get: (target: Client, propertyKey: PropertyKey) => {
-    const property = Reflect.get(target, propertyKey);
-    return new Proxy(property, handler);
-  },
+      if (typeof property === "function") {
+        return withCache(property, ttl, cacheDir);
+      }
 
-  apply: (target, thisArg, argumentsList) => {
-    // @ts-expect-error: Client itself is not callable. but target here is client property and these are callable.
-    return withCache(target).apply(thisArg, argumentsList);
-  },
+      return new Proxy(property, handler);
+    },
+  };
+  return new Proxy(client, handler);
 };
 
-export const memoClient = new Proxy(client, handler);
+export const client = memoizeClient(
+  new Client({
+    auth: process.env.NOTION_TOKEN,
+  }),
+  10 * 60 * 1000 /* 10min */,
+  ".cache"
+);

@@ -1,11 +1,6 @@
 import { createHash } from "node:crypto";
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  statSync,
-  writeFileSync,
-} from "node:fs";
+import { existsSync, mkdirSync, statSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
 import { dirname } from "node:path/posix";
 
 import type { BinaryLike } from "node:crypto";
@@ -23,13 +18,16 @@ export const createDirIfNotfound = (path: PathLike): void => {
   }
 };
 
-export const readCache = <T>(path: PathLike): T => {
-  return JSON.parse(readFileSync(path, "utf8"));
+export const readCache = async <T>(path: PathLike): Promise<T> => {
+  return JSON.parse(await readFile(path, "utf8"));
 };
 
-export const writeCache = (file: string, data: unknown): void => {
+export const writeCache = async (
+  file: string,
+  data: unknown
+): Promise<void> => {
   createDirIfNotfound(dirname(file));
-  writeFileSync(file, JSON.stringify(data), "utf8");
+  writeFile(file, JSON.stringify(data), "utf8");
 };
 
 export const isAvailableCache = (path: PathLike, ttl: number): boolean => {
@@ -38,15 +36,16 @@ export const isAvailableCache = (path: PathLike, ttl: number): boolean => {
 };
 
 export const withCache = <Args, Item>(
-  func: (args: Args) => Item,
+  func: (args: Args) => Item | Promise<Item>,
+  ttl: number = 0,
   cacheDir: string = ".cache"
-): ((args: Args) => Item) => {
-  const funcWithCache = (args: Args): Item => {
+): ((args: Args) => Promise<Item>) => {
+  const funcWithCache = async (args: Args): Promise<Item> => {
     const key = hash(JSON.stringify({ func: func.name, args }));
     const cachePath = `${cacheDir}/${key}`;
 
     try {
-      if (isAvailableCache(cachePath, 600)) {
+      if (isAvailableCache(cachePath, ttl)) {
         const cache = readCache<Item>(cachePath);
         return cache;
       }
@@ -54,7 +53,7 @@ export const withCache = <Args, Item>(
       /* not fatal */
     }
 
-    const res = func({ ...args });
+    const res = await func({ ...args });
     writeCache(cachePath, res);
     return res;
   };
