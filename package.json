@@ -12,17 +12,23 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.14",
+    "@radix-ui/react-slot": "^1.0.2",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
-    "@udus/notion-renderer": "^1.0.0-alpha.61",
+    "@udus/notion-renderer": "^1.0.0-alpha.62",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "date-fns": "^2",
     "dotenv": "^16.3.1",
     "eslint-config-next": "^14.0.4",
     "katex": "^0.16.9",
+    "lucide-react": "^0.301.0",
     "modern-normalize": "^2.0.0",
     "next": "^14.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.5",

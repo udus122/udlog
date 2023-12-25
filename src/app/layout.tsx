@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@udus/notion-renderer/styles/globals.css";
-import "./global.css"
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Notion Renderer Example",
