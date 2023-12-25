@@ -1,7 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.notion-gallery-card-cover .notion-cover {
-  object-fit: contain;
-}
