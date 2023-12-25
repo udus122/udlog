@@ -2,8 +2,8 @@ import { Page } from "@udus/notion-renderer/components";
 import { fetchDatabase, fetchPage } from "@udus/notion-renderer/libs";
 
 import { client } from "@/client";
+import { loadArticles } from "@/lib/notion";
 
-import { loadArticles } from "./actions";
 import Top from "./top";
 
 export default async () => {

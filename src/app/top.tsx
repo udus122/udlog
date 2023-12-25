@@ -3,8 +3,7 @@ import { Database } from "@udus/notion-renderer/components";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-
-import { loadArticles } from "./actions";
+import { loadArticles } from "@/lib/notion";
 
 import type {
   DatabaseObject,

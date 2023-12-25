@@ -1,12 +1,12 @@
 import { Page } from "@udus/notion-renderer/components";
 
-import { getBlocks, getPage } from "./lib";
+import { loadPage, loadBlocks } from "@/lib/notion";
 
 export const revalidate = 3600;
 
 export default async ({ params: { id } }: { params: { id: string } }) => {
-  const page = await getPage(id);
-  const blocks = await getBlocks(id);
+  const page = await loadPage({ page_id: id });
+  const blocks = await loadBlocks({ block_id: id });
 
   return (
     page &&
