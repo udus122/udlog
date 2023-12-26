@@ -1,6 +1,23 @@
 /* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
+
+.notion-page,
+.notion-database {
+  grid-template-columns: [full-start] 1fr [content-start] 70ch [content-end] 1fr [full-end];
+}
+
+.notion-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 16px 4px 4px;
+  gap: 1rem;
+}
+
+.notion-block-list img {
+  max-width: 340px;
+}
+
 @tailwind utilities;
 
 @layer base {
@@ -75,23 +92,5 @@
   body {
     @apply bg-background text-foreground;
     background-color: var(--notion-dark-color-bg-default);
-  }
-}
-
-.notion-root {
-  .notion-page,
-  .notion-database {
-    grid-template-columns: [full-start] 1fr [content-start] 70ch [content-end] 1fr [full-end];
-  }
-
-  .notion-gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 16px 4px 4px;
-    gap: 1rem;
-  }
-
-  .notion-block-list img {
-    max-width: 340px;
   }
 }

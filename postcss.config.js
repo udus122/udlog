@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
+/** @type {import('postcss-load-config').Config} */
 module.exports = {
   plugins: {
-    'postcss-import': {},
-    'tailwindcss/nesting': 'postcss-nesting',
+    "postcss-import": {},
     tailwindcss: {},
     autoprefixer: {},
   },
-}
+};

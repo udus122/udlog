@@ -21,6 +21,6 @@ export const client = memoizeClient(
   new Client({
     auth: process.env.NOTION_TOKEN,
   }),
-  10 * 60 * 1000 /* 10min */,
+  24 * 60 * 60 * 1000 /* 1day */,
   ".cache"
 );
