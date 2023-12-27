@@ -1,4 +1,11 @@
-import { Page } from "@udus/notion-renderer/components";
+import {
+  OpenedHeading1,
+  OpenedHeading2,
+  OpenedHeading3,
+  OpenedToggle,
+  Page,
+  RenderConfig,
+} from "@udus/notion-renderer/components";
 
 import { loadPage, loadBlocks } from "@/lib/notion";
 
@@ -11,11 +18,20 @@ export default async ({ params: { id } }: { params: { id: string } }) => {
   return (
     page &&
     blocks && (
-      <Page
-        page={page}
-        displayProperties={["Published", "Category", "Tags"]}
-        blocks={blocks}
-      />
+      <RenderConfig
+        blockMapper={{
+          heading_1: OpenedHeading1,
+          heading_2: OpenedHeading2,
+          heading_3: OpenedHeading3,
+          toggle: OpenedToggle,
+        }}
+      >
+        <Page
+          page={page}
+          displayProperties={["Published", "Category", "Tags"]}
+          blocks={blocks}
+        />
+      </RenderConfig>
     )
   );
 };

@@ -21,14 +21,14 @@ export default function Top({
     next_cursor: string | null;
   };
 }) {
-  const [articlesLoad, setArticlesLoad] = useState(initialPages);
+  const [pages, setPages] = useState(initialPages);
   const [isPending, startTransition] = useTransition();
 
   return (
     <>
       <Database
         database={database}
-        pages={articlesLoad.items}
+        pages={pages.items}
         hideCover
         hideDescription
         hideIcon
@@ -37,16 +37,14 @@ export default function Top({
         displayProperties={["title", "Published", "Tags"]}
       />
       <div className="flex justify-center py-8">
-        {articlesLoad.next_cursor !== null && (
+        {pages.next_cursor !== null && (
           <Button
             disabled={isPending}
             onClick={() =>
               startTransition(async () => {
-                const nextArticles = await loadArticles(
-                  articlesLoad.next_cursor
-                );
-                setArticlesLoad({
-                  items: [...articlesLoad.items, ...nextArticles.items],
+                const nextArticles = await loadArticles(pages.next_cursor);
+                setPages({
+                  items: [...pages.items, ...nextArticles.items],
                   next_cursor: nextArticles.next_cursor,
                 });
               })
