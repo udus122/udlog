@@ -1,6 +1,7 @@
 "use client";
+import { ReloadIcon } from "@radix-ui/react-icons";
 import { Database } from "@udus/notion-renderer/components";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
 import { loadArticles } from "@/lib/notion";
@@ -21,6 +22,7 @@ export default function Top({
   };
 }) {
   const [articlesLoad, setArticlesLoad] = useState(initialPages);
+  const [isPending, startTransition] = useTransition();
 
   return (
     <>
@@ -32,22 +34,33 @@ export default function Top({
         hideIcon
         hideTitle
         viewType="gallery"
-        displayProperties={["title", "Published"]}
+        displayProperties={["title", "Published", "Tags"]}
       />
       <div className="flex justify-center py-8">
-        <Button
-          className="bg-gray-200 text-gray-950"
-          onClick={async () => {
-            const nextArticles = await loadArticles(articlesLoad.next_cursor);
-
-            setArticlesLoad({
-              items: [...articlesLoad.items, ...nextArticles.items],
-              next_cursor: nextArticles.next_cursor,
-            });
-          }}
-        >
-          Load more
-        </Button>
+        {articlesLoad.next_cursor !== null && (
+          <Button
+            disabled={isPending}
+            onClick={() =>
+              startTransition(async () => {
+                const nextArticles = await loadArticles(
+                  articlesLoad.next_cursor
+                );
+                setArticlesLoad({
+                  items: [...articlesLoad.items, ...nextArticles.items],
+                  next_cursor: nextArticles.next_cursor,
+                });
+              })
+            }
+          >
+            {isPending ? (
+              <>
+                <ReloadIcon className="w-4 h-4 animate-spin" /> Loading...
+              </>
+            ) : (
+              "Load more"
+            )}
+          </Button>
+        )}
       </div>
     </>
   );
