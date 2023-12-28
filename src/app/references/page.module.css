@@ -1,0 +1,7 @@
+.references {
+  :global(.notion-gallery-card-cover) {
+    :global(.notion-cover) {
+      object-fit: contain;
+    }
+  }
+}

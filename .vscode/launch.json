@@ -7,11 +7,11 @@
       "name": "next dev",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/next",
       "runtimeArgs": [
-        "dev"
+        "dev",
+        "--turbo"
       ],
       "cwd": "${workspaceFolder}",
       "smartStep": true,
-      "console": "integratedTerminal",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -34,10 +34,23 @@
         "${jest.testFile}"
       ],
       "cwd": "/Users/yusuda/ghq/github.com/udus122/udlog",
-      "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true,
-      "runtimeExecutable": "pnpm"
+    },
+    {
+      "name": "Debug TypeScript File with ts-node",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      "cwd": "${workspaceRoot}",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ],
+      "args": [
+        "--loader",
+        "ts-node/esm",
+        "${file}"
+      ]
     }
   ]
 }

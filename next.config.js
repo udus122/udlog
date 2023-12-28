@@ -7,10 +7,7 @@ const nextConfig = {
       "source.unsplash.com",
       "i.gyazo.com",
     ],
-  },
-  experimental: {
-    appDir: true,
-  },
+  }
 };
 
 module.exports = nextConfig;
