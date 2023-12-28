@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="flex items-center justify-center min-h-screen min-w-screen loader">
+    <div className="flex items-center justify-center loader">
       <div className="square sq1"></div>
       <div className="square sq2"></div>
       <div className="square sq3"></div>

@@ -1,33 +1,33 @@
 import { Page } from "@udus/notion-renderer/components";
-import { fetchDatabase, fetchPage } from "@udus/notion-renderer/libs";
 
-import { client } from "@/client";
-import { loadArticles } from "@/lib/notion";
+import PageList from "@/components/PageList";
+import { TOP_PAGE_ID } from "@/constants";
+import { loadPage, loadDatabase } from "@/lib/notion";
 
-import Top from "./top";
+import { loadArticles } from "./articles/lib";
 
 export default async () => {
-  const page_id = "4553dcd168664730aa8723e1cace3d7e";
-  const database_id = "0c610de6533f47c2a6b3aa38d306ee79";
-  const pageResult = await fetchPage(client, {
-    page_id,
+  const page = await loadPage({
+    page_id: TOP_PAGE_ID,
   });
-  const page = pageResult.ok ? pageResult.data : undefined;
-
-  const databaseResult = await fetchDatabase(client, {
-    database_id,
-  });
-  const database = databaseResult.ok ? databaseResult.data : undefined;
-
+  const database = await loadDatabase();
   const initialPages = await loadArticles();
 
   return (
-    <>
-      <header>{page && <Page page={page} />}</header>
-      <main>
-        {database && <Top database={database} initialPages={initialPages} />}
-      </main>
-      <footer></footer>
-    </>
+    <div>
+      {page && <Page page={page} />}
+      {database && (
+        <PageList
+          database={database}
+          initialPages={initialPages}
+          loadFn={loadArticles}
+          displayProperties={["title", "Published", "Tags"]}
+          hideCover
+          hideDescription
+          hideIcon
+          hideTitle
+        />
+      )}
+    </div>
   );
 };

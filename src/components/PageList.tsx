@@ -4,22 +4,35 @@ import { Database } from "@udus/notion-renderer/components";
 import { useState, useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
-import { loadArticles } from "@/lib/notion";
 
 import type {
   DatabaseObject,
   PageObject,
 } from "@udus/notion-renderer/dist/types";
 
-export default function Top({
+type PageState = {
+  items: PageObject[];
+  next_cursor: string | null;
+};
+
+export default function PageList({
   database,
   initialPages,
+  loadFn,
+  displayProperties,
+  hideCover = false,
+  hideDescription = false,
+  hideIcon = false,
+  hideTitle = false,
 }: {
   database: DatabaseObject;
-  initialPages: {
-    items: PageObject[];
-    next_cursor: string | null;
-  };
+  initialPages: PageState;
+  loadFn: (start_cursor?: string | null) => Promise<PageState>;
+  displayProperties?: string[];
+  hideCover?: boolean;
+  hideDescription?: boolean;
+  hideIcon?: boolean;
+  hideTitle?: boolean;
 }) {
   const [pages, setPages] = useState(initialPages);
   const [isPending, startTransition] = useTransition();
@@ -29,12 +42,12 @@ export default function Top({
       <Database
         database={database}
         pages={pages.items}
-        hideCover
-        hideDescription
-        hideIcon
-        hideTitle
         viewType="gallery"
-        displayProperties={["title", "Published", "Tags"]}
+        hideCover={hideCover}
+        hideDescription={hideDescription}
+        hideIcon={hideIcon}
+        hideTitle={hideTitle}
+        displayProperties={displayProperties}
       />
       <div className="flex justify-center py-8">
         {pages.next_cursor !== null && (
@@ -42,10 +55,10 @@ export default function Top({
             disabled={isPending}
             onClick={() =>
               startTransition(async () => {
-                const nextArticles = await loadArticles(pages.next_cursor);
+                const nextPages = await loadFn(pages.next_cursor);
                 setPages({
-                  items: [...pages.items, ...nextArticles.items],
-                  next_cursor: nextArticles.next_cursor,
+                  items: [...pages.items, ...nextPages.items],
+                  next_cursor: nextPages.next_cursor,
                 });
               })
             }

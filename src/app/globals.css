@@ -4,18 +4,26 @@
 
 .notion-page,
 .notion-database {
-  grid-template-columns: [full-start] 1fr [content-start] 70ch [content-end] 1fr [full-end];
+  --width: 65ch;
+  --gap: 1rem;
+  grid-template-columns:
+    [full-start] minmax(var(--gap), 1fr) [content-start] minmax(
+      auto,
+      var(--width)
+    )
+    [content-end] minmax(var(--gap), 1fr)
+    [full-end];
 }
 
 .notion-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 16px 4px 4px;
-  gap: 1rem;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, calc(var(--width) / 2 - var(--gap))), 1fr)
+  );
 }
 
 .notion-block-list img {
-  max-width: 340px;
+  max-width: 20em;
 }
 
 @tailwind utilities;
@@ -37,6 +45,8 @@
     }
   }
   .loader {
+    @apply h-screen;
+
     .square {
       @apply bg-gray-50;
       width: 10px;

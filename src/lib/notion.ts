@@ -2,14 +2,13 @@
 
 import {
   fetchBlockList,
-  fetchDatabaseItems,
+  fetchDatabase,
   fetchPage,
 } from "@udus/notion-renderer/libs";
 import { cache } from "react";
 
 import { client } from "@/client";
-
-const ARTICLES_DATABASE_ID = "0c610de6533f47c2a6b3aa38d306ee79";
+import { ARTICLE_DATABASE_ID } from "@/constants";
 
 export const loadBlocks = cache(
   async (args: Parameters<typeof fetchBlockList>[1]) => {
@@ -23,37 +22,10 @@ export const loadPage = cache(async (args: Parameters<typeof fetchPage>[1]) => {
   return result.ok ? result.data : undefined;
 });
 
-export const loadArticles = cache(
-  async (start_cursor: string | null = null) => {
-    const { ok, data } = await fetchDatabaseItems(client, {
-      database_id: ARTICLES_DATABASE_ID,
-      filter: {
-        and: [
-          {
-            property: "Status",
-            status: {
-              equals: "公開",
-            },
-          },
-        ],
-      },
-      sorts: [
-        {
-          property: "Published",
-          direction: "descending",
-        },
-      ],
-      page_size: 25,
-      start_cursor: start_cursor ?? undefined,
-    });
-
-    if (!ok) {
-      throw data;
-    }
-
-    return {
-      items: data.results,
-      next_cursor: data.next_cursor,
-    };
-  }
-);
+export const loadDatabase = cache(async () => {
+  const databaseResult = await fetchDatabase(client, {
+    database_id: ARTICLE_DATABASE_ID,
+  });
+  const database = databaseResult.ok ? databaseResult.data : undefined;
+  return database;
+});
