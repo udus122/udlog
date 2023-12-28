@@ -106,4 +106,8 @@
       animation: loader_5191 675ms ease-in-out 600ms infinite;
     }
   }
+
+  .reference .notion-gallery-card-cover .notion-cover {
+    object-fit: contain;
+  }
 }

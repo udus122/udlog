@@ -3,7 +3,8 @@ import { fetchDatabase } from "@udus/notion-renderer/libs";
 import { client } from "@/client";
 import PageList from "@/components/PageList";
 import { ARTICLE_DATABASE_ID } from "@/constants";
-import { loadArticles } from "@/lib/notion";
+
+import { loadArticles } from "./lib";
 
 export default async () => {
   const databaseResult = await fetchDatabase(client, {
@@ -18,6 +19,7 @@ export default async () => {
         database={database}
         initialPages={initialPages}
         loadFn={loadArticles}
+        displayProperties={["title", "Tags", "Published"]}
       />
     )
   );

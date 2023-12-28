@@ -5,7 +5,6 @@ import PageList from "@/components/PageList";
 import { REFERENCE_DATABASE_ID } from "@/constants";
 
 import { loadReferences } from "./lib";
-import styles from "./page.module.css";
 
 export default async () => {
   const databaseResult = await fetchDatabase(client, {
@@ -15,7 +14,7 @@ export default async () => {
   const initialPages = await loadReferences();
 
   return (
-    <div className={styles.references}>
+    <div className="reference">
       {database && (
         <PageList
           database={database}
