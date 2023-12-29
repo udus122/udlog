@@ -1,6 +1,5 @@
 import { Client } from "@notionhq/client";
-
-import { withCache } from "./cache";
+import { cache } from "react";
 
 const _client = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -12,7 +11,7 @@ const memoizeClient = (client: Client, ttl: number) => {
       const property = Reflect.get(target, propertyKey);
 
       if (typeof property === "function") {
-        return withCache(property, ttl);
+        return cache(property);
       }
 
       return new Proxy(property, handler);
@@ -21,7 +20,8 @@ const memoizeClient = (client: Client, ttl: number) => {
   return new Proxy(client, handler);
 };
 
-export const client = _client;
-// process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test"
-//   ? memoizeClient(_client, 60 * 60 * 1000 /* 1hour */)
-// : _client;
+export const client =
+  // _client;
+  process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test"
+    ? memoizeClient(_client, 60 * 60 * 1000 /* 1hour */)
+    : _client;
