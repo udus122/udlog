@@ -6,7 +6,7 @@ import {
   Page,
   RenderConfig,
 } from "@udus/notion-renderer/components";
-import { extractTitle } from "@udus/notion-renderer/dist/utils";
+import { extractTitle } from "@udus/notion-renderer/utils";
 import { Metadata } from "next";
 
 import { loadPage, loadBlocks } from "@/lib/notion";
