@@ -31,6 +31,10 @@ export const writeCache = async (
 };
 
 export const isAvailableCache = (path: PathLike, ttl: number): boolean => {
+  if (!existsSync(path)) {
+    return false;
+  }
+
   const { mtime } = statSync(path);
   return Date.now() < mtime.getTime() + ttl;
 };
