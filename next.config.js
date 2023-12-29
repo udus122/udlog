@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -7,7 +8,8 @@ const nextConfig = {
       "source.unsplash.com",
       "i.gyazo.com",
     ],
-  }
+  },
+  staticPageGenerationTimeout: 1000 * 60 * 16,
 };
 
 module.exports = nextConfig;
