@@ -9,8 +9,8 @@ import { Logo } from "@/components/Logo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Notion Renderer Example",
-  description: "Example app by @udus/notion-renderer and create next app",
+  title: "UDlog",
+  description: "Personal Blog by UD",
 };
 
 export default function RootLayout({

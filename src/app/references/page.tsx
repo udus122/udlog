@@ -1,10 +1,17 @@
 import { fetchDatabase } from "@udus/notion-renderer/libs";
+import { Metadata } from "next";
 
 import { client } from "@/client";
 import PageList from "@/components/PageList";
 import { REFERENCE_DATABASE_ID } from "@/constants";
 
 import { loadReferences } from "./lib";
+
+export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: "References | UDlog",
+};
 
 export default async () => {
   const databaseResult = await fetchDatabase(client, {
