@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, statSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path/posix";
 import { cwd } from "node:process";
@@ -51,7 +51,8 @@ export const withCache = <Args, Item>(
 ): ((args: Args) => Promise<Item>) => {
   const funcWithCache = async (args: Args): Promise<Item> => {
     const key = hash(JSON.stringify({ func: func.name, args }));
-    const cachePath = `${cacheDir}/${key}`;
+    const tmpDir = mkdtempSync(cacheDir);
+    const cachePath = `${tmpDir}/${key}`;
 
     try {
       if (isAvailableCache(cachePath, ttl)) {
