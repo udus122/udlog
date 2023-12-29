@@ -5,6 +5,7 @@ import "@udus/notion-renderer/styles/globals.css";
 import "katex/dist/katex.min.css";
 
 import { Logo } from "@/components/Logo";
+import { RssIcon } from "@/components/RssIcon";
 
 import type { Metadata } from "next";
 
@@ -27,6 +28,9 @@ export default function RootLayout({
             <div className="flex gap-4 ml-auto dark:text-gray-300">
               <Link href="/articles">Articles</Link>
               <Link href="/references">References</Link>
+              <Link href="/feed">
+                <RssIcon />
+              </Link>
             </div>
           </nav>
         </header>
