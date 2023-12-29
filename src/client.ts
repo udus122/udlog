@@ -6,13 +6,13 @@ const _client = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-const memoizeClient = (client: Client, ttl: number, cacheDir: string) => {
+const memoizeClient = (client: Client, ttl: number) => {
   const handler: ProxyHandler<Client> = {
     get(target: Client, propertyKey: PropertyKey) {
       const property = Reflect.get(target, propertyKey);
 
       if (typeof property === "function") {
-        return withCache(property, ttl, cacheDir);
+        return withCache(property, ttl);
       }
 
       return new Proxy(property, handler);
@@ -26,8 +26,4 @@ const memoizeClient = (client: Client, ttl: number, cacheDir: string) => {
 //     ? memoizeClient(_client, 60 * 60 * 1000 /* 1hour */, ".cache")
 //     : _client;
 
-export const client = memoizeClient(
-  _client,
-  60 * 60 * 1000 /* 1hour */,
-  ".cache"
-);
+export const client = memoizeClient(_client, 60 * 60 * 1000 /* 1hour */);
