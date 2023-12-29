@@ -1,7 +1,8 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, statSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
-import { dirname } from "node:path/posix";
+import { dirname, join } from "node:path/posix";
+import { cwd } from "node:process";
 
 import type { BinaryLike } from "node:crypto";
 import type { PathLike } from "node:fs";
@@ -13,13 +14,15 @@ export const hash = (data: BinaryLike): string => {
 };
 
 export const createDirIfNotfound = (path: PathLike): void => {
-  if (!existsSync(path)) {
-    mkdirSync(path, { recursive: true });
+  const absolutePath = join(cwd(), path.toString());
+  if (!existsSync(absolutePath)) {
+    mkdirSync(absolutePath, { recursive: true });
   }
 };
 
 export const readCache = async <T>(path: PathLike): Promise<T> => {
-  return JSON.parse(await readFile(path, "utf8"));
+  const absolutePath = join(cwd(), path.toString());
+  return JSON.parse(await readFile(absolutePath, "utf8"));
 };
 
 export const writeCache = async (
@@ -31,11 +34,13 @@ export const writeCache = async (
 };
 
 export const isAvailableCache = (path: PathLike, ttl: number): boolean => {
-  if (!existsSync(path)) {
+  const absolutePath = join(cwd(), path.toString());
+
+  if (!existsSync(absolutePath)) {
     return false;
   }
 
-  const { mtime } = statSync(path);
+  const { mtime } = statSync(absolutePath);
   return Date.now() < mtime.getTime() + ttl;
 };
 
