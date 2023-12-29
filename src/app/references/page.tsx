@@ -7,8 +7,6 @@ import { REFERENCE_DATABASE_ID } from "@/constants";
 
 import { loadReferences } from "./lib";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "References | UDlog",
 };

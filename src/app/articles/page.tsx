@@ -7,8 +7,6 @@ import { ARTICLE_DATABASE_ID } from "@/constants";
 
 import { loadArticles } from "./lib";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Articles | UDlog",
 };
