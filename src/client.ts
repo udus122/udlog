@@ -2,6 +2,10 @@ import { Client } from "@notionhq/client";
 
 import { withCache } from "./cache";
 
+const _client = new Client({
+  auth: process.env.NOTION_TOKEN,
+});
+
 const memoizeClient = (client: Client, ttl: number, cacheDir: string) => {
   const handler: ProxyHandler<Client> = {
     get(target: Client, propertyKey: PropertyKey) {
@@ -17,10 +21,7 @@ const memoizeClient = (client: Client, ttl: number, cacheDir: string) => {
   return new Proxy(client, handler);
 };
 
-export const client = memoizeClient(
-  new Client({
-    auth: process.env.NOTION_TOKEN,
-  }),
-  24 * 60 * 60 * 1000 /* 1day */,
-  ".cache"
-);
+export const client =
+  process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test"
+    ? memoizeClient(_client, 60 * 60 * 1000 /* 1hour */, ".cache")
+    : _client;
