@@ -16,7 +16,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
-    "@udus/notion-renderer": "^1.0.0-alpha.71",
+    "@udus/notion-renderer": "^1.0.0-alpha.73",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "date-fns": "^2",
