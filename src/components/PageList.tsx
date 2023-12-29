@@ -1,9 +1,11 @@
 "use client";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { Database } from "@udus/notion-renderer/components";
+import { Database, RenderConfig } from "@udus/notion-renderer/components";
 import { useState, useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
+
+import { Link } from "./Link";
 
 import type {
   DatabaseObject,
@@ -38,7 +40,7 @@ export default function PageList({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <>
+    <RenderConfig LinkComponent={Link}>
       <Database
         database={database}
         pages={pages.items}
@@ -73,6 +75,6 @@ export default function PageList({
           </Button>
         )}
       </div>
-    </>
+    </RenderConfig>
   );
 }
