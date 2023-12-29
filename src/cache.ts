@@ -7,6 +7,8 @@ import { cwd } from "node:process";
 import type { BinaryLike } from "node:crypto";
 import type { PathLike } from "node:fs";
 
+const tmpDir = mkdtempSync(".cache");
+
 export const hash = (data: BinaryLike): string => {
   const shasum = createHash("md5");
   shasum.update(data);
@@ -46,12 +48,10 @@ export const isAvailableCache = (path: PathLike, ttl: number): boolean => {
 
 export const withCache = <Args, Item>(
   func: (args: Args) => Item | Promise<Item>,
-  ttl: number = 0,
-  cacheDir: string = ".cache"
+  ttl: number = 0
 ): ((args: Args) => Promise<Item>) => {
   const funcWithCache = async (args: Args): Promise<Item> => {
     const key = hash(JSON.stringify({ func: func.name, args }));
-    const tmpDir = mkdtempSync(cacheDir);
     const cachePath = `${tmpDir}/${key}`;
 
     try {

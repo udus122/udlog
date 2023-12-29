@@ -22,21 +22,21 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="notion-root notion-dark dark">
-        <header className="sticky top-0 bg-inherit z-10">
+        <header className="sticky top-0 z-10 bg-inherit">
           <nav className="flex items-center p-4">
             <Logo />
             <div className="flex gap-4 ml-auto dark:text-gray-300">
               <Link href="/articles">Articles</Link>
               <Link href="/references">References</Link>
-              <Link href="/feed">
+              <a href="/feed">
                 <RssIcon />
-              </Link>
+              </a>
             </div>
           </nav>
         </header>
         <main>{children}</main>
         <footer>
-          <div className="flex flex-col py-16 items-center gap-4">
+          <div className="flex flex-col items-center gap-4 py-16">
             <p className="dark:text-gray-300">
               <Logo />
             </p>
