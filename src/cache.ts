@@ -62,6 +62,12 @@ export const withCache = <Args, Item>(
     } catch (_) {
       /* not fatal */
     }
+    console.log(
+      `function calling parameter: ${JSON.stringify({
+        func: func.name,
+        args,
+      })}`
+    );
 
     const res = await func({ ...args });
     writeCache(cachePath, res);
