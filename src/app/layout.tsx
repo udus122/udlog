@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className="notion-root notion-dark dark">
+      <body className="flex flex-col min-h-screen notion-root notion-dark dark">
         <header className="sticky top-0 z-10 bg-inherit">
           <nav className="flex items-center p-4">
             <Logo />
@@ -34,7 +34,7 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <main>{children}</main>
+        <main className="flex-grow">{children}</main>
         <footer>
           <div className="flex flex-col items-center gap-4 py-16">
             <p className="dark:text-gray-300">

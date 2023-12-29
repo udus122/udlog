@@ -15,10 +15,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="text-white">
+    <div className="flex flex-col h-full text-white place-items-center py-80">
       <h2>Something went wrong!</h2>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()
