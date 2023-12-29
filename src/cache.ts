@@ -57,20 +57,20 @@ export const withCache = <Args, Item>(
     try {
       if (isAvailableCache(cachePath, ttl)) {
         const cache = readCache<Item>(cachePath);
+        console.log(`cache hit: ${cachePath}`);
         return cache;
       }
     } catch (_) {
       /* not fatal */
     }
     console.log(
-      `function calling parameter: ${JSON.stringify({
-        func: func.name,
+      `call ${func.name} parameter: ${JSON.stringify({
         args,
       })}`
     );
-
     const res = await func({ ...args });
     writeCache(cachePath, res);
+    console.log(`cache created: ${cachePath}`);
     return res;
   };
 
