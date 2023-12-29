@@ -26,7 +26,7 @@ export const loadArticles = cache(
           direction: "descending",
         },
       ],
-      page_size: 25,
+      page_size: 10,
       start_cursor: start_cursor ?? undefined,
     });
 

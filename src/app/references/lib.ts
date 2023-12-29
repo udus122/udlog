@@ -18,7 +18,7 @@ export const loadReferences = cache(
           },
         ],
       },
-      page_size: 50,
+      page_size: 10,
       start_cursor: start_cursor ?? undefined,
     });
 
