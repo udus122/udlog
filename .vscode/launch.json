@@ -12,6 +12,7 @@
       ],
       "cwd": "${workspaceFolder}",
       "smartStep": true,
+      "console": "integratedTerminal",
       "skipFiles": [
         "<node_internals>/**"
       ],

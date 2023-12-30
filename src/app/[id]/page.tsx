@@ -4,6 +4,7 @@ import { Metadata } from "next";
 
 import { BulletedListItem } from "@/components/custom/bulltedListItem";
 import { Callout } from "@/components/custom/callout";
+import { Code } from "@/components/custom/code";
 import { Color } from "@/components/custom/color";
 import { Heading1 } from "@/components/custom/heading1";
 import { Heading2 } from "@/components/custom/heading2";
@@ -46,6 +47,7 @@ export default async ({ params: { id } }: Props) => {
         blockMapper={{
           bulleted_list_item: BulletedListItem,
           callout: Callout,
+          code: Code,
           heading_1: Heading1,
           heading_2: Heading2,
           heading_3: Heading3,
