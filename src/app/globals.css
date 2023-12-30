@@ -26,6 +26,10 @@
   max-width: 20em;
 }
 
+.notion-color-gray_background {
+  display: none !important;
+}
+
 @tailwind utilities;
 
 @layer base {

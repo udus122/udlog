@@ -1,14 +1,18 @@
-import {
-  OpenedHeading1,
-  OpenedHeading2,
-  OpenedHeading3,
-  OpenedToggle,
-  Page,
-  RenderConfig,
-} from "@udus/notion-renderer/components";
+import { Page, RenderConfig } from "@udus/notion-renderer/components";
 import { extractTitle } from "@udus/notion-renderer/utils";
 import { Metadata } from "next";
 
+import { BulletedListItem } from "@/components/custom/bulltedListItem";
+import { Callout } from "@/components/custom/callout";
+import { Color } from "@/components/custom/color";
+import { Heading1 } from "@/components/custom/heading1";
+import { Heading2 } from "@/components/custom/heading2";
+import { Heading3 } from "@/components/custom/heading3";
+import { NumberedListItem } from "@/components/custom/numberedListItem";
+import { Paragraph } from "@/components/custom/paragraph";
+import { Quote } from "@/components/custom/quote";
+import { ToDo } from "@/components/custom/todo";
+import { Toggle } from "@/components/custom/toggle";
 import { loadPage, loadBlocks } from "@/lib/notion";
 
 type Props = {
@@ -40,11 +44,18 @@ export default async ({ params: { id } }: Props) => {
     blocks && (
       <RenderConfig
         blockMapper={{
-          heading_1: OpenedHeading1,
-          heading_2: OpenedHeading2,
-          heading_3: OpenedHeading3,
-          toggle: OpenedToggle,
+          bulleted_list_item: BulletedListItem,
+          callout: Callout,
+          heading_1: Heading1,
+          heading_2: Heading2,
+          heading_3: Heading3,
+          numbered_list_item: NumberedListItem,
+          paragraph: Paragraph,
+          quote: Quote,
+          to_do: ToDo,
+          toggle: Toggle,
         }}
+        annotationMapper={{ color: Color }}
       >
         <Page
           page={page}
